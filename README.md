@@ -1,7 +1,7 @@
 <div align="center">
-  <img src="./docs/static/img/logo.png" alt="Logo" width="200">
-  <h1>EcoSphere Network Repository Template</h1>
-  <p>A modern, comprehensive template for creating new repositories within the EcoSphere Network ecosystem.</p>
+  <img src="./docs/static/img/logo.png" alt="SmolDesk Logo" width="200">
+  <h1>SmolDesk</h1>
+  <p>Ein WebRTC-basiertes Remote-Desktop-Tool für Linux mit niedrigen Latenzen und nativer Unterstützung für X11 und Wayland.</p>
 
   [![Contributors][contributors-shield]][contributors-url]
   [![Stars][stars-shield]][stars-url]
@@ -12,9 +12,9 @@
   [![Documentation][docs-shield]][docs-url]
   [![Project Credits][credits-shield]][credits-url]
 
-  [Start Documentation](https://github.com/EcoSphereNetwork/ESN_Repo-Template/blob/main/docs/README.md) •
-  [Report Bug](https://github.com/EcoSphereNetwork/ESN_Repo-Template/issues) •
-  [Request Feature](https://github.com/EcoSphereNetwork/ESN_Repo-Template/issues)
+  [Start Documentation](https://github.com/SmolDesk/SmolDesk/blob/main/docs/README.md) •
+  [Report Bug](https://github.com/SmolDesk/SmolDesk/issues) •
+  [Request Feature](https://github.com/SmolDesk/SmolDesk/issues)
 </div>
 
 ## 📋 Table of Contents
@@ -30,169 +30,202 @@
 - [License](#-license)
 
 ## 🎯 About
-The EcoSphere Network Repository Template provides a standardized starting point for new projects, incorporating modern development practices, comprehensive workflows, and essential tooling. This template is designed to accelerate project setup while ensuring consistency across the *ESN* ecosystem.
+SmolDesk ist ein modernes Remote-Desktop-Tool, das speziell für Linux entwickelt wurde und beide wichtigen Display-Server (X11 und Wayland) unterstützt. Durch die Verwendung von WebRTC ermöglicht SmolDesk Peer-to-Peer-Verbindungen mit niedriger Latenz, optimiert durch Hardware-Beschleunigung für eine flüssige Benutzererfahrung.
 
-### Why Use This Template?
-- 🚀 **Quick Start**: Get your project running in minutes with pre-configured tooling
-- 🔄 **CI/CD Ready**: Comprehensive GitHub Actions workflows for testing, building, and deployment
-- 📊 **Quality Focused**: Built-in code quality tools and testing frameworks
-- 🛡️ **Security First**: Automated security scanning and best practices
-- 📚 **Well Documented**: Extensive documentation and examples
+### Warum SmolDesk?
+- 🚀 **Niedrige Latenz**: Optimiert für Reaktionsschnelligkeit (<200ms) für ein natürliches Benutzererlebnis
+- 🔄 **WebRTC-Integration**: Peer-to-Peer-Verbindungen mit STUN/TURN-Fallback für NAT-Traversal
+- 📊 **Optimierte Leistung**: Unterstützung für Hardware-Beschleunigung (VAAPI/NVENC)
+- 🛡️ **Sicherheit**: OAuth2-Integration und verschlüsselte Verbindungen
+- 📚 **Cross-Platform**: Host auf Linux, Zugriff von jedem modernen Browser aus
 
 ## ✨ Key Features
 
 ### Core Features
-- 🔧 **Project Structure**: Organized directory layout for various project types
-- 📝 **Documentation**: Docs and Wiki with Docusaurus and documentation templates
-- 🔄 **Workflows**: Reusable GitHub Actions for CI/CD
-- 🧪 **Testing**: Configured testing framework with examples
-- 🛡️ **Security**: Automated security scanning and best practices
+- 🖥️ **Display-Server-Unterstützung**: Vollständige Unterstützung für X11 und Wayland
+- 🎮 **Input-Weiterleitung**: Präzise und reaktionsschnelle Maus- und Tastatursteuerung
+- 📡 **NAT-Traversal**: STUN/TURN-Server für zuverlässige Verbindungen auch hinter Firewalls
+- 📋 **Clipboard-Synchronisation**: Nahtlose Übertragung von Zwischenablage-Inhalten
+- 🔄 **Dateitransfer**: Einfacher und sicherer Austausch von Dateien zwischen Host und Client
 
-### Development Tools
-- 📊 **Code Quality**: Pre-configured linting and formatting
-- 🐳 **Docker Support**: Container configurations and build workflows
-- 🔄 **Dependency Management**: Automated updates and vulnerability scanning
-- 🧪 **Testing Framework**: Unit, integration, and end-to-end testing setup
+### Technische Highlights
+- 🚀 **Rust-Backend**: Leistungsstarkes und sicheres Rust-Backend mit Tauri-Integration
+- ⚛️ **React-Frontend**: Modernes, reaktives UI mit TypeScript und Tailwind CSS
+- 🎬 **Hardware-Kodierung**: Unterstützung für VAAPI und NVENC für 4K@60FPS
+- 🔐 **Authentifizierung**: OAuth2 mit PKCE-Unterstützung
+- 🌐 **Multi-Monitor**: Unterstützung für mehrere Monitore und dynamisches Umschalten
 
 ## 🚀 Getting Started
 
-### Prerequisites
-- Git
-- Python 3.9 or higher
-- Docker (optional)
+### Systemvoraussetzungen
+- **Host-System (Linux)**:
+  - X11 oder Wayland
+  - Für Hardware-Beschleunigung:
+    - Intel-GPU: VAAPI-Bibliotheken
+    - NVIDIA-GPU: CUDA und NVENC-Support
+  - FFmpeg
+  - Für X11: xdotool
+  - Für Wayland: ydotool
+
+- **Client-System**:
+  - Moderner Browser mit WebRTC-Support (Chrome, Firefox, Edge, Safari)
 
 ### Installation
 
-1. **Create a New Repository**
-
+1. **Binärdateien herunterladen**
    ```bash
-   gh repo create my-project --template EcoSphereNetwork/ESN-Repo-Template
+   # Für Debian/Ubuntu-basierte Systeme
+   curl -L https://github.com/SmolDesk/SmolDesk/releases/latest/download/smoldesk_amd64.deb -o smoldesk.deb
+   sudo apt install ./smoldesk.deb
+   
+   # Für Fedora/RHEL-basierte Systeme
+   curl -L https://github.com/SmolDesk/SmolDesk/releases/latest/download/smoldesk.rpm -o smoldesk.rpm
+   sudo dnf install ./smoldesk.rpm
+   
+   # Distribution-unabhängig (AppImage)
+   curl -L https://github.com/SmolDesk/SmolDesk/releases/latest/download/SmolDesk.AppImage -o SmolDesk.AppImage
+   chmod +x SmolDesk.AppImage
    ```
 
-   or
-
+2. **Starten der Anwendung**
    ```bash
-   git clone https://github.com/EcoSphereNetwork/ESN_Repo-Template.git my-project
-   ```
-
-2. **Create a separate directory for your actual project:**
-
-   ```bash
-   mkdir my-actual-project
-   cd my-actual-project
-   ```
-
-3. **Run the initialization script from the cloned template:**
-
-   ```bash
-   ../my-project/scripts/init.sh
-   ```
-
-4. **Set Up Development Environment**
-   ```bash
-   poetry install  # Install dependencies
-   pre-commit install  # Set up git hooks
+   smoldesk
+   # oder bei Verwendung der AppImage
+   ./SmolDesk.AppImage
    ```
 
 ## 📁 Project Structure
 ```
-my-project/
-├── .github/                    # GitHub configurations and workflows
-├── docs/                       # Project documentation
-├── src/                        # Source code
-│   ├── core/                  # Core functionality
-│   ├── modules/               # Optional modules
-│   └── main.py               # Application entry point
-├── tests/                     # Test suite
-│   ├── unit/                 # Unit tests
-│   ├── integration/          # Integration tests
-│   └── e2e/                  # End-to-end tests
-├── scripts/                   # Development and deployment scripts
-├── .env.example              # Environment variables template
-├── pyproject.toml            # Project dependencies and configuration
-└── README.md                 # Project documentation
+SmolDesk/
+├── .github/                   # GitHub-Konfigurationen und Workflows
+├── docs/                      # Projektdokumentation
+│   ├── api/                  # API-Referenz
+│   ├── user/                 # Benutzerhandbuch
+│   └── technical/           # Technische Dokumentation
+├── src/                      # Frontend-Quellcode (React)
+│   ├── components/          # React-Komponenten
+│   ├── hooks/               # React-Hooks
+│   ├── utils/               # Hilfsfunktionen
+│   └── contexts/            # React-Kontexte
+├── src-tauri/               # Backend-Quellcode (Rust)
+│   ├── src/                # Rust-Quellcode
+│   └── Cargo.toml         # Rust-Abhängigkeiten
+├── signaling-server/        # WebRTC Signaling-Server
+│   └── index.js           # Server-Implementation
+├── tests/                    # Testsuite
+│   ├── unit/               # Unit-Tests
+│   ├── integration/        # Integrationstests
+│   └── e2e/                # End-to-End-Tests
+├── package.json             # Projekt-Abhängigkeiten
+└── README.md                # Projektdokumentation
 ```
 
 ## 💻 Development
 
-### Setting Up for Development
-1. Install dependencies:
+### Entwicklungsumgebung einrichten
+1. Repository klonen:
    ```bash
-   poetry install
+   git clone https://github.com/SmolDesk/SmolDesk.git
+   cd SmolDesk
    ```
 
-2. Set up pre-commit hooks:
+2. Dependencies installieren:
    ```bash
-   pre-commit install
+   npm install
    ```
 
-3. Create environment file:
+3. Entwicklungsserver starten:
    ```bash
-   cp .env.example .env
+   npm run tauri dev
    ```
 
-### Code Quality Tools
-- **Formatting**: `poetry run black .`
-- **Linting**: `poetry run ruff check .`
-- **Type Checking**: `poetry run mypy .`
+### Signaling-Server einrichten
+```bash
+cd signaling-server
+npm install
+node index.js
+```
+
+### Build erstellen
+```bash
+npm run tauri build
+```
 
 ## 🧪 Testing
 
-### Running Tests
+### Tests ausführen
 ```bash
-# Run all tests
-poetry run pytest
+# Frontend-Tests
+npm test
 
-# Run specific test types
-poetry run pytest tests/unit
-poetry run pytest tests/integration
-poetry run pytest tests/e2e
+# Backend-Tests
+cd src-tauri
+cargo test
 
-# Run with coverage
-poetry run pytest --cov=src
+# End-to-End-Tests
+npm run test:e2e
 ```
+
+### Manuelle Tests
+- **NAT-Traversal**: Testen der Verbindung über unterschiedliche Netzwerke
+- **Latenz-Messungen**: Überprüfen der Input-zu-Output-Verzögerung
+- **Browser-Kompatibilität**: Testen auf verschiedenen Browsern und Plattformen
 
 ## 🚢 Deployment
 
-### Using GitHub Actions
-1. Configure secrets in repository settings
-2. Push to trigger deployment workflow
-3. Monitor deployment in Actions tab
-
-### Manual Deployment
+### Paketierung
 ```bash
-./scripts/deploy.sh [environment]
+# Debian/Ubuntu-Paket erstellen
+npm run tauri build -- --target deb
+
+# RPM-Paket erstellen
+npm run tauri build -- --target rpm
+
+# AppImage erstellen
+npm run tauri build -- --target appimage
+```
+
+### Signaling-Server-Deployment
+```bash
+# Mit Docker
+cd signaling-server
+docker build -t smoldesk-signaling .
+docker run -p 3000:3000 smoldesk-signaling
+
+# Manuell auf einem Server
+npm install -g pm2
+pm2 start index.js --name smoldesk-signaling
 ```
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+Wir freuen uns über Beiträge! Bitte lesen Sie unseren [Contributing Guide](CONTRIBUTING.md) für Details.
 
-1. Fork the repository
-2. Create your feature branch:
+1. Repository forken
+2. Feature-Branch erstellen:
    ```bash
    git checkout -b feature/amazing-feature
    ```
-3. Commit your changes:
+3. Änderungen committen:
    ```bash
    git commit -m 'feat: add amazing feature'
    ```
-4. Push to the branch:
+4. Branch pushen:
    ```bash
    git push origin feature/amazing-feature
    ```
-5. Open a Pull Request
+5. Pull Request öffnen
 
 ## 💬 Support
 
-- [Issue Tracker](https://github.com/EcoSphereNetwork/ESN_Repo-Template.git/issues)
-- [Discussions](https://github.com/EcoSphereNetwork/ESN_Repo-Template.git/discussions)
+- [Issue Tracker](https://github.com/SmolDesk/SmolDesk/issues)
+- [Discussions](https://github.com/SmolDesk/SmolDesk/discussions)
 - [Discord Community][discord-url]
 - [Documentation][docs-url]
 
 ## 📄 License
 
-Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
+Verteilt unter der MIT-Lizenz. Siehe [LICENSE](LICENSE) für weitere Informationen.
 
 ---
 
@@ -205,19 +238,19 @@ Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
 </div>
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/github/contributors/EcoSphereNetwork/ESN_Repo-Template?style=for-the-badge&color=blue
-[contributors-url]: https://github.com/EcoSphereNetwork/ESN_Repo-Template/graphs/contributors
-[stars-shield]: https://img.shields.io/github/stars/EcoSphereNetwork/ESN_Repo-Template?style=for-the-badge&color=blue
-[stars-url]: https://github.com/EcoSphereNetwork/ESN_Repo-Template/stargazers
-[coverage-shield]: https://img.shields.io/codecov/c/github/EcoSphereNetwork/ESN_Repo-Template?style=for-the-badge&color=blue
-[coverage-url]: https://codecov.io/github/EcoSphereNetwork/ESN_Repo-Template
-[license-shield]: https://img.shields.io/github/license/EcoSphereNetwork/ESN_Repo-Template?style=for-the-badge&color=blue
-[license-url]: https://github.com/EcoSphereNetwork/ESN_Repo-Template/blob/main/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/SmolDesk/SmolDesk?style=for-the-badge&color=blue
+[contributors-url]: https://github.com/SmolDesk/SmolDesk/graphs/contributors
+[stars-shield]: https://img.shields.io/github/stars/SmolDesk/SmolDesk?style=for-the-badge&color=blue
+[stars-url]: https://github.com/SmolDesk/SmolDesk/stargazers
+[coverage-shield]: https://img.shields.io/codecov/c/github/SmolDesk/SmolDesk?style=for-the-badge&color=blue
+[coverage-url]: https://codecov.io/github/SmolDesk/SmolDesk
+[license-shield]: https://img.shields.io/github/license/SmolDesk/SmolDesk?style=for-the-badge&color=blue
+[license-url]: https://github.com/SmolDesk/SmolDesk/blob/main/LICENSE
 [discord-shield]: https://img.shields.io/badge/Discord-Join%20Us-purple?logo=discord&logoColor=white&style=for-the-badge
-[discord-url]: https://discord.gg/cTWBHGkn
+[discord-url]: https://discord.gg/smoldesk
 [docs-shield]: https://img.shields.io/badge/Documentation-000?logo=googledocs&logoColor=FFE165&style=for-the-badge
-[docs-url]: https://github.com/EcoSphereNetwork/ESN_Repo-Template/wiki
+[docs-url]: https://github.com/SmolDesk/SmolDesk/wiki
 [credits-shield]: https://img.shields.io/badge/Project-Credits-blue?style=for-the-badge&color=FFE165&logo=github&logoColor=white
-[credits-url]: https://github.com/EcoSphereNetwork/ESN_Repo-Template/blob/main/CREDITS.md
-[activity-graph]: https://repobeats.axiom.co/api/embed/8d1a53c73cf5523d0e52a6cc5b74bce75eecc801.svg
+[credits-url]: https://github.com/SmolDesk/SmolDesk/blob/main/CREDITS.md
+[activity-graph]: https://repobeats.axiom.co/api/embed/placeholder-for-smoldesk-activity-graph.svg
 [activity-url]: https://repobeats.axiom.co
