@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=development
+    command: python -m src.main
+
+  test:
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/app
+    command: pytest
+
+  docs:
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/app
+    ports:
+      - "8001:8001"
+    command: mkdocs serve -a 0.0.0.0:8001
