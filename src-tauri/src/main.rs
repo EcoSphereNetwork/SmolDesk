@@ -12,12 +12,18 @@ use std::sync::{Arc, Mutex};
 use tauri::{Manager, Window};
 use serde::{Deserialize, Serialize};
 use screen_capture::{ScreenCaptureManager, ScreenCaptureConfig, MonitorInfo, DisplayServer as CaptureDisplayServer, VideoCodec, HardwareAcceleration};
-use input_forwarding::{InputEvent, InputForwarder, detect_display_server, create_input_forwarder, DisplayServer as InputDisplayServer};
+use input_forwarding::{
+    InputEvent, 
+    forwarder_trait::ImprovedInputForwarder, 
+    factory::{detect_display_server, create_improved_input_forwarder},
+    types::{DisplayServer as InputDisplayServer, InputForwardingConfig, MonitorConfiguration},
+    error::InputForwardingError
+};
 
 // Application state
 struct AppState {
     screen_capture: Arc<Mutex<Option<ScreenCaptureManager>>>,
-    input_forwarder: Arc<Mutex<Option<Box<dyn InputForwarder>>>>,
+    input_forwarder: Arc<Mutex<Option<Box<dyn ImprovedInputForwarder>>>>,
 }
 
 // Commands
@@ -110,6 +116,23 @@ fn set_input_enabled(enabled: bool, state: tauri::State<'_, AppState>) -> Result
 }
 
 #[tauri::command]
+fn configure_input_forwarding(config: InputForwardingConfig, state: tauri::State<'_, AppState>) -> Result<(), String> {
+    let mut input_forwarder = state.input_forwarder.lock().unwrap();
+    
+    if let Some(forwarder) = &mut *input_forwarder {
+        // Update multi-monitor configuration if enabled
+        if config.enable_multi_monitor {
+            forwarder.configure_monitors(config.monitors)
+                .map_err(|e| e.to_string())?;
+        }
+        
+        Ok(())
+    } else {
+        Err("Input forwarder not initialized".to_string())
+    }
+}
+
+#[tauri::command]
 fn get_video_codecs() -> Vec<String> {
     vec![
         "H264".to_string(),
@@ -141,28 +164,37 @@ fn main() {
                 }
             };
             
-            // Get screen dimensions from first monitor for input forwarder
-            let (screen_width, screen_height) = if let Some(manager) = &screen_capture_manager {
-                let monitors = manager.get_monitors();
-                if !monitors.is_empty() {
-                    (monitors[0].width as i32, monitors[0].height as i32)
-                } else {
-                    (1920, 1080) // Fallback dimensions
-                }
+            // Get monitor information for input forwarder
+            let monitors = if let Some(manager) = &screen_capture_manager {
+                manager.get_monitors()
             } else {
-                (1920, 1080) // Fallback dimensions
+                vec![]
             };
             
-            // Initialize input forwarder
-            let display_server = detect_display_server();
-            let input_display_server = match display_server {
-                InputDisplayServer::X11 => CaptureDisplayServer::X11,
-                InputDisplayServer::Wayland => CaptureDisplayServer::Wayland,
-                InputDisplayServer::Unknown => CaptureDisplayServer::Unknown,
-            };
-            
-            let input_forwarder = match create_input_forwarder(display_server, screen_width, screen_height) {
-                Ok(forwarder) => Some(forwarder),
+            // Convert screen_capture MonitorInfo to input_forwarding MonitorConfiguration
+            let input_monitors: Vec<MonitorConfiguration> = monitors.iter().enumerate()
+                .map(|(idx, monitor)| MonitorConfiguration {
+                    index: idx,
+                    x_offset: monitor.x_offset,
+                    y_offset: monitor.y_offset,
+                    width: monitor.width as i32,
+                    height: monitor.height as i32,
+                    scale_factor: 1.0, // Default scale factor
+                    is_primary: idx == 0, // Assume first monitor is primary
+                })
+                .collect();
+
+            // Initialize input forwarder with automatic display server detection
+            let input_forwarder = match create_improved_input_forwarder(None) {
+                Ok(mut forwarder) => {
+                    // Configure with monitors if available
+                    if !input_monitors.is_empty() {
+                        if let Err(e) = forwarder.configure_monitors(input_monitors) {
+                            eprintln!("Failed to configure monitors for input forwarder: {}", e);
+                        }
+                    }
+                    Some(forwarder)
+                },
                 Err(e) => {
                     eprintln!("Failed to initialize input forwarder: {}", e);
                     None
@@ -187,6 +219,7 @@ fn main() {
             stop_capture,
             send_input_event,
             set_input_enabled,
+            configure_input_forwarding,
             get_video_codecs,
             get_hardware_acceleration_options,
         ])
