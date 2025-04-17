@@ -65,5 +65,3 @@ Entwicklung eines **browserbasierten Remote-Desktop-Tools** mit:
 
 Diese Spezifikation dient als Blaupause für eine **kundenspezifische Remote-Desktop-Lösung** mit Fokus auf **Latenz**, **Sicherheit** und **Linux-OS-Integration**.
 
----
-Antwort von Perplexity: pplx.ai/share
