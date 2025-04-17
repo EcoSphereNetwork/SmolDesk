@@ -1,88 +1,103 @@
-# Entwickler-Prompt: SmolDesk - WebRTC-basiertes Remote-Desktop-Tool
+# Entwickler-Prompt: SmolDesk - Weiterentwicklung des WebRTC-basierten Remote-Desktop-Tools
 
-## Ausgangssituation
+## Projektübersicht
 
-Du übernimmst die Entwicklung von SmolDesk, einem WebRTC-basierten Remote-Desktop-Tool für Linux. Das Projekt soll eine effiziente Peer-to-Peer-Verbindung mit niedriger Latenz ermöglichen und sowohl X11 als auch Wayland unterstützen. Die Architektur besteht aus einem React-Frontend und einem Rust-Backend mit Tauri-Integration.
+Du übernimmst die Weiterentwicklung von SmolDesk, einem WebRTC-basierten Remote-Desktop-Tool für Linux, das sich aktuell in der Implementierungsphase befindet. Das Projekt basiert auf einer React/TypeScript-Frontend- und Rust/Tauri-Backend-Architektur und soll eine niedriglatente Peer-to-Peer-Verbindung ermöglichen, die sowohl X11 als auch Wayland unterstützt.
 
-## Deine Aufgaben
+## Aktueller Projektstand
 
-### 1. Bestandsaufnahme und Analyse
+### Frontend (React/TypeScript)
+- Grundlegende Benutzeroberfläche mit Connection Manager implementiert
+- WebRTC-Integration für Peer-to-Peer-Verbindungen
+- Remote Screen-Komponente für Anzeige und Interaktion
+- Interface zum Steuern der Bildschirmerfassung und Eingabeweiterleitung
 
-- Verschaffe dir einen Überblick über die Projektstruktur
-- Prüfe den aktuellen Entwicklungsstand der Komponenten:
-  - WebRTC-Integration
-  - Bildschirmübertragungsfunktionen
-  - Input-Weiterleitung
-  - Signaling-Server
-- Sichte die vorhandene Dokumentation unter docs/
-- Identifiziere fehlende Komponenten und Funktionalitäten basierend auf der Anforderungsanalyse
+### Backend (Rust/Tauri)
+- Grundlegende Architektur für X11- und Wayland-Bildschirmerfassung
+- Implementierung zur Eingabeweiterleitung (Maus, Tastatur)
+- Tauri-Kommandos für Frontend-Backend-Kommunikation
+- Monitorerkennung für beide Display-Server
 
-### 2. Planung und Priorisierung
+### Signaling-Server (Node.js)
+- WebSocket-basierter Server für WebRTC-Signalisierung
+- Raum-Management für Peer-Discovery
+- Heartbeat-Mechanismus zur Verbindungsüberwachung
 
-- Erstelle einen Implementierungsplan nach dem Entwicklungsplan-Dokument:
-  - Phase 1: WebRTC-Grundgerüst, Bildschirmaufnahme, Input-Forwarding
-  - Phase 2: Sicherheitsfunktionen, Multi-Monitor-Support
-  - Phase 3: Hardware-Optimierung (VAAPI/NVENC)
-- Setze Prioritäten für die Implementierung basierend auf der Roadmap
+### Kernfunktionen
+- WebRTC-Verbindungsaufbau mit SDP-Austausch und ICE-Kandidaten
+- FFmpeg-Integration für Bildschirmaufnahme
+- Support für verschiedene Videocodecs (H264, VP8, VP9, AV1)
+- Hardwarebeschleunigung (VAAPI, NVENC, QuickSync)
 
-### 3. Entwicklung der Kernfunktionalitäten
+## Zu entwickelnde Komponenten
 
-- Implementiere die WebRTC-Verbindung mit:
-  - Signaling-Server mit WebSocket (Node.js)
-  - Peer-Connection mit SDP-Handshake
-  - STUN/TURN-Server für NAT-Traversal
-- Entwickle die Bildschirmaufnahmekomponente:
-  - X11-Support via FFmpeg
-  - Wayland-Support über pipewire-portal
-- Implementiere Input-Weiterleitung (Maus/Tastatur)
-- Integriere Dateitransfer und Clipboard-Funktionalität
+### Phase 1: Optimierung und Fehlerbeseitigung
 
-### 4. Frontend-Entwicklung
+1. **WebRTC-Integration abschließen**
+   - Probleme bei der Bildschirmübertragung zwischen Backend und Frontend beheben
+   - Sicherstellung der stabilen Datenübertragung über WebRTC-Kanäle
+   - Implementierung von STUN/TURN-Fallback für NAT-Traversal
 
-- Entwickle das React-Frontend mit Vite und TypeScript
-- Erstelle React-Komponenten für:
-  - Verbindungsmanagement
-  - Monitor-Auswahl
-  - Einstellungen für Videoqualität
-  - Sicherheitsoptionen
-- Integriere das Frontend mit dem Tauri-Backend
+2. **Input-Weiterleitung verbessern**
+   - Spezialschlüssel und Tastenkombinationen unterstützen
+   - Relative Positionsberechnung für Multi-Monitor-Setups optimieren
+   - Gesten für Trackpads implementieren
 
-### 5. Testdurchführung
+3. **Verbindungssicherheit implementieren**
+   - Authentifizierungsmechanismus einbauen
+   - Datenkanal-Verschlüsselung implementieren
+   - Zugriffssteuerungssystem erstellen
 
-- Entwickle und führe Tests gemäß der Testmatrix durch:
-  - NAT-Traversal-Tests
-  - Latenz-Messungen (Ziel: <200ms)
-  - Browserkompatibilitätstests
-  - Sicherheitstests (OAuth2, HMAC-SHA256)
-- Setze Automatisierungstests mit Selenium auf
-- Integriere die Tests in eine CI/CD-Pipeline
+4. **Leistungsoptimierung**
+   - Latenz unter 200ms erreichen
+   - CPU-Auslastung bei Bildschirmerfassung reduzieren
+   - Frame-Pufferstrategie entwickeln
 
-### 6. Optimierung
+### Phase 2: Erweiterte Funktionen
 
-- Implementiere Hardware-Beschleunigung:
-  - VAAPI-Integration
-  - NVIDIA NVENC-Support für 4K@60FPS
-- Optimiere für niedrige CPU-Last (<15% bei 1080p)
-- Verbessere NAT-Traversal mit Coturn und Redis-Clustering
+1. **Multi-Monitor-Unterstützung**
+   - Dynamische Monitordetektion und -auswahl implementieren
+   - Unterstützung für Monitor-Wechsel während einer Session
+   - Individuelle Monitor-Streaming-Optionen
 
-### 7. Dokumentation
+2. **Zwischenablage-Synchronisation**
+   - Bidirektionale Zwischenablagenübertragung implementieren
+   - Unterstützung für Text, Bilder und formatierte Inhalte
+   - Zwischenablageverlauf und -verwaltung
 
-- Aktualisiere die technische Dokumentation
-- Erstelle eine API-Referenz mit OpenAPI 3.0
-- Dokumentiere Installationsanweisungen und Abhängigkeiten
-- Verfasse Benutzerdokumentation
+3. **Dateiübertragung**
+   - Sichere Dateiübertragung zwischen Host und Betrachter
+   - Fortschrittsüberwachung und Wiederaufnahmefunktion
+   - Verzeichnisübertragung
 
-## Workflow
+4. **Erweiterte Sicherheitsfunktionen**
+   - OAuth2-Implementierung mit PKCE
+   - HMAC-SHA256 für Message-Signing
+   - Sitzungs-Berechtigungsverwaltung
 
-- Nach jedem bedeutenden Entwicklungsschritt:
-  - Committe deine Änderungen mit klaren Commit-Nachrichten
-  - Erstelle Pull Requests nach dem Format: `[Bereich]: Was wurde gemacht und warum`
-  - Dokumentiere Fortschritte und Herausforderungen
+### Phase 3: Hardwareoptimierung und Benutzerfreundlichkeit
 
-- Für jede abgeschlossene Komponente:
-  - Stelle sicher, dass Tests vorhanden sind
-  - Überprüfe die Funktionalität in verschiedenen Szenarien
-  - Aktualisiere die entsprechende Dokumentation
+1. **Hardwarebeschleunigung verbessern**
+   - VAAPI-Integration für Intel-GPUs optimieren
+   - NVENC-Unterstützung für NVIDIA-GPUs verbessern
+   - QuickSync-Unterstützung für kompatible Intel-Prozessoren hinzufügen
+
+2. **Latenzoptimierung**
+   - Adaptive Qualität basierend auf Netzwerkbedingungen
+   - Frame-Erfassungs- und Verarbeitungspipeline optimieren
+   - Intelligentes Frame-Skipping implementieren
+
+3. **UI/UX-Verbesserungen**
+   - Anpassbare Tastaturkürzel
+   - Verbindungsqualitätsanzeige
+   - Bandbreitennutzungsstatistiken
+   - Dunkles/helles Theme-Support
+
+4. **Verpackung und Deployment**
+   - Debian/Ubuntu-Pakete erstellen
+   - RPM-Pakete für Fedora/RHEL bauen
+   - AppImage für distributionsunabhängige Installation bereitstellen
+   - Flatpak-Unterstützung für Sandbox-Ausführung
 
 ## Technische Anforderungen
 
@@ -91,37 +106,73 @@ Du übernimmst die Entwicklung von SmolDesk, einem WebRTC-basierten Remote-Deskt
 - **WebRTC**: Implementierung nach WebRTC-Standards
 - **Latenz**: Ziel von <200ms für Bildschirmübertragung
 - **Sicherheit**: OAuth2 mit PKCE, HMAC-SHA256 für Nachrichten
-- **Kompatibilität**: X11 und Wayland, gängige Browser
-- **Skalierung**: 1.000 gleichzeitige Verbindungen via Kubernetes
+- **Kompatibilität**: X11 und Wayland, gängige Browser (Chrome, Firefox, Edge, Safari)
+- **Hardware-Beschleunigung**: VAAPI, NVENC und QuickSync
 
-## Abnahmekriterien
+## Spezifische Aufgaben
 
-Die Arbeit gilt als erfolgreich abgeschlossen, wenn:
+1. **FFmpeg-Integration optimieren**
+   - Implementiere eine effizientere Kodierungspipeline für X11 und Wayland
+   - Reduziere Frame-Latenz durch optimierte Pufferstrategie
+   - Verbessere Hardwarebeschleunigung mit VAAPI/NVENC
 
-- WebRTC-Verbindung mit P2P und TURN/STUN-Fallback funktioniert
-- Bildschirmübertragung mit niedriger Latenz (<200ms) möglich ist
-- Input-Weiterleitung korrekt funktioniert
-- Hardware-Beschleunigung implementiert ist
-- Sicherheitskonzept umgesetzt ist
-- Tests erfolgreich durchgeführt wurden
-- Dokumentation vollständig ist
+2. **WebRTC-Datenkanalimplementierung abschließen**
+   - Zuverlässige Übertragung von Eingabeereignissen sicherstellen
+   - Implement Datenkanal für Zwischenablage und Dateiübertragung
+   - Protokoll für RPC zwischen Client und Host definieren
+
+3. **Netzwerkresilienz verbessern**
+   - ICE-Kandidaten-Verhandlung optimieren
+   - Verbindungswiederherstellung nach Unterbrechungen implementieren
+   - Bandbreitenmanagement für verschiedene Netzwerkbedingungen
+
+4. **Tests erweitern**
+   - End-to-End-Tests für Hauptfunktionen implementieren
+   - Latenz- und Performance-Messungen automatisieren
+   - Kompatibilitätstests für verschiedene Linux-Distributionen
+
+## Testmatrix
+
+### Leistungstests
+- Latenz unter verschiedenen Netzwerkbedingungen (LAN, WAN, mit Jitter und Paketverlust)
+- CPU- und GPU-Auslastung
+- Tests mit hochauflösenden Displays und mehreren Monitoren
+
+### Kompatibilitätstests
+- X11- und Wayland-Unterstützung auf verschiedenen Distributionen
+- Tests mit verschiedenen Browserversionen für den Viewer
+- Validierung der Hardwarebeschleunigung mit verschiedenen GPU-Modellen
+
+### Sicherheitstests
+- Durchführung von Penetrationstests
+- Überprüfung der Verschlüsselung und Authentifizierung
+- Validierung des Zugriffssteuerungssystems
+
+## Wichtige Hinweise für die Entwicklung
+
+- SmolDesk soll als nativer Ersatz für proprietäre Remote-Desktop-Lösungen dienen
+- Fokus auf niedrige Latenz (<200ms) und hohe Bildqualität
+- Einfachheit und intuitive Bedienung haben Priorität
+- Sichere Verbindungen auch über öffentliche Netzwerke müssen gewährleistet sein
+- Die Software muss ohne Administratorrechte auf Client-Seite funktionieren
+- Implementierung soll mit dem bestehenden Entwicklungsplan und der technischen Spezifikation übereinstimmen
+
+## Workflow und Code-Standards
+
+- Folge dem Git-Flow-Workflow mit Feature-Branches und Pull Requests
+- Verwende einheitliche Commit-Konventionen: `feat:`, `fix:`, `refactor:`, `docs:`, etc.
+- Implementiere Unit- und Integrationstests für alle neuen Funktionen
+- Dokumentiere alle öffentlichen API-Funktionen und Komponenten
+- Halte den Code modular und wiederverwendbar
+- Priorisiere Barrierefreiheit und Internationalisierung
 
 ## Berichterstattung
 
-Halte in deinen Pull Requests klar fest:
-
+Halte in deinen Pull Requests fest:
 - Welche Komponenten implementiert wurden
 - Welche technischen Entscheidungen getroffen wurden und warum
 - Welche Probleme aufgetreten sind und wie sie gelöst wurden
-- Ergebnisse der durchgeführten Tests
-- Nächste geplante Schritte gemäß Entwicklungsplan
+- Ergebnisse durchgeführter Tests
+- Nächste geplante Schritte gemäß Implementation-Plan
 
-## Wichtige Hinweise
-
-- Folge der Architektur gemäß der technischen Spezifikation
-- Achte besonders auf Latenzoptimierung und Sicherheit
-- Teste gründlich NAT-Traversal und Browser-Kompatibilität
-- Implementiere Fallback-Mechanismen für inkompatible Systeme
-- Qualität geht vor Geschwindigkeit
-
-Bitte beginne mit einer Analyse des aktuellen Stands und erstelle einen detaillierten Implementierungsplan basierend auf dem Entwicklungsplan-Dokument.
+Beginne mit einer detaillierten Analyse der aktuellen Probleme in der WebRTC-Integration und der Bildschirmerfassung, und erstelle einen priorisierten Aktionsplan für die nächsten zwei Wochen.
