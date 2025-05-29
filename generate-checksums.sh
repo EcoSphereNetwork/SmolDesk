@@ -1,7 +1,7 @@
 #!/bin/bash
 # generate-checksums.sh
 
-cd ../dist
+cd dist
 
 echo "🔐 Generating checksums..."
 
