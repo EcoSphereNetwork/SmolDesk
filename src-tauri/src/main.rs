@@ -102,7 +102,8 @@ fn send_input_event(event: InputEvent, state: tauri::State<'_, AppState>) -> Res
     let input_forwarder = state.input_forwarder.lock().unwrap();
     
     if let Some(forwarder) = &*input_forwarder {
-        forwarder.forward_event(&event)
+        let new_event: input_forwarding::types::InputEvent = event.into();
+        forwarder.forward_event(&new_event)
             .map_err(|e| e.to_string())?;
         
         Ok(())
