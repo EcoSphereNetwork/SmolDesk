@@ -2,9 +2,30 @@
 
 use serde::{Deserialize, Serialize};
 use tauri::Window;
+use std::collections::HashMap;
 
+pub mod types;
+pub mod error;
+pub mod config;
+pub mod manager;
+pub mod buffer;
+pub mod quality;
+pub mod x11;
+pub mod wayland;
+pub mod utils;
+
+// Re-export the main components
+pub use types::{
+    DisplayServer, VideoCodec, HardwareAcceleration, LatencyMode,
+    MonitorInfo, CaptureStats
+};
+pub use config::ScreenCaptureConfig;
+pub use error::ScreenCaptureError;
+pub use manager::ScreenCaptureManager;
+
+// Legacy compatibility types for main.rs
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct ScreenCaptureConfig {
+pub struct LegacyScreenCaptureConfig {
     pub fps: u32,
     pub quality: u8,
     pub codec: String,
@@ -14,88 +35,34 @@ pub struct ScreenCaptureConfig {
     pub monitor_index: usize,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct MonitorInfo {
-    pub index: usize,
-    pub name: String,
-    pub width: u32,
-    pub height: u32,
-    pub x_offset: i32,
-    pub y_offset: i32,
-    pub refresh_rate: Option<u32>,
-    pub primary: bool,
-}
+impl From<LegacyScreenCaptureConfig> for ScreenCaptureConfig {
+    fn from(legacy: LegacyScreenCaptureConfig) -> Self {
+        let codec = match legacy.codec.as_str() {
+            "VP8" => VideoCodec::VP8,
+            "VP9" => VideoCodec::VP9,
+            "AV1" => VideoCodec::AV1,
+            _ => VideoCodec::H264,
+        };
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub enum DisplayServer {
-    X11,
-    Wayland,
-    Unknown,
-}
+        let hardware_acceleration = match legacy.hardware_acceleration.as_str() {
+            "VAAPI" => HardwareAcceleration::VAAPI,
+            "NVENC" => HardwareAcceleration::NVENC,
+            "QuickSync" => HardwareAcceleration::QuickSync,
+            _ => HardwareAcceleration::None,
+        };
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub enum VideoCodec {
-    H264,
-    VP8,
-    VP9,
-    AV1,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub enum HardwareAcceleration {
-    None,
-    VAAPI,
-    NVENC,
-    QuickSync,
-}
-
-pub struct ScreenCaptureManager {
-    config: Option<ScreenCaptureConfig>,
-    is_capturing: bool,
-}
-
-impl ScreenCaptureManager {
-    pub fn new() -> Result<Self, Box<dyn std::error::Error>> {
-        Ok(Self {
-            config: None,
-            is_capturing: false,
-        })
-    }
-
-    pub fn get_monitors(&self) -> Vec<MonitorInfo> {
-        // Stub implementation - würde echte Monitor-Erkennung implementieren
-        vec![
-            MonitorInfo {
-                index: 0,
-                name: "Primary Monitor".to_string(),
-                width: 1920,
-                height: 1080,
-                x_offset: 0,
-                y_offset: 0,
-                refresh_rate: Some(60),
-                primary: true,
-            }
-        ]
-    }
-
-    pub fn update_config(&mut self, config: ScreenCaptureConfig) -> Result<(), Box<dyn std::error::Error>> {
-        self.config = Some(config);
-        Ok(())
-    }
-
-    pub fn start_capture(&mut self, _window: Window) -> Result<(), Box<dyn std::error::Error>> {
-        if self.config.is_none() {
-            return Err("No configuration set".into());
+        ScreenCaptureConfig {
+            monitor_index: legacy.monitor_index,
+            fps: legacy.fps,
+            quality: legacy.quality as u32,
+            codec,
+            hardware_acceleration,
+            capture_cursor: legacy.capture_cursor,
+            capture_audio: legacy.capture_audio,
+            keyframe_interval: 30,
+            bitrate: None,
+            latency_mode: LatencyMode::Balanced,
+            advanced_options: None,
         }
-        
-        self.is_capturing = true;
-        println!("Screen capture started (stub implementation)");
-        Ok(())
-    }
-
-    pub fn stop_capture(&mut self) -> Result<(), Box<dyn std::error::Error>> {
-        self.is_capturing = false;
-        println!("Screen capture stopped");
-        Ok(())
     }
 }
