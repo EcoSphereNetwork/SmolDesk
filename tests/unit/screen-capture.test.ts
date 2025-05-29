@@ -1,4 +1,4 @@
-// tests/unit/screen-capture.test.ts
+// tests/unit/screen-capture.test.ts 
 
 import { describe, test, expect, beforeEach, afterEach, vi, Mock } from 'vitest';
 import { ScreenCaptureManager } from '../../src/utils/screenCapture';
@@ -39,7 +39,7 @@ const mockCanvas = {
   }),
   captureStream: vi.fn().mockReturnValue({
     getVideoTracks: vi.fn().mockReturnValue([
-      { id: 'mock-video-track' }
+      { id: 'mock-video-track', stop: vi.fn() }
     ])
   }),
 };
@@ -55,8 +55,18 @@ Object.defineProperty(global, 'VideoDecoder', {
   writable: true,
 });
 
-Object.defineProperty(global, 'HTMLCanvasElement', {
-  value: vi.fn(() => mockCanvas),
+Object.defineProperty(global, 'EncodedVideoChunk', {
+  value: vi.fn().mockImplementation((data) => data),
+  writable: true,
+});
+
+Object.defineProperty(global, 'VideoFrame', {
+  value: vi.fn().mockImplementation((source, init) => ({
+    codedWidth: 1920,
+    codedHeight: 1080,
+    duration: init?.duration || 33333,
+    close: vi.fn(),
+  })),
   writable: true,
 });
 
@@ -64,8 +74,25 @@ Object.defineProperty(document, 'createElement', {
   value: vi.fn((tag: string) => {
     if (tag === 'canvas') return mockCanvas;
     if (tag === 'video') return { autoplay: true, muted: true };
+    if (tag === 'img') return { 
+      onload: null, 
+      src: '', 
+      width: 1920, 
+      height: 1080,
+      addEventListener: vi.fn()
+    };
     return {};
   }),
+  writable: true,
+});
+
+Object.defineProperty(global, 'atob', {
+  value: vi.fn((str) => 'mock-decoded-data'),
+  writable: true,
+});
+
+Object.defineProperty(global, 'btoa', {
+  value: vi.fn((str) => 'mock-encoded-data'),
   writable: true,
 });
 
@@ -148,6 +175,18 @@ describe('ScreenCaptureManager', () => {
       // Restore WebCodecs
       global.VideoEncoder = originalVideoEncoder;
     });
+
+    test('should configure encoder with proper parameters', async () => {
+      await captureManager.startCapture(0, {});
+      
+      expect(mockVideoEncoder.configure).toHaveBeenCalledWith({
+        codec: 'vp8',
+        width: 1920,
+        height: 1080,
+        bitrate: 2_000_000,
+        framerate: 30,
+      });
+    });
   });
 
   describe('stopCapture', () => {
@@ -195,6 +234,7 @@ describe('ScreenCaptureManager', () => {
       };
       
       expect(() => frameListener(mockFrameData)).not.toThrow();
+      expect(mockVideoDecoder.decode).toHaveBeenCalled();
     });
 
     test('should handle frame processing errors gracefully', async () => {
@@ -209,6 +249,24 @@ describe('ScreenCaptureManager', () => {
       )[1];
       
       expect(() => frameListener({ payload: 'invalid-data' })).not.toThrow();
+    });
+
+    test('should process traditional frame data without WebCodecs', async () => {
+      // Remove WebCodecs support
+      delete (global as any).VideoEncoder;
+      delete (global as any).VideoDecoder;
+      
+      await captureManager.startCapture(0, {});
+      
+      const frameListener = mockListen.mock.calls.find(
+        call => call[0] === 'frame_data'
+      )[1];
+      
+      const mockFrameData = {
+        payload: 'base64-image-data'
+      };
+      
+      expect(() => frameListener(mockFrameData)).not.toThrow();
     });
   });
 
@@ -230,14 +288,29 @@ describe('ScreenCaptureManager', () => {
       
       await captureManager.startCapture(0, {});
       
-      // Simulate frame processing (this would normally be called by WebCodecs)
+      // Simulate frame processing
       const mockFrame = { codedWidth: 1920, codedHeight: 1080, close: vi.fn() };
       
-      // Directly call the frame output callback
+      // Call the frame output callback directly
       const decoderOutput = (mockVideoDecoder.constructor as Mock).mock.calls[0][0].output;
       decoderOutput(mockFrame);
       
       expect(listener).toHaveBeenCalled();
+    });
+
+    test('should handle listener errors gracefully', async () => {
+      const errorListener = vi.fn(() => {
+        throw new Error('Listener error');
+      });
+      
+      captureManager.addFrameListener(errorListener);
+      
+      await captureManager.startCapture(0, {});
+      
+      const mockFrame = { codedWidth: 1920, codedHeight: 1080, close: vi.fn() };
+      const decoderOutput = (mockVideoDecoder.constructor as Mock).mock.calls[0][0].output;
+      
+      expect(() => decoderOutput(mockFrame)).not.toThrow();
     });
   });
 
@@ -256,6 +329,22 @@ describe('ScreenCaptureManager', () => {
       await expect(captureManager.startCapture(0, {})).rejects.toThrow(
         'Failed to create canvas context'
       );
+    });
+
+    test('should resize canvas when frame size changes', async () => {
+      await captureManager.startCapture(0, {});
+      
+      const listener = captureManager['frameListeners'].values().next().value;
+      const mockFrame = { 
+        codedWidth: 2560, 
+        codedHeight: 1440, 
+        close: vi.fn() 
+      };
+      
+      listener(mockFrame);
+      
+      expect(mockCanvas.width).toBe(2560);
+      expect(mockCanvas.height).toBe(1440);
     });
   });
 
@@ -284,6 +373,31 @@ describe('ScreenCaptureManager', () => {
       expect(mockInvoke).toHaveBeenCalledWith('get_stream_info');
     });
 
+    test('should dispatch custom events with stats', async () => {
+      const eventSpy = vi.spyOn(window, 'dispatchEvent');
+      
+      mockInvoke.mockResolvedValueOnce(true);
+      mockInvoke.mockResolvedValue({
+        fps: 30,
+        latency: 50,
+        resolution: '1920x1080'
+      });
+
+      await captureManager.startCapture(0, {});
+      vi.advanceTimersByTime(1000);
+      
+      expect(eventSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          type: 'stream-stats',
+          detail: expect.objectContaining({
+            fps: 30,
+            latency: 50,
+            resolution: '1920x1080'
+          })
+        })
+      );
+    });
+
     test('should stop stats monitoring when capture stops', async () => {
       await captureManager.startCapture(0, {});
       await captureManager.stopCapture();
@@ -295,34 +409,14 @@ describe('ScreenCaptureManager', () => {
       
       expect(mockInvoke).not.toHaveBeenCalledWith('get_stream_info');
     });
-  });
 
-  describe('Error Handling', () => {
-    test('should handle invalid base64 data gracefully', async () => {
+    test('should handle stats retrieval errors', async () => {
+      mockInvoke.mockResolvedValueOnce(true);
+      mockInvoke.mockRejectedValue(new Error('Stats error'));
+
       await captureManager.startCapture(0, {});
       
-      const frameListener = mockListen.mock.calls.find(
-        call => call[0] === 'frame_data'
-      )[1];
-      
-      // Should not throw on invalid base64
-      expect(() => frameListener({ payload: 'invalid-base64!' })).not.toThrow();
-    });
-
-    test('should handle decoder configuration errors', async () => {
-      mockVideoDecoder.configure.mockImplementationOnce(() => {
-        throw new Error('Configuration error');
-      });
-      
-      await captureManager.startCapture(0, {});
-      
-      const formatListener = mockListen.mock.calls.find(
-        call => call[0] === 'frame_format'
-      )[1];
-      
-      expect(() => formatListener({
-        payload: { codec: 'vp8', width: 1920, height: 1080 }
-      })).not.toThrow();
+      expect(() => vi.advanceTimersByTime(1000)).not.toThrow();
     });
   });
 
@@ -356,13 +450,66 @@ describe('ScreenCaptureManager', () => {
         framerate: 30,
       });
     });
+
+    test('should handle invalid format changes', async () => {
+      await captureManager.startCapture(0, {});
+      
+      const formatListener = mockListen.mock.calls.find(
+        call => call[0] === 'frame_format'
+      )[1];
+      
+      expect(() => formatListener({ payload: null })).not.toThrow();
+      expect(() => formatListener({ payload: {} })).not.toThrow();
+    });
+  });
+
+  describe('Error Handling', () => {
+    test('should handle invalid base64 data gracefully', async () => {
+      await captureManager.startCapture(0, {});
+      
+      const frameListener = mockListen.mock.calls.find(
+        call => call[0] === 'frame_data'
+      )[1];
+      
+      // Should not throw on invalid base64
+      expect(() => frameListener({ payload: 'invalid-base64!' })).not.toThrow();
+    });
+
+    test('should handle decoder configuration errors', async () => {
+      mockVideoDecoder.configure.mockImplementationOnce(() => {
+        throw new Error('Configuration error');
+      });
+      
+      await captureManager.startCapture(0, {});
+      
+      const formatListener = mockListen.mock.calls.find(
+        call => call[0] === 'frame_format'
+      )[1];
+      
+      expect(() => formatListener({
+        payload: { codec: 'vp8', width: 1920, height: 1080 }
+      })).not.toThrow();
+    });
+
+    test('should handle encoder output errors', async () => {
+      const mockEncoderOutput = vi.fn().mockImplementation(() => {
+        throw new Error('Encoder output error');
+      });
+      
+      (mockVideoEncoder.constructor as Mock).mockImplementationOnce((config) => ({
+        ...mockVideoEncoder,
+        output: mockEncoderOutput
+      }));
+      
+      expect(() => captureManager.startCapture(0, {})).not.toThrow();
+    });
   });
 
   describe('Memory Management', () => {
     test('should cleanup all resources on destruction', async () => {
       await captureManager.startCapture(0, {});
       
-      // Manually call cleanup (simulate component unmounting)
+      // Manually call cleanup
       captureManager['cleanupResources']();
       
       expect(mockVideoDecoder.close).toHaveBeenCalled();
@@ -379,6 +526,19 @@ describe('ScreenCaptureManager', () => {
       await captureManager.startCapture(0, {});
       
       expect(() => captureManager['cleanupResources']()).not.toThrow();
+    });
+
+    test('should stop media tracks when cleaning up', async () => {
+      const mockTrack = { stop: vi.fn() };
+      mockCanvas.captureStream.mockReturnValueOnce({
+        getVideoTracks: () => [mockTrack],
+        getTracks: () => [mockTrack]
+      });
+      
+      await captureManager.startCapture(0, {});
+      captureManager['cleanupResources']();
+      
+      expect(mockTrack.stop).toHaveBeenCalled();
     });
   });
 
@@ -403,6 +563,56 @@ describe('ScreenCaptureManager', () => {
       
       // Should complete reasonably quickly despite slow listener
       expect(endTime - startTime).toBeLessThan(500);
+    });
+
+    test('should handle multiple simultaneous frame processing', async () => {
+      await captureManager.startCapture(0, {});
+      
+      const frameListener = mockListen.mock.calls.find(
+        call => call[0] === 'frame_data'
+      )[1];
+      
+      // Process multiple frames simultaneously
+      const promises = Array.from({ length: 10 }, (_, i) => 
+        Promise.resolve().then(() => frameListener({ payload: `frame-${i}` }))
+      );
+      
+      expect(() => Promise.all(promises)).not.toThrow();
+    });
+  });
+
+  describe('Edge Cases', () => {
+    test('should handle capture start when already capturing', async () => {
+      await captureManager.startCapture(0, {});
+      
+      // Should handle gracefully
+      const result = await captureManager.startCapture(0, {});
+      expect(result).toBe(true);
+    });
+
+    test('should handle stop capture when not capturing', async () => {
+      const result = await captureManager.stopCapture();
+      expect(result).toBe(true);
+    });
+
+    test('should handle empty frame data', async () => {
+      await captureManager.startCapture(0, {});
+      
+      const frameListener = mockListen.mock.calls.find(
+        call => call[0] === 'frame_data'
+      )[1];
+      
+      expect(() => frameListener({ payload: '' })).not.toThrow();
+      expect(() => frameListener({ payload: null })).not.toThrow();
+      expect(() => frameListener({})).not.toThrow();
+    });
+
+    test('should handle canvas capture stream failure', async () => {
+      mockCanvas.captureStream.mockImplementationOnce(() => {
+        throw new Error('Capture stream error');
+      });
+      
+      await expect(captureManager.startCapture(0, {})).rejects.toThrow();
     });
   });
 });
@@ -429,4 +639,25 @@ describe('ScreenCaptureManager Integration', () => {
     // Should not throw even if WebRTC integration fails
     await expect(captureManager.startCapture(0, {})).resolves.toBe(true);
   });
+
+  test('should handle multiple track additions', async () => {
+    const captureManager = new ScreenCaptureManager(mockWebRTCConnection as WebRTCConnection);
+    
+    // Mock multiple tracks
+    mockCanvas.captureStream.mockReturnValueOnce({
+      getVideoTracks: () => [
+        { id: 'track-1' },
+        { id: 'track-2' }
+      ],
+      getTracks: () => [
+        { id: 'track-1', stop: vi.fn() },
+        { id: 'track-2', stop: vi.fn() }
+      ]
+    });
+    
+    await captureManager.startCapture(0, {});
+    
+    expect(mockWebRTCConnection.addTrackToPeers).toHaveBeenCalledTimes(2);
+  });
 });
+
