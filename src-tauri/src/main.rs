@@ -7,23 +7,31 @@
 
 mod screen_capture;
 mod input_forwarding;
+mod clipboard;
+mod connection_security;
+mod file_transfer;
 
 use std::sync::{Arc, Mutex};
 use tauri::{Manager, Window};
 use serde::{Deserialize, Serialize};
-use screen_capture::{ScreenCaptureManager, ScreenCaptureConfig, MonitorInfo, DisplayServer as CaptureDisplayServer, VideoCodec, HardwareAcceleration};
+
+use screen_capture::{ScreenCaptureManager, ScreenCaptureConfig, MonitorInfo};
 use input_forwarding::{
     InputEvent, 
     forwarder_trait::ImprovedInputForwarder, 
     factory::{detect_display_server, create_improved_input_forwarder},
-    types::{DisplayServer as InputDisplayServer, InputForwardingConfig, MonitorConfiguration},
+    types::{InputForwardingConfig, MonitorConfiguration},
     error::InputForwardingError
 };
+use clipboard::ClipboardManager;
+use connection_security::ConnectionSecurityManager;
 
 // Application state
 struct AppState {
     screen_capture: Arc<Mutex<Option<ScreenCaptureManager>>>,
     input_forwarder: Arc<Mutex<Option<Box<dyn ImprovedInputForwarder>>>>,
+    clipboard_manager: Arc<Mutex<Option<ClipboardManager>>>,
+    security_manager: Arc<Mutex<Option<ConnectionSecurityManager>>>,
 }
 
 // Commands
@@ -31,9 +39,9 @@ struct AppState {
 #[tauri::command]
 fn get_display_server() -> String {
     match detect_display_server() {
-        InputDisplayServer::X11 => "X11".to_string(),
-        InputDisplayServer::Wayland => "Wayland".to_string(),
-        InputDisplayServer::Unknown => "Unknown".to_string(),
+        input_forwarding::types::DisplayServer::X11 => "X11".to_string(),
+        input_forwarding::types::DisplayServer::Wayland => "Wayland".to_string(),
+        input_forwarding::types::DisplayServer::Unknown => "Unknown".to_string(),
     }
 }
 
@@ -152,6 +160,41 @@ fn get_hardware_acceleration_options() -> Vec<String> {
     ]
 }
 
+#[tauri::command]
+fn get_clipboard_text(state: tauri::State<'_, AppState>) -> Result<String, String> {
+    let mut clipboard = state.clipboard_manager.lock().unwrap();
+    
+    if let Some(clipboard_manager) = &mut *clipboard {
+        clipboard_manager.get_text()
+            .map_err(|e| e.to_string())
+    } else {
+        Err("Clipboard manager not initialized".to_string())
+    }
+}
+
+#[tauri::command]
+fn set_clipboard_text(text: String, state: tauri::State<'_, AppState>) -> Result<(), String> {
+    let mut clipboard = state.clipboard_manager.lock().unwrap();
+    
+    if let Some(clipboard_manager) = &mut *clipboard {
+        clipboard_manager.set_text(&text)
+            .map_err(|e| e.to_string())
+    } else {
+        Err("Clipboard manager not initialized".to_string())
+    }
+}
+
+#[tauri::command]
+fn initialize_security(secret_key: String, state: tauri::State<'_, AppState>) -> Result<(), String> {
+    let security_config = connection_security::ConnectionSecurityConfig::default();
+    let security_manager = ConnectionSecurityManager::new(&secret_key, security_config);
+    
+    let mut app_security = state.security_manager.lock().unwrap();
+    *app_security = Some(security_manager);
+    
+    Ok(())
+}
+
 fn main() {
     tauri::Builder::default()
         .setup(|app| {
@@ -200,11 +243,36 @@ fn main() {
                     None
                 }
             };
+
+            // Initialize clipboard manager
+            let clipboard_manager = match detect_display_server() {
+                input_forwarding::types::DisplayServer::X11 => {
+                    match ClipboardManager::new(screen_capture::types::DisplayServer::X11) {
+                        Ok(manager) => Some(manager),
+                        Err(e) => {
+                            eprintln!("Failed to initialize clipboard manager: {}", e);
+                            None
+                        }
+                    }
+                },
+                input_forwarding::types::DisplayServer::Wayland => {
+                    match ClipboardManager::new(screen_capture::types::DisplayServer::Wayland) {
+                        Ok(manager) => Some(manager),
+                        Err(e) => {
+                            eprintln!("Failed to initialize clipboard manager: {}", e);
+                            None
+                        }
+                    }
+                },
+                _ => None,
+            };
             
             // Create app state
             let state = AppState {
                 screen_capture: Arc::new(Mutex::new(screen_capture_manager)),
                 input_forwarder: Arc::new(Mutex::new(input_forwarder)),
+                clipboard_manager: Arc::new(Mutex::new(clipboard_manager)),
+                security_manager: Arc::new(Mutex::new(None)),
             };
             
             // Manage state
@@ -222,6 +290,9 @@ fn main() {
             configure_input_forwarding,
             get_video_codecs,
             get_hardware_acceleration_options,
+            get_clipboard_text,
+            set_clipboard_text,
+            initialize_security,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
