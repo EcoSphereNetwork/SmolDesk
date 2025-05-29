@@ -1,8 +1,6 @@
 // src-tauri/src/screen_capture.rs - Screen Capture Module
 
 use serde::{Deserialize, Serialize};
-use tauri::Window;
-use std::collections::HashMap;
 
 pub mod types;
 pub mod error;
@@ -23,7 +21,7 @@ pub use config::ScreenCaptureConfig;
 pub use error::ScreenCaptureError;
 pub use manager::ScreenCaptureManager;
 
-// Legacy compatibility types for main.rs
+// Legacy compatibility - only keep this struct, remove the duplicate
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct LegacyScreenCaptureConfig {
     pub fps: u32,
