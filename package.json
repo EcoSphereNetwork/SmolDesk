@@ -1,0 +1,345 @@
+{
+  "name": "smoldesk",
+  "private": true,
+  "version": "1.0.0",
+  "description": "WebRTC-basiertes Remote-Desktop-Tool für Linux mit niedrigen Latenzen und nativer Unterstützung für X11 und Wayland",
+  "type": "module",
+  "keywords": [
+    "remote-desktop",
+    "webrtc",
+    "screen-sharing",
+    "linux",
+    "x11",
+    "wayland",
+    "tauri",
+    "rust",
+    "react"
+  ],
+  "author": "SmolDesk Team <dev@ecospherenetwork.org>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EcoSphereNetwork/SmolDesk.git"
+  },
+  "homepage": "https://github.com/EcoSphereNetwork/SmolDesk",
+  "bugs": {
+    "url": "https://github.com/EcoSphereNetwork/SmolDesk/issues"
+  },
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
+    "coverage": "vitest run --coverage",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint src --ext ts,tsx --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,css,md}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,css,md}\"",
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf dist target node_modules/.cache",
+    "prepare": "husky install",
+    "postinstall": "tauri info",
+    "build:deb": "tauri build --target x86_64-unknown-linux-gnu --bundles deb",
+    "build:rpm": "tauri build --target x86_64-unknown-linux-gnu --bundles rpm",
+    "build:appimage": "tauri build --target x86_64-unknown-linux-gnu --bundles appimage",
+    "build:archive": "tauri build --target x86_64-unknown-linux-gnu --bundles archive",
+    "build:all": "bash build-all-packages.sh",
+    "package:all": "npm run build:all && bash generate-checksums.sh",
+    "package:sign": "bash sign-packages.sh",
+    "package:test": "bash test-packages.sh",
+    "signaling-server": "cd signaling-server && npm install && node index.js",
+    "signaling-server:dev": "cd signaling-server && npm install && nodemon index.js",
+    "signaling-server:build": "cd signaling-server && npm install --production && tar -czf ../dist/smoldesk-signaling-server-$npm_package_version.tar.gz .",
+    "security:scan": "python3 security/pentest/automated_security_scan.py",
+    "docs:build": "typedoc --out docs/api src",
+    "docs:serve": "serve docs",
+    "release": "npm run build:all && npm run package:sign && npm run package:test"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^1.5.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "nanoid": "^5.0.4",
+    "uuid": "^9.0.1",
+    "base64-js": "^1.5.1",
+    "crypto-js": "^4.2.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^1.5.10",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@types/uuid": "^9.0.8",
+    "@types/crypto-js": "^4.2.2",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.18",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "postcss": "^8.4.35",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
+    "serve": "^14.2.1",
+    "tailwindcss": "^3.4.1",
+    "typedoc": "^0.25.12",
+    "typescript": "^5.2.2",
+    "vite": "^5.1.6",
+    "vitest": "^1.4.0",
+    "@vitest/ui": "^1.4.0",
+    "@vitest/coverage-v8": "^1.4.0",
+    "jsdom": "^24.0.0",
+    "@testing-library/react": "^14.2.1",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/user-event": "^14.5.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{css,md,json}": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run typecheck && npm run test:run"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "tauri": {
+    "build": {
+      "beforeDevCommand": "npm run dev",
+      "beforeBuildCommand": "npm run build",
+      "devPath": "http://localhost:1420",
+      "distDir": "../dist"
+    },
+    "package": {
+      "productName": "SmolDesk",
+      "version": "1.0.0"
+    },
+    "allowlist": {
+      "all": false,
+      "shell": {
+        "all": false,
+        "open": true
+      },
+      "dialog": {
+        "all": false,
+        "open": true,
+        "save": true
+      },
+      "fs": {
+        "all": false,
+        "readFile": true,
+        "writeFile": true,
+        "readDir": true,
+        "copyFile": true,
+        "createDir": true,
+        "removeDir": true,
+        "removeFile": true,
+        "renameFile": true,
+        "exists": true
+      },
+      "path": {
+        "all": true
+      },
+      "event": {
+        "all": false,
+        "listen": true,
+        "unlisten": true,
+        "emit": true
+      },
+      "window": {
+        "all": false,
+        "close": true,
+        "hide": true,
+        "show": true,
+        "maximize": true,
+        "minimize": true,
+        "unmaximize": true,
+        "unminimize": true,
+        "startDragging": true
+      },
+      "globalShortcut": {
+        "all": true
+      },
+      "os": {
+        "all": true
+      },
+      "http": {
+        "all": true,
+        "request": true
+      },
+      "notification": {
+        "all": true
+      },
+      "clipboard": {
+        "all": true,
+        "readText": true,
+        "writeText": true
+      }
+    },
+    "bundle": {
+      "active": true,
+      "targets": "all",
+      "identifier": "com.smoldesk.SmolDesk",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ],
+      "resources": [],
+      "externalBin": [],
+      "copyright": "",
+      "category": "Network",
+      "shortDescription": "WebRTC Remote Desktop for Linux",
+      "longDescription": "SmolDesk is a modern remote desktop solution that provides low-latency screen sharing using WebRTC technology. Supports both X11 and Wayland display servers.",
+      "deb": {
+        "depends": [
+          "libwebkit2gtk-4.1-0",
+          "libgtk-3-0",
+          "ffmpeg",
+          "wl-clipboard",
+          "xclip",
+          "ydotool",
+          "xdotool"
+        ],
+        "section": "net",
+        "priority": "optional",
+        "changelog": "debian/changelog"
+      },
+      "rpm": {
+        "license": "MIT",
+        "depends": [
+          "webkit2gtk4.1",
+          "gtk3",
+          "ffmpeg",
+          "wl-clipboard",
+          "ydotool"
+        ],
+        "epoch": 0,
+        "files": {
+          "/usr/share/applications/smoldesk.desktop": "packaging/smoldesk.desktop",
+          "/usr/share/pixmaps/smoldesk.png": "docs/static/img/logo.png"
+        }
+      },
+      "appimage": {
+        "bundleMediaFramework": true,
+        "libs": [
+          "libwebkit2gtk-4.1-0",
+          "libgtk-3-0"
+        ]
+      },
+      "windows": {
+        "certificateThumbprint": null,
+        "digestAlgorithm": "sha256",
+        "timestampUrl": ""
+      },
+      "macOS": {
+        "frameworks": [],
+        "minimumSystemVersion": "",
+        "exceptionDomain": "",
+        "signingIdentity": null,
+        "providerShortName": null,
+        "entitlements": null
+      }
+    },
+    "security": {
+      "csp": null,
+      "devCsp": null,
+      "freezePrototype": false,
+      "dangerousDisableAssetCspModification": false
+    },
+    "windows": [
+      {
+        "fullscreen": false,
+        "resizable": true,
+        "title": "SmolDesk",
+        "width": 1200,
+        "height": 800,
+        "minWidth": 800,
+        "minHeight": 600
+      }
+    ],
+    "systemTray": {
+      "iconPath": "icons/icon.png",
+      "iconAsTemplate": true,
+      "menuOnLeftClick": false
+    },
+    "cli": {
+      "description": "SmolDesk - WebRTC Remote Desktop",
+      "longDescription": "SmolDesk is a modern remote desktop solution that provides low-latency screen sharing using WebRTC technology. Supports both X11 and Wayland display servers.",
+      "beforeHelp": "SmolDesk v1.0.0",
+      "afterHelp": "Visit https://github.com/EcoSphereNetwork/SmolDesk for more information.",
+      "args": [
+        {
+          "name": "config",
+          "short": "c",
+          "help": "Path to configuration file",
+          "takesValue": true
+        },
+        {
+          "name": "verbose",
+          "short": "v",
+          "help": "Enable verbose logging",
+          "multiple": true
+        }
+      ],
+      "subcommands": {
+        "host": {
+          "description": "Start hosting mode",
+          "args": [
+            {
+              "name": "monitor",
+              "short": "m",
+              "help": "Monitor index to capture",
+              "takesValue": true
+            }
+          ]
+        },
+        "join": {
+          "description": "Join a remote session",
+          "args": [
+            {
+              "name": "room-id",
+              "help": "Room ID to join",
+              "required": true,
+              "takesValue": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  "volta": {
+    "node": "20.11.1",
+    "npm": "10.4.0"
+  }
+}
