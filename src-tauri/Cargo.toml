@@ -62,7 +62,7 @@ wayland-client = { version = "0.31", optional = true }
 wayland-protocols = { version = "0.31", optional = true }
 
 [features]
-default = ["custom-protocol"]
+default = ["custom-protocol", "x11-support", "wayland-support"]
 custom-protocol = ["tauri/custom-protocol"]
 
 # Platform-specific features - jetzt korrekt definiert

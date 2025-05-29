@@ -1,7 +1,7 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/schema.json",
   "build": {
-    "beforeBuildCommand": "npm run build",
+    "beforeBuildCommand": "npm run vite-build",
     "beforeDevCommand": "npm run dev",
     "devPath": "http://localhost:1420",
     "distDir": "../dist",
@@ -104,7 +104,7 @@
           "wl-clipboard | xclip",
           "ydotool | xdotool",
           "pipewire",
-          "libpipewire-0.3-0"
+          "libpipewire-0.3-0 | libpipewire-0.3-0t64"
         ],
         "section": "net",
         "priority": "optional"

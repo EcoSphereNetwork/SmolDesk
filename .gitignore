@@ -69,3 +69,10 @@ log/
 # OS
 .DS_Store
 Thumbs.db
+
+# Node Modules
+node_modules/
+
+# Tauri Assets/Packages
+src-tauri/node_modules/
+src-tauri/target/

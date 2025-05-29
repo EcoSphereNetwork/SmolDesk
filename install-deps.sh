@@ -162,7 +162,7 @@ install_system_deps() {
             
             log_info "Installing X11 tools..."
             $SUDO apt-get install -y \
-                xrandr \
+                x11-xserver-utils \
                 xdotool \
                 xclip \
                 xsel
