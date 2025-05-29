@@ -234,32 +234,3 @@ fn generate_version_info() {
     println!("cargo:rustc-env=SMOLDESK_FEATURES={}", features_str);
     println!("cargo:warning=Enabled features: {}", features_str);
 }
-
-// Helper function to check if we're in a cross-compilation environment
-fn is_cross_compiling() -> bool {
-    let host = env::var("HOST").unwrap_or_default();
-    let target = env::var("TARGET").unwrap_or_default();
-    !host.is_empty() && !target.is_empty() && host != target
-}
-
-// Custom build configuration for different environments
-fn configure_build_environment() {
-    if is_cross_compiling() {
-        println!("cargo:warning=Cross-compilation detected - some runtime checks will be skipped");
-        println!("cargo:rustc-cfg=cross_compiling");
-    }
-    
-    // CI/CD environment detection
-    if env::var("CI").is_ok() {
-        println!("cargo:rustc-cfg=ci_build");
-        println!("cargo:warning=CI environment detected");
-    }
-    
-    if env::var("GITHUB_ACTIONS").is_ok() {
-        println!("cargo:rustc-cfg=github_actions");
-    }
-    
-    if env::var("GITLAB_CI").is_ok() {
-        println!("cargo:rustc-cfg=gitlab_ci");
-    }
-}
