@@ -1,0 +1,14 @@
+/home/dev/EcoSphereNetwork/SmolDesk/src-tauri/target/debug/deps/libjsonptr-f7c579551583f449.rmeta: /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/lib.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/pointer.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/token.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/error.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/assign.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/delete.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/resolve.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/prelude.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/tokens.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/../README.md
+
+/home/dev/EcoSphereNetwork/SmolDesk/src-tauri/target/debug/deps/jsonptr-f7c579551583f449.d: /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/lib.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/pointer.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/token.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/error.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/assign.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/delete.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/resolve.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/prelude.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/tokens.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/../README.md
+
+/home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/lib.rs:
+/home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/pointer.rs:
+/home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/token.rs:
+/home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/error.rs:
+/home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/assign.rs:
+/home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/delete.rs:
+/home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/resolve.rs:
+/home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/prelude.rs:
+/home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/tokens.rs:
+/home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/jsonptr-0.4.7/src/../README.md:

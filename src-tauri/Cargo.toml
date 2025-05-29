@@ -8,17 +8,11 @@ repository = "https://github.com/EcoSphereNetwork/SmolDesk.git"
 homepage = "https://github.com/EcoSphereNetwork/SmolDesk"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [build-dependencies]
 tauri-build = { version = "1.5", features = [] }
 
 [dependencies]
-tauri = { version = "1.5", features = [
-    "api-all",
-    "cli",
-    "dialog-all",
-    "fs-all",
+tauri = { version = "1.5", features = [ "fs-remove-file", "window-set-focus", "fs-read-dir", "fs-remove-dir", "window-close", "window-maximize", "window-start-dragging", "window-show", "window-minimize", "dialog-open", "fs-read-file", "dialog-save", "window-unmaximize", "fs-exists", "fs-copy-file", "clipboard-all", "fs-write-file", "fs-rename-file", "window-unminimize", "window-set-title", "fs-create-dir", "window-hide", "window-set-size", "window-set-position",
     "global-shortcut-all",
     "http-all",
     "notification-all",
@@ -26,10 +20,7 @@ tauri = { version = "1.5", features = [
     "path-all",
     "protocol-asset",
     "shell-open",
-    "system-tray",
-    "updater",
-    "window-all"
-] }
+    "system-tray"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 tokio = { version = "1.0", features = ["full"] }
@@ -43,9 +34,6 @@ rand = "0.8"
 regex = "1.10"
 urlencoding = "2.1"
 
-# Screen capture and multimedia
-ffmpeg-next = { version = "6.0", optional = true }
-
 # Async and concurrency
 futures = "0.3"
 async-trait = "0.1"
@@ -58,54 +46,39 @@ anyhow = "1.0"
 log = "0.4"
 env_logger = "0.10"
 
-# Networking and WebRTC
-# Note: WebRTC implementation would require additional dependencies
-# These are placeholders for the actual WebRTC stack
-webrtc = { version = "0.10", optional = true }
-
 # System integration
-nix = "0.27"  # For Unix system calls
+nix = "0.27"
 
 # Image processing (for screen capture)
 image = "0.24"
-
-# Audio processing (for future audio capture)
-cpal = { version = "0.15", optional = true }
 
 # Configuration management
 config = "0.13"
 toml = "0.8"
 
-[features]
-default = ["custom-protocol"]
-custom-protocol = ["tauri/custom-protocol"]
-webrtc-support = ["webrtc"]
-ffmpeg-capture = ["ffmpeg-next"]
-audio-capture = ["cpal"]
-
-# Platform-specific features
-x11 = []
-wayland = []
-
-[target.'cfg(target_os = "linux")'.dependencies]
-# Linux-specific dependencies for X11/Wayland support
+# Platform-specific dependencies - korrekt als optionale Features
 x11 = { version = "2.21", optional = true }
 wayland-client = { version = "0.31", optional = true }
 wayland-protocols = { version = "0.31", optional = true }
 
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
+
+# Platform-specific features - jetzt korrekt definiert
+x11-support = ["dep:x11"]
+wayland-support = ["dep:wayland-client", "dep:wayland-protocols"]
+
 [profile.dev]
-# Development profile
 incremental = true
 
 [profile.release]
-# Release profile optimized for performance
 panic = "abort"
 codegen-units = 1
 lto = true
 strip = true
 
 [profile.release-with-debug]
-# Release profile with debug symbols for debugging in production
 inherits = "release"
 debug = true
 strip = false

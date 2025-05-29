@@ -1,0 +1,17 @@
+/home/dev/EcoSphereNetwork/SmolDesk/src-tauri/target/debug/deps/libcssparser-6834b4ff141e3a5a.rmeta: /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/lib.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/macros.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/rules_and_declarations.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/color.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/cow_rc_str.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/from_bytes.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/nth.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/parser.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/serializer.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/unicode_range.rs /home/dev/EcoSphereNetwork/SmolDesk/src-tauri/target/debug/build/cssparser-8e9e68a6f34514e7/out/tokenizer.rs
+
+/home/dev/EcoSphereNetwork/SmolDesk/src-tauri/target/debug/deps/cssparser-6834b4ff141e3a5a.d: /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/lib.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/macros.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/rules_and_declarations.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/color.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/cow_rc_str.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/from_bytes.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/nth.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/parser.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/serializer.rs /home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/unicode_range.rs /home/dev/EcoSphereNetwork/SmolDesk/src-tauri/target/debug/build/cssparser-8e9e68a6f34514e7/out/tokenizer.rs
+
+/home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/lib.rs:
+/home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/macros.rs:
+/home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/rules_and_declarations.rs:
+/home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/color.rs:
+/home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/cow_rc_str.rs:
+/home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/from_bytes.rs:
+/home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/nth.rs:
+/home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/parser.rs:
+/home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/serializer.rs:
+/home/dev/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cssparser-0.27.2/src/unicode_range.rs:
+/home/dev/EcoSphereNetwork/SmolDesk/src-tauri/target/debug/build/cssparser-8e9e68a6f34514e7/out/tokenizer.rs:
+
+# env-dep:OUT_DIR=/home/dev/EcoSphereNetwork/SmolDesk/src-tauri/target/debug/build/cssparser-8e9e68a6f34514e7/out
