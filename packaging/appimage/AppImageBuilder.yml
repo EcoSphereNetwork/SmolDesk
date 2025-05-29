@@ -1,0 +1,67 @@
+version: 1
+
+script:
+  - rm -rf AppDir || true
+  - mkdir -p AppDir/usr/bin
+  - mkdir -p AppDir/usr/share/applications
+  - mkdir -p AppDir/usr/share/pixmaps
+  
+  # Copy binary
+  - cp src-tauri/target/release/smoldesk AppDir/usr/bin/
+  
+  # Copy desktop file and icon
+  - cp packaging/smoldesk.desktop AppDir/usr/share/applications/
+  - cp docs/static/img/logo.png AppDir/usr/share/pixmaps/smoldesk.png
+  
+  # Create AppRun
+  - |
+    cat > AppDir/AppRun << 'EOF'
+    #!/bin/bash
+    HERE="$(dirname "$(readlink -f "${0}")")"
+    export LD_LIBRARY_PATH="${HERE}/usr/lib:${LD_LIBRARY_PATH}"
+    exec "${HERE}/usr/bin/smoldesk" "$@"
+    EOF
+  - chmod +x AppDir/AppRun
+
+AppDir:
+  path: ./AppDir
+  
+  app_info:
+    id: com.smoldesk.SmolDesk
+    name: SmolDesk
+    icon: smoldesk
+    version: 1.0.0
+    exec: usr/bin/smoldesk
+    exec_args: $@
+
+  runtime:
+    version: "continuous"
+    
+  apt:
+    arch: amd64
+    sources:
+      - sourceline: 'deb http://archive.ubuntu.com/ubuntu/ jammy main restricted universe multiverse'
+        key_url: 'http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x871920D1991BC93C'
+    
+    include:
+      - libwebkit2gtk-4.1-0
+      - libgtk-3-0
+      - libglib2.0-0
+      - libgobject-2.0-0
+      - libpango-1.0-0
+      - libcairo2
+      - libgdk-pixbuf2.0-0
+      - libatk1.0-0
+      - libjavascriptcoregtk-4.1-0
+      - libsoup-3.0-0
+      - ffmpeg
+      - wl-clipboard
+      - xclip
+      - ydotool
+      - xdotool
+
+AppImage:
+  arch: x86_64
+  file_name-template: SmolDesk-{{version}}-{{arch}}.AppImage
+  update-information: zsync|https://github.com/SmolDesk/SmolDesk/releases/latest/download/SmolDesk-latest-x86_64.AppImage.zsync
+
