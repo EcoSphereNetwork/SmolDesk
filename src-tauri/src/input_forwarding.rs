@@ -17,7 +17,7 @@ pub use error::*;
 pub use forwarder_trait::*;
 pub use factory::*;
 
-// Legacy types for backward compatibility
+// Legacy types for backward compatibility with main.rs
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct InputEvent {
     pub event_type: InputEventType,
@@ -87,32 +87,9 @@ impl From<InputEvent> for types::InputEvent {
     }
 }
 
-// Wrapper trait implementation for legacy compatibility
-pub struct LegacyInputForwarder {
-    inner: Box<dyn ImprovedInputForwarder>,
-}
+// Removed the unused process_input_event function to fix warning
 
-impl LegacyInputForwarder {
-    pub fn new(inner: Box<dyn ImprovedInputForwarder>) -> Self {
-        Self { inner }
-    }
-
-    pub fn forward_event(&self, event: &InputEvent) -> Result<(), InputForwardingError> {
-        let new_event: types::InputEvent = event.clone().into();
-        self.inner.forward_event(&new_event)
-    }
-
-    pub fn set_enabled(&self, enabled: bool) {
-        self.inner.set_enabled(enabled)
-    }
-
-    pub fn configure_monitors(&mut self, monitors: Vec<types::MonitorConfiguration>) -> Result<(), InputForwardingError> {
-        self.inner.configure_monitors(monitors)
-    }
-}
-
-// Legacy factory function
-pub fn create_input_forwarder() -> Result<LegacyInputForwarder, InputForwardingError> {
-    let inner = create_improved_input_forwarder(None)?;
-    Ok(LegacyInputForwarder::new(inner))
+// Legacy factory function for compatibility
+pub fn create_input_forwarder() -> Result<Box<dyn ImprovedInputForwarder>, InputForwardingError> {
+    create_improved_input_forwarder(None)
 }
