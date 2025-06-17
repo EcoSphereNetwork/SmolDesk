@@ -2,11 +2,11 @@
 # Initial setup for Codex automation
 set -e
 
-echo "[Codex] Installing node and rust dependencies"
-# ensure repository has a GitHub remote for later automation
+# GitHub remote setzen (wenn nicht vorhanden)
 git remote get-url origin >/dev/null 2>&1 || \
   git remote add origin https://github.com/EcoSphereNetwork/SmolDesk.git
 
+echo "[Codex] Installing node and rust dependencies"
 # prefer cached packages; fall back to offline mode so Codex works without network
 npm install --prefer-offline || npm install --offline || true
 cd src-tauri && cargo fetch || true

@@ -1,5 +1,7 @@
 # RemoteScreen
 
+[Zur Statusübersicht](./status.md)
+
 Displays the incoming media stream. Handles toggling of input events and exposes an `onInputToggle` callback.
 
 ## Props
@@ -16,3 +18,7 @@ Displays the incoming media stream. Handles toggling of input events and exposes
 ```tsx
 <RemoteScreen stream={stream} isConnected={true} onInputToggle={setInput} />
 ```
+
+### Teststatus
+
+Die Bedienelemente werden in `tests/unit/RemoteScreen.test.tsx` getestet.

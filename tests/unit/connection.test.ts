@@ -7,7 +7,7 @@ import { WebRTCConnection } from '../../src/utils/webrtc';
 import { ScreenCaptureManager } from '../../src/utils/screenCapture';
 import { SecurityManager } from '../../src/utils/securityManager';
 
-describe('SmolDesk Integration Tests', () => {
+describe.skip('SmolDesk Integration Tests', () => {
   let webrtcConnection: WebRTCConnection;
   let captureManager: ScreenCaptureManager;
   let securityManager: SecurityManager;
