@@ -1,5 +1,7 @@
 # FileTransfer
 
+[Zur Statusübersicht](./status.md)
+
 Allows uploading and downloading of files over the data channel.
 
 ## Events
@@ -17,3 +19,7 @@ Allows uploading and downloading of files over the data channel.
 ```tsx
 <FileTransfer maxSize={10_000_000} onTransferComplete={handleDone} />
 ```
+
+### Teststatus
+
+Die Komponente wird in `tests/unit/FileTransfer.test.tsx` gerendert.
