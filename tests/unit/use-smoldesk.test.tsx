@@ -10,6 +10,7 @@ import { listen } from '@tauri-apps/api/event';
 import { SecurityManager } from '../../src/utils/securityManager';
 
 describe.skip('useSmolDesk', () => {
+
   let mockInvoke: Mock;
   let mockListen: Mock;
 
