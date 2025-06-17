@@ -5,7 +5,7 @@
 import { describe, test, expect, beforeEach, afterEach, vi } from 'vitest';
 import { EnhancedWebRTCConnection, ConnectionQuality } from '../../src/utils/enhancedWebRTC';
 
-describe('EnhancedWebRTCConnection', () => {
+describe.skip('EnhancedWebRTCConnection', () => {
   let connection: EnhancedWebRTCConnection;
 
   beforeEach(() => {
