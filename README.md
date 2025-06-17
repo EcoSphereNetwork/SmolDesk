@@ -67,6 +67,16 @@ SmolDesk ist ein modernes Remote-Desktop-Tool, das speziell für Linux entwickel
   - Für X11: xdotool
   - Für Wayland: ydotool
 
+### Build-Abhängigkeiten (Ubuntu/Debian)
+Installiere folgende Pakete, um SmolDesk aus dem Quellcode zu bauen:
+
+```bash
+sudo apt install build-essential libglib2.0-dev libgtk-3-dev libwebkit2gtk-4.1-dev libayatana-appindicator3-dev librsvg2-dev pkg-config
+```
+
+Alternativ kannst du das Skript `scripts/dev-setup.sh` ausführen, um die Abhängigkeiten automatisch zu installieren.
+
+
 - **Client-System**:
   - Moderner Browser mit WebRTC-Support (Chrome, Firefox, Edge, Safari)
 

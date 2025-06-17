@@ -17,10 +17,10 @@ describe('SmolDesk Integration Tests', () => {
     webrtcConnection = new WebRTCConnection({
       signalingServer: 'ws://localhost:3000'
     });
-    
+
     captureManager = new ScreenCaptureManager(webrtcConnection);
     securityManager = SecurityManager.getInstance();
-    
+
     await securityManager.initialize('test-key');
   });
 
@@ -77,4 +77,11 @@ describe('SmolDesk Integration Tests', () => {
       webrtcConnection.createRoom(roomId);
 
       const roomCreatedPromise = new Promise((resolve) => {
-        webrtc
+        webrtcConnection.on('room-created', resolve);
+      });
+
+      await roomCreatedPromise;
+      expect(webrtcConnection['roomId']).toBe(roomId);
+    });
+  });
+});
