@@ -1,4 +1,27 @@
 # Agents
+## Introduction & Project Context
+SmolDesk is a WebRTC based remote desktop tool for Linux. This guide allows LLM agents to build, test and extend the project autonomously.
+
+## Module Overview
+- `src/` React frontend
+- `src-tauri/` Rust backend
+- `signaling-server/` Node.js signaling server
+- `tests/` unit, integration and e2e suites
+- `docs/` documentation site
+
+## System Requirements
+- Linux host with X11 or Wayland
+- Node.js 18+ and npm
+- Rust stable toolchain
+- FFmpeg, xdotool/ydotool, and clipboard utilities
+
+## LLM Structure Notes
+- Keep commits focused on one topic.
+- Update or create tests with any code change.
+- Write documentation to `docs/` when new features are added.
+
+
+
 
 Diese Anleitung befähigt den Codex-Agenten, das Projekt **SmolDesk** lokal gemäß Best Practices vollautomatisch zu installieren, zu bauen und zu testen. Der Agent soll dabei auftretende Fehler fehlertolerant behandeln, jeden Fehler dokumentieren (Issues erstellen) und wenn möglich direkt beheben (Pull Requests erstellen).
 
@@ -81,3 +104,14 @@ Diese Anleitung befähigt den Codex-Agenten, das Projekt **SmolDesk** lokal gem�
   * Stelle sicher, dass alle erstellten Issues und PRs sauber miteinander verlinkt sind und ausreichend Informationen enthalten. Schließe Issues durch Verweis in den PRs oder kommentiere, wenn weitere Schritte nötig sind.
   * Aktualisiere bei Bedarf Projektdokumentation (z.B. die README.md) mit Erkenntnissen aus diesem Durchlauf – etwa korrigierte Installationsanleitungen, neu hinzugefügte Tests oder angepasste Build-Schritte, um zukünftige Installationen zu erleichtern.
   * **Erfolgskriterium:** Der Vorgang ist abgeschlossen, wenn das Projekt ohne Fehler lokal installiert ist, der Build erfolgreich durchläuft und sämtliche Tests bestanden sind. Alle identifizierten Probleme sollten entweder behoben (durch gemergte PRs) oder zumindest als GitHub-Issues festgehalten sein. Der Codex-Agent hat dann seine Aufgabe erfüllt und der Projektstatus ist nun konsistent und überprüft.
+
+## Development Phases
+For automated iterations follow these stages:
+1. Initial analysis
+2. Module validation
+3. Component completion
+4. Test strategy implementation
+5. CI/CD automation
+6. Refactoring and cleanup
+7. Feature expansion
+
