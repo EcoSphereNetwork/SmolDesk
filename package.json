@@ -27,8 +27,10 @@
   },
   "scripts": {
     "dev": "tauri dev",
+    "build": "vite build",
     "vite-build": "vite build",
     "tauri": "tauri build",
+    "tauri-build": "tauri build",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
