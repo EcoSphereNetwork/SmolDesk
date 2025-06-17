@@ -60,3 +60,5 @@ Deine Aufgaben:
 📌 Beginne nun mit:
 ```bash
 cd ./SmolDesk
+```
+und analysiere das Projekt vollständig.
