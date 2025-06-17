@@ -9,5 +9,8 @@
     "analyze": "bash scripts/analyze-and-report.sh",
     "init": "bash scripts/init-for-codex.sh",
     "test": "npm run test"
+  },
+  "phases": {
+    "2": "Komponenten validieren & vervollständigen"
   }
 }
