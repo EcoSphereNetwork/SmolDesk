@@ -5,8 +5,6 @@
 import { describe, test, expect, beforeEach, vi, Mock } from 'vitest';
 import { SecurityManager, ConnectionMode, User } from '../../src/utils/securityManager';
 import { invoke } from '@tauri-apps/api/tauri';
-
-vi.mock('@tauri-apps/api/tauri');
 vi.mock('nanoid', () => ({
   nanoid: vi.fn(() => 'test-room-id')
 }));
