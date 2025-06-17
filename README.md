@@ -161,6 +161,12 @@ node index.js
 npm run tauri build
 ```
 
+### Codex Setup
+Codex agents rely on a working development environment.
+Run `scripts/dev-env-check.sh` to verify your system and use `scripts/init-for-codex.sh` for initial install.
+
+If tests fail due to missing vitest packages, execute `scripts/install-vitest.sh`.
+
 ## 🧪 Testing
 
 ### Tests ausführen
