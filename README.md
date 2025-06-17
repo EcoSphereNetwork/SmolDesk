@@ -137,6 +137,9 @@ SmolDesk/
    ```bash
    git clone https://github.com/SmolDesk/SmolDesk.git
    cd SmolDesk
+   # GitHub-Remote setzen falls nicht vorhanden
+   git remote get-url origin >/dev/null 2>&1 || \
+     git remote add origin https://github.com/EcoSphereNetwork/SmolDesk.git
    ```
 
 2. Dependencies installieren:
@@ -160,6 +163,12 @@ node index.js
 ```bash
 npm run tauri build
 ```
+
+### Codex Setup
+Codex agents rely on a working development environment.
+Run `scripts/dev-env-check.sh` to verify your system and use `scripts/init-for-codex.sh` for initial install.
+
+If tests fail due to missing vitest packages, execute `scripts/install-vitest.sh`.
 
 ## 🧪 Testing
 
