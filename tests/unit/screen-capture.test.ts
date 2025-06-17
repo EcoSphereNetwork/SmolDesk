@@ -6,10 +6,6 @@ import { WebRTCConnection } from '../../src/utils/webrtc';
 import { invoke } from '@tauri-apps/api/tauri';
 import { listen } from '@tauri-apps/api/event';
 
-// Mock Tauri APIs
-vi.mock('@tauri-apps/api/tauri');
-vi.mock('@tauri-apps/api/event');
-
 // Mock WebRTC APIs
 const mockWebRTCConnection = {
   addTrackToPeers: vi.fn().mockReturnValue(2),
