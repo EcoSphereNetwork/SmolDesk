@@ -1,0 +1,13 @@
+# Agent Based Development
+
+SmolDesk uses automated agents like **Codex** to maintain the project. Agents perform analysis, run tests and create pull requests.
+
+## Available Agents
+- **Codex** – general repository automation and refactoring.
+- **OpenHands** – documentation parser and linter.
+- **TestRunner** – executes test suites and reports coverage.
+
+Each agent has a dedicated entry in `.codex.json` with default commands.
+Agents collaborate by creating issues and pull requests for each development phase.
+
+Agents follow the workflow described in `AGENTS.md`.

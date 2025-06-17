@@ -16,7 +16,7 @@ const sidebars: SidebarsConfig = {
       label: 'Development',
       collapsed: true,
       items: [
-        'development/guide',
+        'development/guide','development/plan',
         'development/roadmap',
       ],
     },
@@ -24,7 +24,13 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'API Reference',
       collapsed: true,
-      items: ['api/reference'],
+      items: ['api/index'],
+    },
+    {
+      type: 'category',
+      label: 'Agents',
+      collapsed: true,
+      items: ['agents/README'],
     },
   ],
   tutorialSidebar: [

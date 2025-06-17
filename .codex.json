@@ -1,0 +1,13 @@
+{
+  "project": "SmolDesk",
+  "agents": ["Codex", "OpenHands", "TestRunner"],
+  "entrypoints": [
+    "AGENTS.md",
+    "docs/docs/development/plan.md"
+  ],
+  "scripts": {
+    "analyze": "bash scripts/analyze-and-report.sh",
+    "init": "bash scripts/init-for-codex.sh",
+    "test": "npm run test"
+  }
+}
