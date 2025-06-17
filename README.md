@@ -168,6 +168,12 @@ npm run tauri build
 # Frontend-Tests
 npm test
 
+# Für eine komfortable Diagnose kann auch die Vitest UI gestartet werden:
+npm run test:ui
+
+# Die Tests nutzen gemockte Tauri-APIs. Diese befinden sich unter
+tests/__mocks__ und werden automatisch geladen.
+
 # Backend-Tests
 cd src-tauri
 cargo test
@@ -180,6 +186,10 @@ npm run test:e2e
 - **NAT-Traversal**: Testen der Verbindung über unterschiedliche Netzwerke
 - **Latenz-Messungen**: Überprüfen der Input-zu-Output-Verzögerung
 - **Browser-Kompatibilität**: Testen auf verschiedenen Browsern und Plattformen
+
+> **Hinweis:** In Umgebungen ohne Internetzugang werden alle externen
+> Netzwerkanfragen blockiert. Die Tests verwenden daher lokale Mocks,
+> um Tauri-Funktionen und Browser-APIs zu simulieren.
 
 ## 🚢 Deployment
 
