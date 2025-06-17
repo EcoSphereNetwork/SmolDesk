@@ -2,6 +2,8 @@
 
 [Zur Statusübersicht](./status.md)
 
+✅ Phase 2 abgeschlossen
+
 Allows uploading and downloading of files over the data channel.
 
 ## Events

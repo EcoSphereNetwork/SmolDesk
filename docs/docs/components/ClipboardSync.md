@@ -1,5 +1,9 @@
 # ClipboardSync
 
+[Zur Statusübersicht](./status.md)
+
+✅ Phase 2 abgeschlossen
+
 Synchronizes clipboard content between host and client via Tauri IPC calls.
 This component listens for clipboard changes and forwards entries over an
 optional `WebRTCConnection`.

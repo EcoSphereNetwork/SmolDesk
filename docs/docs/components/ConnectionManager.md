@@ -2,6 +2,8 @@
 
 [Zur Statusübersicht](./status.md)
 
+✅ Phase 2 abgeschlossen
+
 Manages peer connections using WebRTC. It handles creating rooms, joining rooms and relaying streams to the RemoteScreen component.
 
 ## Props

@@ -2,6 +2,8 @@
 
 [Zur Statusübersicht](./status.md)
 
+✅ Phase 2 abgeschlossen
+
 Displays the incoming media stream. Handles toggling of input events and exposes an `onInputToggle` callback.
 
 ## Props
