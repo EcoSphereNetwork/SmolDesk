@@ -11,6 +11,7 @@
     "test": "npm run test"
   },
   "phases": {
-    "2": "Komponenten validieren & vervollständigen"
+    "2": "Komponenten validieren & vervollständigen",
+    "3": "Teststrategie & CI-Integration vorbereiten"
   }
 }

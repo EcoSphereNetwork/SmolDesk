@@ -16,5 +16,9 @@ export default defineConfig({
     setupFiles: './tests/setup.ts',
     include: ['tests/unit/**/*.{test,spec}.{ts,tsx}'],
     exclude: ['tests/e2e/**', 'tests/integration/**'],
+    coverage: {
+      reporter: ['text', 'json', 'html'],
+      exclude: ['**/*.demo.tsx'],
+    },
   },
 })
