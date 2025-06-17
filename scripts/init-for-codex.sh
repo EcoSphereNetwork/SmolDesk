@@ -2,9 +2,9 @@
 # Initial setup for Codex automation
 set -e
 
-# ensure repository has github remote for PR operations
+# GitHub remote setzen (wenn nicht vorhanden)
 git remote get-url origin >/dev/null 2>&1 || \
-  git remote add origin https://github.com/EcoSphereNetwork/SmolDesk.git
+  git remote add origin git@github.com:EcoSphereNetwork/SmolDesk.git
 
 echo "[Codex] Installing node and rust dependencies"
 # prefer cached packages; fall back to offline mode so Codex works without network
