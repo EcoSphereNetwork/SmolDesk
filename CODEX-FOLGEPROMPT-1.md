@@ -69,5 +69,5 @@ Codex, behebe alle Build- und Testfehler, sorge für Systemkompatibilität und e
 📌 Starte jetzt mit:
 ```bash
 make clean && make build
-
+```
 und analysiere anschließend npm run test:run erneut.
