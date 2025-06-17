@@ -2,7 +2,7 @@
 // tests/unit/enhanced-webrtc.test.ts - Enhanced WebRTC Tests
 // =============================================================================
 
-import { describe, test, expect, beforeEach, vi } from 'vitest';
+import { describe, test, expect, beforeEach, afterEach, vi } from 'vitest';
 import { EnhancedWebRTCConnection, ConnectionQuality } from '../../src/utils/enhancedWebRTC';
 
 describe('EnhancedWebRTCConnection', () => {
