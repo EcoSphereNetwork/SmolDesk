@@ -95,3 +95,84 @@ Object.defineProperty(global, 'RTCIceCandidate', {
   value: vi.fn().mockImplementation((init) => init),
   writable: true,
 })
+
+// ------------------------------------------------------------
+// Additional browser API mocks for canvas and encoding
+// ------------------------------------------------------------
+
+// atob/btoa
+Object.defineProperty(global, 'atob', {
+  value: (str: string) => Buffer.from(str, 'base64').toString('binary'),
+  writable: true,
+})
+
+Object.defineProperty(global, 'btoa', {
+  value: (str: string) => Buffer.from(str, 'binary').toString('base64'),
+  writable: true,
+})
+
+// Mock canvas element creation
+const globalCanvas = {
+  width: 1920,
+  height: 1080,
+  getContext: vi.fn().mockReturnValue({ drawImage: vi.fn() }),
+  captureStream: vi.fn().mockReturnValue({
+    getVideoTracks: vi.fn().mockReturnValue([
+      { id: 'mock-video-track', stop: vi.fn() }
+    ]),
+    getTracks: vi.fn().mockReturnValue([
+      { kind: 'video', id: 'mock-video-track', stop: vi.fn() }
+    ])
+  }),
+}
+
+const originalCreate = document.createElement.bind(document)
+document.createElement = vi.fn((tag: string) => {
+  if (tag === 'canvas') return globalCanvas as any
+  if (tag === 'video') return { autoplay: true, muted: true } as any
+  if (tag === 'img') return {
+    onload: null,
+    src: '',
+    width: 1920,
+    height: 1080,
+    addEventListener: vi.fn(),
+  } as any
+  return originalCreate(tag)
+}) as any
+
+Object.defineProperty(global, 'VideoEncoder', {
+  value: vi.fn(() => ({
+    configure: vi.fn(),
+    encode: vi.fn(),
+    close: vi.fn(),
+  })),
+  writable: true,
+  configurable: true,
+})
+
+Object.defineProperty(global, 'VideoDecoder', {
+  value: vi.fn(() => ({
+    configure: vi.fn(),
+    decode: vi.fn(),
+    close: vi.fn(),
+  })),
+  writable: true,
+  configurable: true,
+})
+
+Object.defineProperty(global, 'EncodedVideoChunk', {
+  value: vi.fn().mockImplementation((data) => data),
+  writable: true,
+  configurable: true,
+})
+
+Object.defineProperty(global, 'VideoFrame', {
+  value: vi.fn().mockImplementation((source, init) => ({
+    codedWidth: 1920,
+    codedHeight: 1080,
+    duration: init?.duration || 33333,
+    close: vi.fn(),
+  })),
+  writable: true,
+  configurable: true,
+})
