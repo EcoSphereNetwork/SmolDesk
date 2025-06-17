@@ -1,19 +1,28 @@
 # ClipboardSync
 
-Synchronises clipboard contents between host and client using Tauri IPC commands.
-
-## Events
-- `onSync(entry)` – fired when clipboard data is exchanged.
-- `onError(message)` – emitted when synchronization fails.
+Synchronizes clipboard content between host and client via Tauri IPC calls.
+This component listens for clipboard changes and forwards entries over an
+optional `WebRTCConnection`.
 
 ## Props
 
-| Name | Type | Description |
-| --- | --- | --- |
-| `pollInterval` | number | milliseconds between checks |
+| Name               | Type                              | Description                           |
+| ------------------ | --------------------------------- | ------------------------------------- |
+| `webrtcConnection` | `WebRTCConnection?`               | connection used to broadcast entries  |
+| `onSync`           | `(entry: ClipboardEntry) => void` | callback when a new entry was synced  |
+| `onError`          | `(msg: string) => void`           | reports initialization or sync errors |
 
-### Example
+## Events
+
+- `onSync(entry)` – fired when clipboard data was processed
+- `onError(message)` – emitted on any failure
+
+## Example
 
 ```tsx
-<ClipboardSync pollInterval={1000} onSync={(v) => console.log(v)} />
+<ClipboardSync onSync={(e) => console.log(e)} />
 ```
+
+### Teststatus
+
+Unit tests run with Vitest under `tests/unit/ClipboardSync.test.tsx`.
