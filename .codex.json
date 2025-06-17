@@ -1,0 +1,5 @@
+{
+  "project": "SmolDesk",
+  "init": "bash scripts/init-for-codex.sh",
+  "analyze": "bash scripts/analyze-and-report.sh"
+}
