@@ -1,5 +1,7 @@
 # ConnectionManager
 
+[Zur Statusübersicht](./status.md)
+
 Manages peer connections using WebRTC. It handles creating rooms, joining rooms and relaying streams to the RemoteScreen component.
 
 ## Props
@@ -17,3 +19,7 @@ Manages peer connections using WebRTC. It handles creating rooms, joining rooms 
 ```tsx
 <ConnectionManager signalingServer="ws://localhost:5173" onStream={setStream} />
 ```
+
+### Teststatus
+
+Siehe `tests/unit/ConnectionManager.test.tsx` für grundlegende Render- und Ereignistests.
