@@ -40,3 +40,4 @@ simulation. The Playwright specs `connection-error.spec.ts` and
 network is available.
 
 Phase 4.5 finalizes snapshot handling and prepares the e2e suite for CI usage.
+

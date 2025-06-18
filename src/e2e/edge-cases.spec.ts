@@ -9,6 +9,5 @@ test('handles extremely long username gracefully', async ({ page }) => {
   } else {
     expect(shot).toMatchSnapshot('long-username.png')
   }
-})
 
 // add more edge-case tests as needed

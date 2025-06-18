@@ -38,3 +38,4 @@ For details on the completed component validation work, see the [Phase 2 Report]
 The CI integration progress is documented in the [Phase 3 Report](./phase-3-report.md).
 Preparation for the next stage is outlined in the [Phase 4 Overview](../testing/phase-4-overview.md).
 See the [Playwright guide](../testing/playwright.md) for running E2E tests.
+
