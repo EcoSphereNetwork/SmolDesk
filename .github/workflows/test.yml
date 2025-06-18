@@ -8,26 +8,57 @@ on:
     branches: [main]
 
 jobs:
-  frontend:
+  tests:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target: [node, rust]
     steps:
       - uses: actions/checkout@v3
+
       - uses: actions/setup-node@v3
+        if: matrix.target == 'node'
         with:
           node-version: 20
-      - run: npm ci
-      - run: npm run test:run
-      - run: bash scripts/validate-components.sh
 
-  backend:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: src-tauri
-    steps:
-      - uses: actions/checkout@v3
       - uses: actions-rs/toolchain@v1
+        if: matrix.target == 'rust'
         with:
           toolchain: stable
           override: true
-      - run: cargo test
+
+      - name: Install system dependencies
+        if: matrix.target == 'rust'
+        run: sudo apt-get update && sudo apt-get install -y \
+          libwebkit2gtk-4.0-dev \
+          libjavascriptcoregtk-4.0-dev \
+          libglib2.0-dev
+
+      - name: Install npm dependencies
+        if: matrix.target == 'node'
+        run: npm ci
+
+      - name: Run Node tests with coverage
+        if: matrix.target == 'node'
+        run: npm run coverage
+
+      - name: Validate components
+        if: matrix.target == 'node'
+        run: bash scripts/validate-components.sh
+
+      - name: Upload Coverage Report
+        if: always() && matrix.target == 'node'
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-${{ matrix.target }}
+          path: |
+            coverage/
+            coverage-final.json
+
+      - name: Run Cargo tests
+        if: matrix.target == 'rust'
+        run: cargo test
+
+      - name: Annotate test failures
+        if: failure()
+        run: echo "❌ Tests failed for ${{ matrix.target }}" >> $GITHUB_STEP_SUMMARY
