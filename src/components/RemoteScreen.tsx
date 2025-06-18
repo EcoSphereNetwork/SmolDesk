@@ -4,14 +4,14 @@ import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { invoke } from '@tauri-apps/api/tauri';
 import { listen } from '@tauri-apps/api/event';
 
-interface RemoteScreenProps {
+export interface RemoteScreenProps {
   stream?: MediaStream;
   isConnected: boolean;
   inputEnabled?: boolean;
   onInputToggle?: (enabled: boolean) => void;
 }
 
-interface InputEvent {
+export interface InputEvent {
   event_type: 'MouseMove' | 'MouseButton' | 'MouseScroll' | 'KeyPress' | 'KeyRelease';
   x?: number;
   y?: number;
