@@ -6,7 +6,7 @@ import { listen } from '@tauri-apps/api/event';
 import { WebRTCConnection } from '../utils/webrtc';
 
 // Type definitions
-interface TransferInfo {
+export interface TransferInfo {
   id: string;
   transfer_type: 'Upload' | 'Download';
   peer_id: string;
@@ -33,14 +33,14 @@ interface TransferInfo {
   retry_count: number;
 }
 
-interface TransferStats {
+export interface TransferStats {
   uploads_started: number;
   downloads_completed: number;
   total_bytes_transferred: number;
   total_bytes_queued: number;
 }
 
-interface FileTransferProps {
+export interface FileTransferProps {
   webrtcConnection?: WebRTCConnection;
   onTransferComplete?: (transferId: string) => void;
   onError?: (error: string) => void;
