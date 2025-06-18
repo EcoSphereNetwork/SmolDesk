@@ -2,5 +2,6 @@ import { test, expect } from 'playwright/test'
 
 test('should show error fallback when connection fails', async ({ page }) => {
   await page.goto('/')
-  await expect(page.getByText(/connection timeout/i)).toBeVisible()
+  await page.waitForLoadState('networkidle')
+  await expect(page.getByTestId('ipc-status')).toHaveText(/connection timeout/i)
 })

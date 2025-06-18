@@ -38,3 +38,5 @@ Phase 4.4 introduces dedicated mocks for failure cases and offline
 simulation. The Playwright specs `connection-error.spec.ts` and
 `offline.spec.ts` verify that the UI reacts gracefully when IPC calls fail or no
 network is available.
+
+Phase 4.5 finalizes snapshot handling and prepares the e2e suite for CI usage.

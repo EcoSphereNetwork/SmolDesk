@@ -13,6 +13,8 @@
   "phases": {
     "2": "Komponenten validieren & vervollständigen",
     "3": "Teststrategie & CI-Integration vorbereiten",
-    "phase3": "complete"
+    "phase3": "complete",
+    "4": "IPC und E2E Tests",
+    "phase4": "complete"
   }
 }

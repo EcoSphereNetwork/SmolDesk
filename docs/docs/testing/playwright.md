@@ -42,3 +42,16 @@ displays an offline indicator.
 
 Additional tests cover unusual states such as extremely long user names or
 empty API responses. These help harden the UI against unexpected input.
+
+## Snapshot Stability Tips
+
+- Call `page.waitForLoadState('networkidle')` before taking screenshots.
+- Ensure target elements are visible using `scrollIntoViewIfNeeded()`.
+- In CI the tests fall back to simple `page.screenshot()` checks via
+  `process.env.CI` because pixel output may vary.
+
+To run e2e tests in CI mode locally:
+
+```bash
+npm run test:ci:e2e
+```

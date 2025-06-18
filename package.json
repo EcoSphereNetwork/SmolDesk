@@ -39,6 +39,7 @@
     "test:run": "vitest run",
     "coverage": "vitest run --coverage",
     "e2e": "playwright test",
+    "test:ci:e2e": "VITE_USE_MOCK=true npm run e2e",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint src --ext ts,tsx --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,css,md}\"",
