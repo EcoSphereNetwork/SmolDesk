@@ -21,4 +21,5 @@ Rust unit tests still fail during the Tauri build script even after installing t
 - Add end‑to‑end tests with Playwright
 - Extend integration coverage between frontend and Tauri backend
 - Include security and lint checks in the workflow
+
 ⚠️ cargo test disabled temporarily

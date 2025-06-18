@@ -13,7 +13,7 @@ Current coverage focuses on React hooks and a handful of Rust utilities. Additio
 ## Running Tests
 ```bash
 npm test          # frontend unit tests
-npm run test:e2e  # end-to-end tests
+npm run e2e       # end-to-end tests
 cd src-tauri && cargo test
 ```
 
@@ -24,3 +24,4 @@ cd src-tauri && cargo test
 
 See [CI overview](./ci-overview.md) for planned automation steps.
 See [coverage instructions](./coverage.md) for generating reports.
+See [Playwright guide](./playwright.md) to run E2E tests.

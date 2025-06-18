@@ -11,3 +11,9 @@ This phase introduces a testable IPC architecture and sets up Playwright for end
 - `src/ipc/__mocks__/` – mock implementations
 - `src/e2e/` – Playwright specs
 - `playwright.config.ts` – Playwright configuration
+
+## IPC Mocking
+The frontend loads either a mock implementation or the real Tauri API depending on the `VITE_USE_MOCK` environment variable. The interface lives in `src/ipc/interface.ts` and both `src/ipc/tauri.ts` and `src/ipc/__mocks__/` implement it.
+
+## Playwright Setup
+`playwright.config.ts` defines a headless browser environment. Tests live under `src/e2e/` and can be run with `npm run e2e`.
