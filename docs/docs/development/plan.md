@@ -33,3 +33,8 @@ This iterative plan guides future Codex runs when enhancing SmolDesk.
 - Implement roadmap items such as multi-monitor support and advanced security.
 
 Each phase should end with a successful build and passing tests before moving on.
+
+For details on the completed component validation work, see the [Phase 2 Report](./phase-2-report.md).
+The CI integration progress is documented in the [Phase 3 Report](./phase-3-report.md).
+Preparation for the next stage is outlined in the [Phase 4 Overview](../testing/phase-4-overview.md).
+See the [Playwright guide](../testing/playwright.md) for running E2E tests.
