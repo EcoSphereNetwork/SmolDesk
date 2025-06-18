@@ -12,8 +12,15 @@ Automate builds and run tests for every pull request. Lint sources and package a
 - **cargo test** – Rust backend tests
 
 ## Strategien
+- **Unit-Tests:** via `vitest` in a jsdom environment
+- **Accessibility:** optional `jest-axe` checks for UI components
+- **Integration/IPC:** to be added for frontend ↔ backend communication
+- **Rust-Tests:** run `cargo test` for the Tauri backend
 
-- Use GitHub Actions with a matrix for frontend and backend
-- Run linting and formatting checks before tests
-- Gate merges on full test success
+CI runs locally for developers and remotely on pull requests. Matrix jobs handle Node and Rust separately. Browser APIs and MediaStream mocks are considered risk areas.
+
+## Phasen-Ziele
+- **Lokal**: schnelle Testläufe und Linting vor Commits
+- **Remote**: komplette CI in GitHub Actions für Pull Requests und Merges
+
 

@@ -23,3 +23,5 @@ cd src-tauri && cargo test
 - Vitest is optional and must be installed with `scripts/install-vitest.sh` in Codex environments.
 
 See [CI overview](./ci-overview.md) for planned automation steps.
+See [coverage instructions](./coverage.md) for generating reports.
+
