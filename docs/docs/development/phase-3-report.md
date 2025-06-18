@@ -9,7 +9,16 @@ During implementation the Rust tests failed due to missing GTK packages. `libsou
 ## Artifact Strategy
 Vitest runs with coverage enabled by default. HTML and JSON reports are archived after every CI run. Rust tests respect `TAURI_SKIP_BUILD` and run headless using `DISPLAY=:99`.
 
+## Open Issues
+Rust unit tests still fail during the Tauri build script even after installing the GTK and libsoup packages. The problem is tracked in [Phase 4: Reactivate cargo test](../../.github/issues/phase-4-reactivate-cargo-test.md). CI currently skips the Rust tests until a dedicated Tauri container is available.
+
+## CI Status
+- **Matrix setup**: ✔
+- **Coverage uploads**: ✔
+- **Rust tests**: ❌ *(temporarily disabled)*
+
 ## Recommendations for Phase 4
 - Add end‑to‑end tests with Playwright
 - Extend integration coverage between frontend and Tauri backend
 - Include security and lint checks in the workflow
+⚠️ cargo test disabled temporarily

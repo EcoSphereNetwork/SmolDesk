@@ -12,6 +12,7 @@
   },
   "phases": {
     "2": "Komponenten validieren & vervollständigen",
-    "3": "Teststrategie & CI-Integration vorbereiten"
+    "3": "Teststrategie & CI-Integration vorbereiten",
+    "phase3": "complete"
   }
 }
