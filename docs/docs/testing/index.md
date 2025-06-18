@@ -24,4 +24,3 @@ cd src-tauri && cargo test
 
 See [CI overview](./ci-overview.md) for planned automation steps.
 See [coverage instructions](./coverage.md) for generating reports.
-
