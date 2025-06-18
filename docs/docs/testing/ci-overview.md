@@ -24,4 +24,3 @@ CI runs locally for developers and remotely on pull requests. Matrix jobs handle
 - **Remote**: komplette CI in GitHub Actions für Pull Requests und Merges
 
 \nSee [Phase 3 Report](../development/phase-3-report.md) for the initial CI implementation.
-
