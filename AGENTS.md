@@ -121,5 +121,6 @@ Links to key progress documents are kept here for reference:
 - [Phase 2 Report](docs/docs/development/phase-2-report.md)
 - [Phase 3 Report](docs/docs/development/phase-3-report.md)
 - [Phase 4 Overview](docs/docs/testing/phase-4-overview.md)
+- [Phase 4 Report](docs/docs/development/phase-4-report.md)
 - [Playwright Guide](docs/docs/testing/playwright.md)
 
