@@ -10,10 +10,11 @@ optional `WebRTCConnection`.
 
 ## Props
 
-| Name               | Type                              | Description                           |
-| ------------------ | --------------------------------- | ------------------------------------- |
-| `webrtcConnection` | `WebRTCConnection?`               | connection used to broadcast entries  |
-| `onSync`           | `(entry: ClipboardEntry) => void` | callback when a new entry was synced  |
+| Name               | Type                              | Description |
+| ------------------ | --------------------------------- | ----------- |
+| `webrtcConnection` | `WebRTCConnection?`               | connection used to broadcast entries |
+| `pollInterval`     | number                            | milliseconds between checks |
+| `onSync`           | `(entry: ClipboardEntry) => void` | callback when a new entry was synced |
 | `onError`          | `(msg: string) => void`           | reports initialization or sync errors |
 
 ## Events
@@ -24,7 +25,7 @@ optional `WebRTCConnection`.
 ## Example
 
 ```tsx
-<ClipboardSync onSync={(e) => console.log(e)} />
+<ClipboardSync pollInterval={1000} onSync={(e) => console.log(e)} />
 ```
 
 ### Teststatus

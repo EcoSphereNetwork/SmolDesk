@@ -78,6 +78,7 @@ test-results/
 playwright-report/
 storybook-snapshots/
 
+
 # Tauri Assets/Packages
 src-tauri/node_modules/
 src-tauri/target/
