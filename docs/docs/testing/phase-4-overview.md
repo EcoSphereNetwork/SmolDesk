@@ -22,3 +22,13 @@ The frontend loads either a mock implementation or the real Tauri API depending 
 
 During unit and e2e tests, WebRTC APIs and Tauri window methods are mocked. This allows verifying UI reactions to connection states and window events without launching a real backend.
 
+### Multi-Window Scenarios
+
+E2E tests switch between a main window and a settings window using mocked window
+controls. The navigation button uses `data-testid="open-settings"`.
+
+### Snapshot Strategy
+
+Playwright's `toHaveScreenshot()` is used for basic visual regression. Generated
+images are stored under `test-results/` and ignored from Git.
+
