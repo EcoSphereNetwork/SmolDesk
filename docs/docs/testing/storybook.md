@@ -33,7 +33,6 @@ Use `jest-axe` to ensure each component has no accessibility violations:
 ```ts
 import { axe, toHaveNoViolations } from 'jest-axe';
 ```
-
 ## Komponenten vollständig abdecken
 
 Every component under `src/components/` should ship with a Storybook story
@@ -44,4 +43,4 @@ Validate the setup:
 
 ```bash
 bash scripts/validate-storybook.sh
-```
+``

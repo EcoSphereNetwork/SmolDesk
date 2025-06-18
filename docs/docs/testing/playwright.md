@@ -55,6 +55,5 @@ To run e2e tests in CI mode locally:
 ```bash
 npm run test:ci:e2e
 ```
-
 Component-level snapshots will be added in **Phase 5** via Storybook and
 Playwright component tests.
