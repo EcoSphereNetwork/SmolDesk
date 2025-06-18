@@ -115,3 +115,8 @@ For automated iterations follow these stages:
 6. Refactoring and cleanup
 7. Feature expansion
 
+## Verlauf & Historie
+Links to key progress documents are kept here for reference:
+
+- [Phase 2 Report](docs/docs/development/phase-2-report.md)
+

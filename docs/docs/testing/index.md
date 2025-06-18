@@ -21,3 +21,6 @@ cd src-tauri && cargo test
 - Some WebRTC tests rely on mocked Tauri APIs.
 - Network tests require a local signaling server.
 - Vitest is optional and must be installed with `scripts/install-vitest.sh` in Codex environments.
+
+See [CI overview](./ci-overview.md) for planned automation steps.
+See [coverage instructions](./coverage.md) for generating reports.
