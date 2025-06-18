@@ -23,3 +23,4 @@ CI runs locally for developers and remotely on pull requests. Matrix jobs handle
 - **Lokal**: schnelle Testläufe und Linting vor Commits
 - **Remote**: komplette CI in GitHub Actions für Pull Requests und Merges
 
+
