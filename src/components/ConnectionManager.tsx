@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { WebRTCConnection, WebRTCConnectionEvent } from '../utils/webrtc';
 
-interface ConnectionManagerProps {
+export interface ConnectionManagerProps {
   onConnected?: (peerId: string) => void;
   onDisconnected?: () => void;
   onStream?: (stream: MediaStream) => void;
