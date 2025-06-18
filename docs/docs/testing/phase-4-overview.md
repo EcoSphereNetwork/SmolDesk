@@ -32,3 +32,9 @@ controls. The navigation button uses `data-testid="open-settings"`.
 Playwright's `toHaveScreenshot()` is used for basic visual regression. Generated
 images are stored under `test-results/` and ignored from Git.
 
+### Error Paths and Offline Mode
+
+Phase 4.4 introduces dedicated mocks for failure cases and offline
+simulation. The Playwright specs `connection-error.spec.ts` and
+`offline.spec.ts` verify that the UI reacts gracefully when IPC calls fail or no
+network is available.

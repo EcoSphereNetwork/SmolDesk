@@ -1,12 +1,15 @@
 import type { IConnectionAPI } from './interface'
 import type { IWindowAPI } from './window.interface'
 
-const useMock = import.meta.env.VITE_USE_MOCK === 'true'
+const mockMode = import.meta.env.VITE_USE_MOCK
+const useMock = mockMode === 'true' || mockMode === 'error'
 
 export const ConnectionAPI: Promise<IConnectionAPI> =
-  useMock
-    ? import('./__mocks__/connection').then(m => m.ConnectionAPI)
-    : import('./tauri').then(m => m.ConnectionAPI)
+  mockMode === 'error'
+    ? import('./__mocks__/connection.error').then(m => m.ConnectionAPI)
+    : useMock
+      ? import('./__mocks__/connection').then(m => m.ConnectionAPI)
+      : import('./tauri').then(m => m.ConnectionAPI)
 
 export const WindowAPI: Promise<IWindowAPI> =
   useMock

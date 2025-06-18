@@ -26,3 +26,19 @@ When `VITE_USE_MOCK=true` the tests run with simulated WebRTC streams and mocked
 Visual regressions are checked with `toHaveScreenshot()` which stores images in
 `test-results/`.
 
+## Error Simulation
+
+You can switch mocks to an error mode by setting `VITE_USE_MOCK=error`. This
+loads `src/ipc/__mocks__/connection.error.ts` and allows tests to verify that
+the UI shows proper fallback messages when IPC calls fail.
+
+## Offline Mode
+
+Playwright's browser context can simulate offline conditions via
+`context.setOffline(true)`. Tests under `offline.spec.ts` ensure the interface
+displays an offline indicator.
+
+## Edge Cases
+
+Additional tests cover unusual states such as extremely long user names or
+empty API responses. These help harden the UI against unexpected input.

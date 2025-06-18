@@ -5,4 +5,3 @@ test('should load landing screen', async ({ page }) => {
   await expect(page.getByText(/SmolDesk/i)).toBeVisible()
   await expect(page).toHaveScreenshot('main-screen.png')
 })
-
