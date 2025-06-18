@@ -111,6 +111,8 @@ const App: React.FC = () => {
   const [showSidebar, setShowSidebar] = useState<boolean>(true);
   const [showNotifications, setShowNotifications] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [offline, setOffline] = useState<boolean>(!navigator.onLine);
+  const [ipcStatus, setIpcStatus] = useState<string>('');
   const [notifications, setNotifications] = useState<Array<{
     id: string;
     type: 'info' | 'success' | 'warning' | 'error';
@@ -148,7 +150,22 @@ const App: React.FC = () => {
   useEffect(() => {
     initializeApp();
     loadUserConfig();
-    
+
+    const handleOnline = () => setOffline(false);
+    const handleOffline = () => setOffline(true);
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+
+    (async () => {
+      try {
+        const api = await ConnectionAPI;
+        setIpcStatus(await api.getStatus());
+      } catch (err: any) {
+        setError(err.message);
+        setIpcStatus(err.message);
+      }
+    })();
+
     // Theme anwenden
     applyTheme(config.theme);
     
@@ -159,6 +176,8 @@ const App: React.FC = () => {
 
     return () => {
       unlistenNotification.then(fn => fn());
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
     };
   }, []);
 
@@ -315,6 +334,9 @@ const App: React.FC = () => {
 
   return (
     <div className={`app ${config.theme}`} data-theme={config.theme} data-testid="main-window">
+      {offline && (
+        <div className="offline-banner" data-testid="offline-indicator">Offline Mode</div>
+      )}
       {/* Header */}
       <header className="app-header">
         <div className="header-content">
@@ -324,9 +346,12 @@ const App: React.FC = () => {
               <span className="display-server">{displayServer} {t('displayServer')}</span>
               <span className={`connection-status status-${status}`}>{status}</span>
               {connectionQuality !== 'disconnected' && (
-                <span className={`connection-quality quality-${connectionQuality}`}>
+                <span className={`connection-quality quality-${connectionQuality}`}> 
                   {connectionQuality}
                 </span>
+              )}
+              {ipcStatus && (
+                <span className="ipc-status" data-testid="ipc-status">{ipcStatus}</span>
               )}
             </div>
           </div>
