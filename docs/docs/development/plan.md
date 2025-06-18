@@ -35,3 +35,4 @@ This iterative plan guides future Codex runs when enhancing SmolDesk.
 Each phase should end with a successful build and passing tests before moving on.
 
 For details on the completed component validation work, see the [Phase 2 Report](./phase-2-report.md).
+The CI integration progress is documented in the [Phase 3 Report](./phase-3-report.md).

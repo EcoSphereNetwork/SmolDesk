@@ -66,7 +66,7 @@ SmolDesk ist ein modernes Remote-Desktop-Tool, das speziell für Linux entwickel
   - FFmpeg
   - Für X11: xdotool
   - Für Wayland: ydotool
-  - Tauri-Build: libwebkit2gtk-4.0-dev, libjavascriptcoregtk-4.0-dev, libglib2.0-dev
+  - Tauri-Build: libwebkit2gtk-4.0-dev, libjavascriptcoregtk-4.0-dev, libsoup2.4-dev, libgtk-3-dev, libglib2.0-dev
 
 ### Build-Abhängigkeiten (Ubuntu/Debian)
 Installiere folgende Pakete, um SmolDesk aus dem Quellcode zu bauen:
@@ -77,12 +77,14 @@ sudo apt install build-essential \
   libgtk-3-dev \
   libwebkit2gtk-4.0-dev \
   libjavascriptcoregtk-4.0-dev \
+  libsoup2.4-dev \
   libayatana-appindicator3-dev \
   librsvg2-dev \
   pkg-config
 ```
 
 Alternativ kannst du das Skript `scripts/dev-setup.sh` ausführen, um die Abhängigkeiten automatisch zu installieren.
+Für die Tauri-spezifischen Libraries steht zusätzlich `scripts/install-tauri-deps.sh` bereit.
 
 
 - **Client-System**:
