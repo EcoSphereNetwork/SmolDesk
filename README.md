@@ -198,7 +198,7 @@ cd src-tauri
 cargo test
 
 # End-to-End-Tests
-npm run test:e2e
+npm run e2e
 ```
 
 ### Manuelle Tests
