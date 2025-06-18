@@ -21,3 +21,4 @@ The frontend loads either a mock implementation or the real Tauri API depending 
 ### WebRTC Simulation & Window Control
 
 During unit and e2e tests, WebRTC APIs and Tauri window methods are mocked. This allows verifying UI reactions to connection states and window events without launching a real backend.
+

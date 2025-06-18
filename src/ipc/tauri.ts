@@ -13,3 +13,4 @@ export const WindowAPI: IWindowAPI = {
   close: () => appWindow.close(),
   isFocused: () => appWindow.isFocused()
 }
+
