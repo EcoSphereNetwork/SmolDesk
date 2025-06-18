@@ -3,10 +3,8 @@ import { test, expect } from 'playwright/test'
 test('should load landing screen', async ({ page }) => {
   await page.goto('/')
   await page.waitForLoadState('networkidle')
-  await page.waitForSelector('[data-testid="main-window"]')
-  const main = page.locator('[data-testid="main-window"]')
-  await main.scrollIntoViewIfNeeded()
-  const shot = await page.screenshot({ fullPage: true })
+  await expect(page.locator('[data-testid="main-window"]')).toBeVisible()
+  const shot = await page.screenshot()
   if (process.env.CI) {
     expect(shot).toBeTruthy()
   } else {

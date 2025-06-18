@@ -15,7 +15,6 @@
     "3": "Teststrategie & CI-Integration vorbereiten",
     "phase3": "complete",
     "4": "IPC und E2E Tests",
-    "phase4": "complete",
-    "phase5": "Komponentenvalidierung & visuelle Regression in Storybook"
+    "phase4": "complete"
   }
 }
