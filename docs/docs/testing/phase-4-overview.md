@@ -31,3 +31,4 @@ controls. The navigation button uses `data-testid="open-settings"`.
 
 Playwright's `toHaveScreenshot()` is used for basic visual regression. Generated
 images are stored under `test-results/` and ignored from Git.
+

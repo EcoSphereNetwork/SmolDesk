@@ -25,3 +25,4 @@ When `VITE_USE_MOCK=true` the tests run with simulated WebRTC streams and mocked
 
 Visual regressions are checked with `toHaveScreenshot()` which stores images in
 `test-results/`.
+
