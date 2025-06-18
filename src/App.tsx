@@ -636,6 +636,7 @@ const App: React.FC = () => {
           {activeTab === 'settings' && (
             <div className="settings-panel" data-testid="settings-window">
               <div className="settings-grid">
+
                 {/* General Settings */}
                 <section className="settings-section">
                   <h2>General Settings</h2>

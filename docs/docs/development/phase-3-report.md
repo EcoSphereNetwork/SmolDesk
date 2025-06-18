@@ -23,4 +23,3 @@ Rust unit tests still fail during the Tauri build script even after installing t
 - Include security and lint checks in the workflow
 
 ⚠️ cargo test disabled temporarily
-
