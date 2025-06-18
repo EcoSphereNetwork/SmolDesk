@@ -145,8 +145,9 @@ SmolDesk/
    ```bash
    git clone https://github.com/SmolDesk/SmolDesk.git
    cd SmolDesk
-   # falls kein Remote gesetzt ist
-   git remote add origin https://github.com/EcoSphereNetwork/SmolDesk.git
+   # GitHub-Remote setzen falls nicht vorhanden
+   git remote get-url origin >/dev/null 2>&1 || \
+     git remote add origin https://github.com/EcoSphereNetwork/SmolDesk.git
    ```
 
 2. Dependencies installieren:
