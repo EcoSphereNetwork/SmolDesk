@@ -18,6 +18,8 @@
   [Request Feature](https://github.com/EcoSphereNetwork/SmolDesk/issues)
   <br/>
   <sub>Live preview may take a few minutes to update after each merge.</sub>
+  <br/>
+  <sub><strong>Live Preview (aktualisiert nach jeder Änderung):</strong> <https://ecospherenetwork.github.io/SmolDesk/></sub>
 </div>
 
 ## 📋 Table of Contents
