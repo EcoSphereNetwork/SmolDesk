@@ -74,3 +74,7 @@ Stelle sicher, dass keine zusätzliche Unterordner-Struktur (`/SmolDesk/`) im Br
 ### Fallback-Vorschau über CI-Artefakt
 
 Falls GitHub Pages nicht erreichbar ist, stellt die CI den Inhalt von `storybook-static/` als Download-Artefakt bereit. Der Workflow kommentiert im Pull Request einen Hinweis mit dem Link zur Action, damit Reviewer die Vorschau manuell laden können.
+
+### Versionsanzeige im Docs-Tab
+
+Jeder Build setzt die Variablen `VITE_VERSION` und `VITE_COMMIT_SHA`. Die Vorschau zeigt diese Informationen oben im Docs-Tab an, z.B. `Version: 1.0.0 (abcdef1)`. So lässt sich einfach überprüfen, welcher Commit gerade deployt ist.

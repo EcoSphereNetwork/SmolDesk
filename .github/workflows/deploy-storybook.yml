@@ -9,7 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: npm ci && npm run build:storybook
+      - name: install and build
+        run: |
+          npm ci
+          VITE_COMMIT_SHA=$(git rev-parse HEAD) VITE_VERSION=$(jq -r '.version' package.json) npm run build:storybook
       - name: verify build output
         run: |
           test -f storybook-static/index.html
