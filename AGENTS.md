@@ -20,6 +20,17 @@ SmolDesk is a WebRTC based remote desktop tool for Linux. This guide allows LLM 
 - Update or create tests with any code change.
 - Write documentation to `docs/` when new features are added.
 
+## Agent Types and Responsibilities
+This project defines multiple autonomous agents. Each agent acts within a
+specific scope:
+
+- **Codex** – general repository automation, merges and conflict resolution.
+- **OpenHands** – parses documentation and lints prose.
+- **TestRunner** – runs the available test suites and reports coverage.
+
+An overview of all agents and their lifecycle is available in
+`docs/docs/agents/agent-types.md` and `docs/docs/agents/agent-life-cycle.md`.
+
 
 
 
