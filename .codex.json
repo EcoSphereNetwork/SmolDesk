@@ -1,6 +1,13 @@
 {
   "project": "SmolDesk",
-  "agents": ["Codex", "OpenHands", "TestRunner"],
+  "agents": [
+    "Codex",
+    "OpenHands",
+    "TestRunner",
+    "merge-agent",
+    "doc-agent",
+    "test-agent"
+  ],
   "entrypoints": [
     "AGENTS.md",
     "docs/docs/development/plan.md"
@@ -17,5 +24,16 @@
     "4": "IPC und E2E Tests",
     "phase4": "complete",
     "phase5": "Komponentenvalidierung & visuelle Regression in Storybook"
-  }
+  },
+  "repo": "github.com/EcoSphereNetwork/SmolDesk",
+  "pullRequestPolicy": {
+    "autoMerge": true,
+    "conflictResolution": "favor-new-code",
+    "squashMergeDefault": true
+  },
+  "defaultBranch": "main",
+  "mergeStrategy": "squash",
+  "issueOnConflict": true,
+  "agentMode": "autonomous",
+  "cli": "gh"
 }

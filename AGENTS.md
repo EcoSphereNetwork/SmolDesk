@@ -20,6 +20,27 @@ SmolDesk is a WebRTC based remote desktop tool for Linux. This guide allows LLM 
 - Update or create tests with any code change.
 - Write documentation to `docs/` when new features are added.
 
+## Agent Types and Responsibilities
+This project defines multiple autonomous agents. Each agent acts within a
+specific scope:
+
+- **Codex** – general repository automation, merges and conflict resolution.
+- **OpenHands** – parses documentation and lints prose.
+- **TestRunner** – runs the available test suites and reports coverage.
+
+An overview of all agents and their lifecycle is available in
+`docs/docs/agents/agent-types.md` and `docs/docs/agents/agent-life-cycle.md`.
+
+## Autonomous Pull Request Management
+Codex keeps the main branch up to date by scanning open pull requests via the
+GitHub CLI. Draft or `WIP` PRs are skipped. If a PR is marked as
+`mergeable_state: clean` the agent performs a squash merge using the PR title as
+commit message. Conflicts trigger an automated rebase attempt; on failure an
+issue is created with details. See
+[`pull-request-agent.md`](docs/docs/agents/pull-request-agent.md) for the full
+workflow and [`merge-strategies.md`](docs/docs/agents/merge-strategies.md) for
+resolution rules.
+
 
 
 
