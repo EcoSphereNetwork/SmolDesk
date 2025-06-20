@@ -1,0 +1,152 @@
+name: Reusable Security Scan
+
+on:
+  workflow_call:
+    inputs:
+      languages:
+        description: 'Languages to analyze with CodeQL'
+        required: false
+        type: string
+        default: '["python"]'
+      severity-level:
+        description: 'Minimum severity level to report'
+        required: false
+        type: string
+        default: 'medium'
+      scan-schedule:
+        description: 'Cron schedule for security scans'
+        required: false
+        type: string
+        default: '0 0 * * 0'  # Weekly at midnight on Sunday
+      enable-dependency-scan:
+        description: 'Enable dependency vulnerability scanning'
+        required: false
+        type: boolean
+        default: true
+      enable-sast:
+        description: 'Enable Static Application Security Testing'
+        required: false
+        type: boolean
+        default: true
+      enable-container-scan:
+        description: 'Enable container image scanning'
+        required: false
+        type: boolean
+        default: true
+    secrets:
+      SNYK_TOKEN:
+        required: false
+        description: 'Snyk API token for vulnerability scanning'
+      SONAR_TOKEN:
+        required: false
+        description: 'SonarCloud token for code analysis'
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+      pull-requests: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Initialize CodeQL
+        if: inputs.enable-sast
+        uses: github/codeql-action/init@v2
+        with:
+          languages: ${{ inputs.languages }}
+          queries: security-and-quality
+
+      - name: Autobuild
+        if: inputs.enable-sast
+        uses: github/codeql-action/autobuild@v2
+
+      - name: Perform CodeQL Analysis
+        if: inputs.enable-sast
+        uses: github/codeql-action/analyze@v2
+        with:
+          category: "/language:${{ fromJson(inputs.languages)[0] }}"
+
+      - name: Run Snyk
+        if: inputs.enable-dependency-scan && secrets.SNYK_TOKEN
+        uses: snyk/actions/python@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=${{ inputs.severity-level }}
+
+      - name: Run SonarCloud Scan
+        if: inputs.enable-sast && secrets.SONAR_TOKEN
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: Run Trivy vulnerability scanner
+        if: inputs.enable-container-scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          severity: ${{ inputs.severity-level }},CRITICAL
+
+      - name: Run Bandit
+        if: inputs.enable-sast
+        run: |
+          pip install bandit
+          bandit -r . -ll -ii -f json -o bandit-results.json || true
+
+      - name: Upload security results
+        uses: github/codeql-action/upload-sarif@v2
+        if: always()
+        with:
+          sarif_file: trivy-results.sarif
+
+      - name: Process scan results
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            
+            // Function to create security issue
+            async function createSecurityIssue(title, body, labels) {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: title,
+                body: body,
+                labels: ['security', ...labels]
+              });
+            }
+            
+            // Process Bandit results
+            try {
+              const banditResults = JSON.parse(fs.readFileSync('bandit-results.json', 'utf8'));
+              if (banditResults.results?.length > 0) {
+                const highSeverityIssues = banditResults.results.filter(
+                  issue => issue.issue_severity === 'HIGH'
+                );
+                
+                if (highSeverityIssues.length > 0) {
+                  await createSecurityIssue(
+                    'High Severity Security Issues Found',
+                    `Bandit found ${highSeverityIssues.length} high severity issues:\n\n` +
+                    highSeverityIssues.map(issue => 
+                      `- ${issue.issue_text} in ${issue.filename}:${issue.line_number}`
+                    ).join('\n'),
+                    ['high-severity']
+                  );
+                }
+              }
+            } catch (error) {
+              console.log('No Bandit results found or error processing them:', error);
+            }

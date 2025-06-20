@@ -1,0 +1,91 @@
+name: Reusable Deployment Workflow
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        description: 'Environment to deploy to (e.g., staging, production)'
+        required: true
+        type: string
+      deploy-command:
+        description: 'Command to run for deployment'
+        required: false
+        type: string
+        default: ''
+      use-terraform:
+        description: 'Whether to use Terraform for deployment'
+        required: false
+        type: boolean
+        default: false
+      terraform-workspace:
+        description: 'Terraform workspace to use'
+        required: false
+        type: string
+        default: 'default'
+    secrets:
+      AWS_ACCESS_KEY_ID:
+        required: false
+      AWS_SECRET_ACCESS_KEY:
+        required: false
+      DEPLOY_SSH_KEY:
+        required: false
+      KUBECONFIG:
+        required: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        if: secrets.AWS_ACCESS_KEY_ID != ''
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ vars.AWS_REGION || 'us-east-1' }}
+
+      - name: Set up Terraform
+        if: inputs.use-terraform == true
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_wrapper: false
+
+      - name: Initialize Terraform
+        if: inputs.use-terraform == true
+        run: |
+          terraform init
+          terraform workspace select ${{ inputs.terraform-workspace }} || terraform workspace new ${{ inputs.terraform-workspace }}
+
+      - name: Apply Terraform
+        if: inputs.use-terraform == true
+        run: |
+          terraform plan -out=tfplan
+          terraform apply -auto-approve tfplan
+
+      - name: Set up kubectl
+        if: secrets.KUBECONFIG != ''
+        uses: azure/setup-kubectl@v3
+
+      - name: Set up kubeconfig
+        if: secrets.KUBECONFIG != ''
+        run: |
+          mkdir -p $HOME/.kube
+          echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config
+          chmod 600 $HOME/.kube/config
+
+      - name: Set up SSH key
+        if: secrets.DEPLOY_SSH_KEY != ''
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H $(echo ${{ vars.DEPLOY_HOST }}) >> ~/.ssh/known_hosts
+
+      - name: Run deployment command
+        if: inputs.deploy-command != ''
+        run: ${{ inputs.deploy-command }}

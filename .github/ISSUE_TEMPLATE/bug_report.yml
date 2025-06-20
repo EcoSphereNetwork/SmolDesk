@@ -1,0 +1,116 @@
+name: Bug Report
+description: Create a report to help us improve
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: What version of our software are you running?
+      placeholder: ex. 1.0.0
+    validations:
+      required: true
+  - type: dropdown
+    id: programming-language
+    attributes:
+      label: Programming Language
+      description: Which programming language are you using?
+      options:
+        - Python
+        - JavaScript
+        - TypeScript
+        - Java
+        - C++
+        - C#
+        - C
+        - Go
+        - PHP
+        - Ruby
+        - Rust
+        - Swift
+        - Kotlin
+        - Scala
+        - HTML
+        - CSS
+        - SQL
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: language-version
+    attributes:
+      label: Language Version
+      description: What version of the selected programming language are you using?
+      options:
+        # Python versions
+        - Python 3.12
+        - Python 3.11
+        - Python 3.10
+        - Python 3.9
+        - Python 3.8
+        # JavaScript/Node.js versions
+        - Node.js 20.x
+        - Node.js 18.x
+        - Node.js 16.x
+        # Java versions
+        - Java 21 (LTS)
+        - Java 17 (LTS)
+        - Java 11 (LTS)
+        - Java 8 (LTS)
+        # TypeScript versions
+        - TypeScript 5.x
+        - TypeScript 4.x
+        # Go versions
+        - Go 1.22
+        - Go 1.21
+        - Go 1.20
+        # PHP versions
+        - PHP 8.3
+        - PHP 8.2
+        - PHP 8.1
+        - PHP 8.0
+        - PHP 7.4
+        # C++ standards
+        - C++23
+        - C++20
+        - C++17
+        - C++14
+        - C++11
+        # C# versions
+        - C# 12.0
+        - C# 11.0
+        - C# 10.0
+        - C# 9.0
+        # Other
+        - Other/Not Listed
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Also tell us, what did you expect to happen?
+      placeholder: Tell us what you see!
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: How can we reproduce this issue?
+      placeholder: |
+        1. Go to '...'
+        2. Click on '....'
+        3. See error
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Please copy and paste any relevant log output
+      render: shell

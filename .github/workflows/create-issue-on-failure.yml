@@ -1,0 +1,33 @@
+name: Create Issue on Workflow Failure
+
+on:
+  workflow_run:
+    workflows: ["Name des zu überwachenden Workflows"]
+    types:
+      - completed
+
+jobs:
+  create_issue:
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Set up GitHub CLI
+      - name: Set up GitHub CLI
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      # Create an issue using GitHub CLI
+      - name: Create Issue
+        run: |
+          gh issue create \
+            --title "Fehler im Workflow '${{ github.event.workflow_run.name }}'" \
+            --body "Der Workflow '${{ github.event.workflow_run.name }}' ist fehlgeschlagen.\n\nDetails:\n- Workflow ID: ${{ github.event.workflow_run.id }}\n- Repository: ${{ github.repository }}\n- Ausführungszeitpunkt: ${{ github.event.workflow_run.run_started_at }}\n\nBitte überprüfe die Logs und behebe den Fehler." \
+            --label "bug"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
