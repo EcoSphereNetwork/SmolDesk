@@ -41,6 +41,7 @@ ENV/
 .cache
 nosetests.xml
 coverage.xml
+coverage/
 *.cover
 .hypothesis/
 .pytest_cache/
@@ -72,6 +73,12 @@ Thumbs.db
 
 # Node Modules
 node_modules/
+
+# Playwright outputs
+test-results/
+playwright-report/
+storybook-snapshots/
+storybook-static/
 
 # Tauri Assets/Packages
 src-tauri/node_modules/
