@@ -12,9 +12,9 @@
   [![Documentation][docs-shield]][docs-url]
   [![Project Credits][credits-shield]][credits-url]
 
-  [Start Documentation](https://github.com/SmolDesk/SmolDesk/blob/main/docs/README.md) •
-  [Report Bug](https://github.com/SmolDesk/SmolDesk/issues) •
-  [Request Feature](https://github.com/SmolDesk/SmolDesk/issues)
+  [Start Documentation](https://github.com/EcoSphereNetwork/SmolDesk/blob/main/docs/README.md) •
+  [Report Bug](https://github.com/EcoSphereNetwork/SmolDesk/issues) •
+  [Request Feature](https://github.com/EcoSphereNetwork/SmolDesk/issues)
 </div>
 
 ## 📋 Table of Contents
@@ -95,15 +95,15 @@ Für die Tauri-spezifischen Libraries steht zusätzlich `scripts/install-tauri-d
 1. **Binärdateien herunterladen**
    ```bash
    # Für Debian/Ubuntu-basierte Systeme
-   curl -L https://github.com/SmolDesk/SmolDesk/releases/latest/download/smoldesk_amd64.deb -o smoldesk.deb
+   curl -L https://github.com/EcoSphereNetwork/SmolDesk/releases/latest/download/smoldesk_amd64.deb -o smoldesk.deb
    sudo apt install ./smoldesk.deb
    
    # Für Fedora/RHEL-basierte Systeme
-   curl -L https://github.com/SmolDesk/SmolDesk/releases/latest/download/smoldesk.rpm -o smoldesk.rpm
+   curl -L https://github.com/EcoSphereNetwork/SmolDesk/releases/latest/download/smoldesk.rpm -o smoldesk.rpm
    sudo dnf install ./smoldesk.rpm
    
    # Distribution-unabhängig (AppImage)
-   curl -L https://github.com/SmolDesk/SmolDesk/releases/latest/download/SmolDesk.AppImage -o SmolDesk.AppImage
+   curl -L https://github.com/EcoSphereNetwork/SmolDesk/releases/latest/download/SmolDesk.AppImage -o SmolDesk.AppImage
    chmod +x SmolDesk.AppImage
    ```
 
@@ -145,7 +145,7 @@ SmolDesk/
 ### Entwicklungsumgebung einrichten
 1. Repository klonen:
    ```bash
-   git clone https://github.com/SmolDesk/SmolDesk.git
+   git clone https://github.com/EcoSphereNetwork/SmolDesk.git
    cd SmolDesk
    # GitHub-Remote setzen falls nicht vorhanden
    git remote get-url origin >/dev/null 2>&1 || \
@@ -257,8 +257,8 @@ Wir freuen uns über Beiträge! Bitte lesen Sie unseren [Contributing Guide](CON
 
 ## 💬 Support
 
-- [Issue Tracker](https://github.com/SmolDesk/SmolDesk/issues)
-- [Discussions](https://github.com/SmolDesk/SmolDesk/discussions)
+- [Issue Tracker](https://github.com/EcoSphereNetwork/SmolDesk/issues)
+- [Discussions](https://github.com/EcoSphereNetwork/SmolDesk/discussions)
 - [Discord Community][discord-url]
 - [Documentation][docs-url]
 
@@ -283,19 +283,19 @@ Verteilt unter der MIT-Lizenz. Siehe [LICENSE](LICENSE) für weitere Information
 </div>
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/github/contributors/SmolDesk/SmolDesk?style=for-the-badge&color=blue
-[contributors-url]: https://github.com/SmolDesk/SmolDesk/graphs/contributors
-[stars-shield]: https://img.shields.io/github/stars/SmolDesk/SmolDesk?style=for-the-badge&color=blue
-[stars-url]: https://github.com/SmolDesk/SmolDesk/stargazers
-[coverage-shield]: https://img.shields.io/codecov/c/github/SmolDesk/SmolDesk?style=for-the-badge&color=blue
-[coverage-url]: https://codecov.io/github/SmolDesk/SmolDesk
-[license-shield]: https://img.shields.io/github/license/SmolDesk/SmolDesk?style=for-the-badge&color=blue
-[license-url]: https://github.com/SmolDesk/SmolDesk/blob/main/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/EcoSphereNetwork/SmolDesk?style=for-the-badge&color=blue
+[contributors-url]: https://github.com/EcoSphereNetwork/SmolDesk/graphs/contributors
+[stars-shield]: https://img.shields.io/github/stars/EcoSphereNetwork/SmolDesk?style=for-the-badge&color=blue
+[stars-url]: https://github.com/EcoSphereNetwork/SmolDesk/stargazers
+[coverage-shield]: https://img.shields.io/codecov/c/github/EcoSphereNetwork/SmolDesk?style=for-the-badge&color=blue
+[coverage-url]: https://codecov.io/github/EcoSphereNetwork/SmolDesk
+[license-shield]: https://img.shields.io/github/license/EcoSphereNetwork/SmolDesk?style=for-the-badge&color=blue
+[license-url]: https://github.com/EcoSphereNetwork/SmolDesk/blob/main/LICENSE
 [discord-shield]: https://img.shields.io/badge/Discord-Join%20Us-purple?logo=discord&logoColor=white&style=for-the-badge
 [discord-url]: https://discord.gg/smoldesk
 [docs-shield]: https://img.shields.io/badge/Documentation-000?logo=googledocs&logoColor=FFE165&style=for-the-badge
-[docs-url]: https://github.com/SmolDesk/SmolDesk/wiki
+[docs-url]: https://github.com/EcoSphereNetwork/SmolDesk/wiki
 [credits-shield]: https://img.shields.io/badge/Project-Credits-blue?style=for-the-badge&color=FFE165&logo=github&logoColor=white
-[credits-url]: https://github.com/SmolDesk/SmolDesk/blob/main/CREDITS.md
+[credits-url]: https://github.com/EcoSphereNetwork/SmolDesk/blob/main/CREDITS.md
 [activity-graph]: https://repobeats.axiom.co/api/embed/placeholder-for-smoldesk-activity-graph.svg
 [activity-url]: https://repobeats.axiom.co

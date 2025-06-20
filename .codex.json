@@ -3,7 +3,10 @@
   "agents": [
     "Codex",
     "OpenHands",
-    "TestRunner"
+    "TestRunner",
+    "merge-agent",
+    "doc-agent",
+    "test-agent"
   ],
   "entrypoints": [
     "AGENTS.md",
@@ -22,9 +25,15 @@
     "phase4": "complete",
     "phase5": "Komponentenvalidierung & visuelle Regression in Storybook"
   },
-  "repo": "github.com/SmolDesk/SmolDesk",
+  "repo": "github.com/EcoSphereNetwork/SmolDesk",
+  "pullRequestPolicy": {
+    "autoMerge": true,
+    "conflictResolution": "favor-new-code",
+    "squashMergeDefault": true
+  },
   "defaultBranch": "main",
   "mergeStrategy": "squash",
   "issueOnConflict": true,
-  "agentMode": "autonomous"
+  "agentMode": "autonomous",
+  "cli": "gh"
 }

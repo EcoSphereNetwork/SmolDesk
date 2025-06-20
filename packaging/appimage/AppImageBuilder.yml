@@ -63,5 +63,5 @@ AppDir:
 AppImage:
   arch: x86_64
   file_name-template: SmolDesk-{{version}}-{{arch}}.AppImage
-  update-information: zsync|https://github.com/SmolDesk/SmolDesk/releases/latest/download/SmolDesk-latest-x86_64.AppImage.zsync
+  update-information: zsync|https://github.com/EcoSphereNetwork/SmolDesk/releases/latest/download/SmolDesk-latest-x86_64.AppImage.zsync
 

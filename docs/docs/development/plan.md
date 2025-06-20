@@ -40,4 +40,7 @@ Preparation for the next stage is outlined in the [Phase 4 Overview](../testing/
 Results are summarized in the [Phase 4 Report](./phase-4-report.md).
 The next step is defined in the [Phase 5 Overview](./phase-5-overview.md).
 See the [Playwright guide](../testing/playwright.md) for running E2E tests.
-\nSee [agent phases](../agents/agent-life-cycle.md) for the automated workflow.
+See [agent phases](../agents/agent-life-cycle.md) for the automated workflow.
+
+Autonomous PR merges are described in [../agents/pull-request-agent.md](../agents/pull-request-agent.md).
+
