@@ -56,7 +56,9 @@ npm run test:storybook:snapshots
 
 Screenshots are saved to `storybook-snapshots/` and uploaded as CI artifacts.
 
-## \ud83d\udce4 Vorschau-Deployment (Phase\u202f5.4)
+## \ud83d\udce4 Storybook Deployment
 
-Upcoming work will generate a static build under `storybook-static/` for each
-pull request. This allows reviewers to browse components visually before merge.
+A GitHub Actions workflow builds the static Storybook and publishes it via
+GitHub Pages whenever changes land on `main`. After a PR is merged you can open
+`https://<user>.github.io/<repo>/` to preview all components. During CI a zipped
+`storybook-static` folder is uploaded as an artifact for manual inspection.
