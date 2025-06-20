@@ -78,7 +78,8 @@ node_modules/
 test-results/
 playwright-report/
 storybook-snapshots/
-storybook-static/
+storybook-static/*
+!storybook-static/.nojekyll
 
 # Tauri Assets/Packages
 src-tauri/node_modules/

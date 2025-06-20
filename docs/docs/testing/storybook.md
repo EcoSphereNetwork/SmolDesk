@@ -56,7 +56,19 @@ npm run test:storybook:snapshots
 
 Screenshots are saved to `storybook-snapshots/` and uploaded as CI artifacts.
 
-## \ud83d\udce4 Vorschau-Deployment (Phase\u202f5.4)
+## \ud83d\udce4 Storybook Deployment
 
-Upcoming work will generate a static build under `storybook-static/` for each
-pull request. This allows reviewers to browse components visually before merge.
+A GitHub Actions workflow builds the static Storybook and publishes it to the
+`gh-pages` branch whenever changes land on `main`. Ensure the repository settings point GitHub Pages to this branch. After each merge you can open
+`https://<user>.github.io/<repo>/` to preview all components and verify that the
+latest build is available. During CI a zipped `storybook-static` folder is uploaded as an artifact for manual inspection.
+
+The workflow writes a `.nojekyll` file so GitHub serves all assets correctly.
+
+### Fehlerbehandlung GitHub Pages
+
+Sollte der unter `https://ecospherenetwork.github.io/SmolDesk/` gehostete Storybook-Build einen 404-Fehler liefern, überprüfe zuerst, ob der `gh-pages`-Branch korrekt erzeugt wurde und ob die `publish_dir` im Workflow auf `storybook-static` zeigt. Prüfe außerdem den `homepage`-Eintrag in der `package.json`, ob eine `.nojekyll`-Datei im Ausgabeverzeichnis liegt und dass `index.html` direkt im Wurzelverzeichnis des `gh-pages`-Branches liegt.
+
+### Fallback-Vorschau über CI-Artefakt
+
+Falls GitHub Pages nicht erreichbar ist, stellt die CI den Inhalt von `storybook-static/` als Download-Artefakt bereit. Der Workflow kommentiert im Pull Request einen Hinweis mit dem Link zur Action, damit Reviewer die Vorschau manuell laden können.
