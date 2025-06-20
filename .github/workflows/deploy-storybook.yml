@@ -9,11 +9,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: npm ci && npm run build:storybook
+      - name: install and build
+        run: |
+          npm ci
+          VITE_COMMIT_SHA=$(git rev-parse HEAD) VITE_VERSION=$(jq -r '.version' package.json) npm run build:storybook
       - name: verify build output
         run: |
           test -f storybook-static/index.html
           touch storybook-static/.nojekyll
+          cp storybook-static/index.html storybook-static/404.html # reuse index for 404 page
+      - name: Force-push to gh-pages
+        run: |
+          git config --global user.name "codex-ci"
+          git config --global user.email "ci@codex.local"
+          git checkout --orphan gh-pages
+          git reset
+          cp -r storybook-static/* .
+          git add .
+          git commit -m "chore: publish storybook"
+          git push --force origin gh-pages
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

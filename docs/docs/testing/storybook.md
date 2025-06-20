@@ -69,7 +69,12 @@ The workflow writes a `.nojekyll` file so GitHub serves all assets correctly.
 ### Fehlerbehandlung GitHub Pages
 
 Sollte der unter `https://ecospherenetwork.github.io/SmolDesk/` gehostete Storybook-Build einen 404-Fehler liefern, überprüfe zuerst, ob der `gh-pages`-Branch korrekt erzeugt wurde und ob die `publish_dir` im Workflow auf `storybook-static` zeigt. Prüfe außerdem den `homepage`-Eintrag in der `package.json`, ob eine `.nojekyll`-Datei im Ausgabeverzeichnis liegt und dass `index.html` direkt im Wurzelverzeichnis des `gh-pages`-Branches liegt.
+Stelle sicher, dass keine zusätzliche Unterordner-Struktur (`/SmolDesk/`) im Branch vorhanden ist und die GitHub-Pages-Einstellungen auf den Branch `gh-pages` mit dem Stammverzeichnis `(root)` zeigen. Leere den Browser-Cache oder lade die Seite hart neu, falls eine veraltete 404-Seite gezeigt wird.
 
 ### Fallback-Vorschau über CI-Artefakt
 
 Falls GitHub Pages nicht erreichbar ist, stellt die CI den Inhalt von `storybook-static/` als Download-Artefakt bereit. Der Workflow kommentiert im Pull Request einen Hinweis mit dem Link zur Action, damit Reviewer die Vorschau manuell laden können.
+
+### Versionsanzeige im Docs-Tab
+
+Jeder Build setzt die Variablen `VITE_VERSION` und `VITE_COMMIT_SHA`. Die Vorschau zeigt diese Informationen oben im Docs-Tab an, z.B. `Version: 1.0.0 (abcdef1)`. So lässt sich einfach überprüfen, welcher Commit gerade deployt ist.

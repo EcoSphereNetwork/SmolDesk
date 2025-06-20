@@ -7,6 +7,7 @@
   [![Stars][stars-shield]][stars-url]
   [![Coverage][coverage-shield]][coverage-url]
   [![MIT License][license-shield]][license-url]
+  [![Deploy Storybook][deploy-shield]][deploy-url]
   <br/>
   [![Discord][discord-shield]][discord-url]
   [![Documentation][docs-shield]][docs-url]
@@ -18,6 +19,8 @@
   [Request Feature](https://github.com/EcoSphereNetwork/SmolDesk/issues)
   <br/>
   <sub>Live preview may take a few minutes to update after each merge.</sub>
+  <br/>
+  <sub><strong>Live Preview (aktualisiert nach jeder Änderung):</strong> <https://ecospherenetwork.github.io/SmolDesk/></sub>
 </div>
 
 ## 📋 Table of Contents
@@ -302,3 +305,5 @@ Verteilt unter der MIT-Lizenz. Siehe [LICENSE](LICENSE) für weitere Information
 [credits-url]: https://github.com/EcoSphereNetwork/SmolDesk/blob/main/CREDITS.md
 [activity-graph]: https://repobeats.axiom.co/api/embed/placeholder-for-smoldesk-activity-graph.svg
 [activity-url]: https://repobeats.axiom.co
+[deploy-shield]: https://github.com/EcoSphereNetwork/SmolDesk/actions/workflows/deploy-storybook.yml/badge.svg
+[deploy-url]: https://github.com/EcoSphereNetwork/SmolDesk/actions/workflows/deploy-storybook.yml
