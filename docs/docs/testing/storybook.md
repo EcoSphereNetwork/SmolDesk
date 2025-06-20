@@ -58,14 +58,17 @@ Screenshots are saved to `storybook-snapshots/` and uploaded as CI artifacts.
 
 ## \ud83d\udce4 Storybook Deployment
 
-A GitHub Actions workflow builds the static Storybook and publishes it via
-GitHub Pages whenever changes land on `main`. After a PR is merged you can open
+A GitHub Actions workflow builds the static Storybook and publishes it to the
+`gh-pages` branch whenever changes land on `main`. Ensure the repository settings point GitHub Pages to this branch. After each merge you can open
 `https://<user>.github.io/<repo>/` to preview all components. During CI a zipped
 `storybook-static` folder is uploaded as an artifact for manual inspection.
 
+The workflow writes a `.nojekyll` file so GitHub serves all assets correctly.
+
 ### Fehlerbehandlung GitHub Pages
 
-Sollte der unter `https://ecospherenetwork.github.io/SmolDesk/` gehostete Storybook-Build einen 404-Fehler liefern, überprüfe zuerst, ob der `gh-pages`-Branch korrekt erzeugt wurde und ob die `publish_dir` im Workflow auf `storybook-static` zeigt. Prüfe außerdem den `homepage`-Eintrag in der `package.json`.
+Sollte der unter `https://ecospherenetwork.github.io/SmolDesk/` gehostete Storybook-Build einen 404-Fehler liefern, überprüfe zuerst, ob der `gh-pages`-Branch korrekt erzeugt wurde und ob die `publish_dir` im Workflow auf `storybook-static` zeigt. Prüfe außerdem den `homepage`-Eintrag in der `package.json` und ob eine `.nojekyll`-Datei im Ausgabeverzeichnis liegt.
+
 
 ### Fallback-Vorschau über CI-Artefakt
 
