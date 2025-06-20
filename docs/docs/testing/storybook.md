@@ -42,5 +42,14 @@ and matching snapshot plus accessibility tests. The table in
 Validate the setup:
 
 ```bash
-bash scripts/validate-storybook.sh
-``
+bash scripts/validate-storybook.sh```
+
+## Visual Regression with Screenshot Snapshots
+
+Run automated screenshot tests for every Storybook story:
+
+```bash
+npm run test:storybook:snapshots
+```
+
+Screenshots are saved to `storybook-snapshots/` and uploaded as CI artifacts.

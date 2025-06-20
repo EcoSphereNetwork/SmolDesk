@@ -12,4 +12,5 @@ Snapshots will serve as a reference for future UI changes. Storybook will also d
 ## Progress
 Phase 5.1 started with Storybook setup and initial tests for the Button component.
 Phase 5.2 covers all components with stories, snapshot tests and accessibility checks.
+Phase 5.3 adds visual screenshot testing and uploads snapshots as CI artifacts.
 See [storybook-status.md](../components/storybook-status.md) for details.

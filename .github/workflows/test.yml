@@ -53,6 +53,17 @@ jobs:
         if: matrix.target == 'node'
         run: npm run test:ci:e2e
 
+      - name: Run Storybook snapshot tests
+        if: matrix.target == 'node'
+        run: npm run test:storybook:snapshots
+
+      - name: Upload Storybook snapshots
+        if: always() && matrix.target == 'node'
+        uses: actions/upload-artifact@v4
+        with:
+          name: storybook-snapshots
+          path: storybook-snapshots
+
       - name: Upload Coverage Report
         if: always() && matrix.target == 'node'
         uses: actions/upload-artifact@v4

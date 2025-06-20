@@ -43,6 +43,7 @@
     "test:components": "vitest run tests/unit/components",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+    "test:storybook:snapshots": "bash scripts/run-storybook-snapshots.sh",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint src --ext ts,tsx --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,css,md}\"",
