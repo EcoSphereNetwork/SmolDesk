@@ -69,6 +69,7 @@ The workflow writes a `.nojekyll` file so GitHub serves all assets correctly.
 ### Fehlerbehandlung GitHub Pages
 
 Sollte der unter `https://ecospherenetwork.github.io/SmolDesk/` gehostete Storybook-Build einen 404-Fehler liefern, überprüfe zuerst, ob der `gh-pages`-Branch korrekt erzeugt wurde und ob die `publish_dir` im Workflow auf `storybook-static` zeigt. Prüfe außerdem den `homepage`-Eintrag in der `package.json`, ob eine `.nojekyll`-Datei im Ausgabeverzeichnis liegt und dass `index.html` direkt im Wurzelverzeichnis des `gh-pages`-Branches liegt.
+Stelle sicher, dass keine zusätzliche Unterordner-Struktur (`/SmolDesk/`) im Branch vorhanden ist und die GitHub-Pages-Einstellungen auf den Branch `gh-pages` mit dem Stammverzeichnis `(root)` zeigen. Leere den Browser-Cache oder lade die Seite hart neu, falls eine veraltete 404-Seite gezeigt wird.
 
 ### Fallback-Vorschau über CI-Artefakt
 
