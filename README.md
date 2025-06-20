@@ -262,6 +262,12 @@ Wir freuen uns über Beiträge! Bitte lesen Sie unseren [Contributing Guide](CON
 - [Discord Community][discord-url]
 - [Documentation][docs-url]
 
+## AI-gestützte Entwicklung
+
+Dieses Repository ist vorbereitet für autonome GitHub-Agenten (z. B. Codex).
+Siehe [AGENTS.md](./AGENTS.md) und
+[docs/docs/agents/README.md](./docs/docs/agents/README.md).
+
 ## 📄 License
 
 Verteilt unter der MIT-Lizenz. Siehe [LICENSE](LICENSE) für weitere Informationen.

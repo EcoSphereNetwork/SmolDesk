@@ -11,3 +11,5 @@ Each agent has a dedicated entry in `.codex.json` with default commands.
 Agents collaborate by creating issues and pull requests for each development phase.
 
 Agents follow the workflow described in `AGENTS.md`.
+
+See [agent-types.md](./agent-types.md) for a list of agent categories and [agent-life-cycle.md](./agent-life-cycle.md) for the workflow.
