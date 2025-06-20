@@ -41,6 +41,7 @@ ENV/
 .cache
 nosetests.xml
 coverage.xml
+coverage/
 *.cover
 .hypothesis/
 .pytest_cache/
@@ -77,6 +78,7 @@ node_modules/
 test-results/
 playwright-report/
 storybook-snapshots/
+storybook-static/
 
 # Tauri Assets/Packages
 src-tauri/node_modules/
