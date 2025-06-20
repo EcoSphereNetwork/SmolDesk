@@ -24,20 +24,15 @@ During unit and e2e tests, WebRTC APIs and Tauri window methods are mocked. This
 
 ### Multi-Window Scenarios
 
-E2E tests switch between a main window and a settings window using mocked window
-controls. The navigation button uses `data-testid="open-settings"`.
+E2E tests switch between a main window and a settings window using mocked window controls. The navigation button uses `data-testid="open-settings"`.
 
 ### Snapshot Strategy
 
-Playwright's `toHaveScreenshot()` is used for basic visual regression. Generated
-images are stored under `test-results/` and ignored from Git.
+Playwright's `toHaveScreenshot()` is used for basic visual regression. Generated images are stored under `test-results/` and ignored from Git.
 
 ### Error Paths and Offline Mode
 
-Phase 4.4 introduces dedicated mocks for failure cases and offline
-simulation. The Playwright specs `connection-error.spec.ts` and
-`offline.spec.ts` verify that the UI reacts gracefully when IPC calls fail or no
-network is available.
+Phase 4.4 introduces dedicated mocks for failure cases and offline simulation. The Playwright specs `connection-error.spec.ts` and `offline.spec.ts` verify that the UI reacts gracefully when IPC calls fail or network is unavailable.
 
 Phase 4.5 finalizes snapshot handling and prepares the e2e suite for CI usage.
 
