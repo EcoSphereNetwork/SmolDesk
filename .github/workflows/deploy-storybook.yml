@@ -10,7 +10,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: npm ci && npm run build:storybook
-      - run: touch storybook-static/.nojekyll
+      - name: verify build output
+        run: |
+          test -f storybook-static/index.html
+          touch storybook-static/.nojekyll
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

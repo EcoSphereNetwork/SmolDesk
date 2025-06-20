@@ -13,8 +13,11 @@
   [![Project Credits][credits-shield]][credits-url]
 
   [Start Documentation](https://github.com/EcoSphereNetwork/SmolDesk/blob/main/docs/README.md) •
+  [Live Storybook](https://ecospherenetwork.github.io/SmolDesk/) •
   [Report Bug](https://github.com/EcoSphereNetwork/SmolDesk/issues) •
   [Request Feature](https://github.com/EcoSphereNetwork/SmolDesk/issues)
+  <br/>
+  <sub>Live preview may take a few minutes to update after each merge.</sub>
 </div>
 
 ## 📋 Table of Contents
