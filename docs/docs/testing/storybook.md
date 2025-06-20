@@ -63,6 +63,7 @@ A GitHub Actions workflow builds the static Storybook and publishes it to the
 `https://<user>.github.io/<repo>/` to preview all components and verify that the
 latest build is available. During CI a zipped `storybook-static` folder is uploaded as an artifact for manual inspection.
 
+
 The workflow writes a `.nojekyll` file so GitHub serves all assets correctly.
 
 ### Fehlerbehandlung GitHub Pages
