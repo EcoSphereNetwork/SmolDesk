@@ -20,6 +20,11 @@
     "phase3": "complete",
     "4": "IPC und E2E Tests",
     "phase4": "complete",
-    "phase5": "Storybook Snapshot & Preview"
-  }
+    "phase5": "Komponentenvalidierung & visuelle Regression in Storybook"
+  },
+  "repo": "github.com/EcoSphereNetwork/SmolDesk",
+  "defaultBranch": "main",
+  "mergeStrategy": "squash",
+  "issueOnConflict": true,
+  "agentMode": "autonomous"
 }
