@@ -314,7 +314,7 @@ const App: React.FC = () => {
   }, [config, saveUserConfig]);
 
   return (
-    <div className={`app ${config.theme}`} data-theme={config.theme}>
+    <div className={`app ${config.theme}`} data-theme={config.theme} data-testid="main-window">
       {/* Header */}
       <header className="app-header">
         <div className="header-content">
@@ -337,13 +337,20 @@ const App: React.FC = () => {
               <span>Latency: {stats.latency}ms</span>
               <span>Quality: {config.captureConfig.quality}%</span>
             </div>
-            
-            <button 
+
+            <button
               className="sidebar-toggle"
               onClick={() => setShowSidebar(!showSidebar)}
               aria-label="Toggle Sidebar"
             >
               ☰
+            </button>
+            <button
+              data-testid="window-close"
+              onClick={async () => (await WindowAPI).close()}
+              aria-label="Close window"
+            >
+              ✕
             </button>
           </div>
         </div>
@@ -373,9 +380,10 @@ const App: React.FC = () => {
             >
               👀 {t('viewMode')}
             </button>
-            <button 
+            <button
               className={`nav-button ${activeTab === 'settings' ? 'active' : ''}`}
               onClick={() => setActiveTab('settings')}
+              data-testid="open-settings"
             >
               ⚙️ Settings
             </button>
@@ -601,7 +609,7 @@ const App: React.FC = () => {
           )}
 
           {activeTab === 'settings' && (
-            <div className="settings-panel">
+            <div className="settings-panel" data-testid="settings-window">
               <div className="settings-grid">
                 {/* General Settings */}
                 <section className="settings-section">
