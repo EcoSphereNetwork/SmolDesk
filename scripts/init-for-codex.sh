@@ -2,7 +2,7 @@
 # Initial setup for Codex automation
 set -e
 
-# ensure repository has github remote for PR operations
+# GitHub remote setzen (wenn nicht vorhanden)
 git remote get-url origin >/dev/null 2>&1 || \
   git remote add origin https://github.com/EcoSphereNetwork/SmolDesk.git
 
