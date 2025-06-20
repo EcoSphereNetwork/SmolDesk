@@ -13,7 +13,7 @@
 ### Debian/Ubuntu
 ```bash
 # Download der neuesten Version
-wget https://github.com/SmolDesk/SmolDesk/releases/latest/download/smoldesk_1.0.0_amd64.deb
+wget https://github.com/EcoSphereNetwork/SmolDesk/releases/latest/download/smoldesk_1.0.0_amd64.deb
 
 # Installation
 sudo apt install ./smoldesk_1.0.0_amd64.deb
@@ -22,7 +22,7 @@ sudo apt install ./smoldesk_1.0.0_amd64.deb
 ### Fedora/RHEL/openSUSE
 ```bash
 # Download der neuesten Version
-wget https://github.com/SmolDesk/SmolDesk/releases/latest/download/smoldesk-1.0.0-1.x86_64.rpm
+wget https://github.com/EcoSphereNetwork/SmolDesk/releases/latest/download/smoldesk-1.0.0-1.x86_64.rpm
 
 # Installation
 sudo dnf install ./smoldesk-1.0.0-1.x86_64.rpm
@@ -33,7 +33,7 @@ sudo zypper install ./smoldesk-1.0.0-1.x86_64.rpm
 ### AppImage (Universal)
 ```bash
 # Download und ausführbar machen
-wget https://github.com/SmolDesk/SmolDesk/releases/latest/download/SmolDesk-1.0.0-x86_64.AppImage
+wget https://github.com/EcoSphereNetwork/SmolDesk/releases/latest/download/SmolDesk-1.0.0-x86_64.AppImage
 chmod +x SmolDesk-1.0.0-x86_64.AppImage
 
 # Starten
@@ -43,7 +43,7 @@ chmod +x SmolDesk-1.0.0-x86_64.AppImage
 ### Flatpak
 ```bash
 # Download und Installation
-wget https://github.com/SmolDesk/SmolDesk/releases/latest/download/SmolDesk.flatpak
+wget https://github.com/EcoSphereNetwork/SmolDesk/releases/latest/download/SmolDesk.flatpak
 flatpak install SmolDesk.flatpak
 
 # Starten
@@ -254,8 +254,8 @@ Keyframe Interval: 60
 ### Support
 
 Bei Problemen können Sie:
-1. Das [GitHub Issue Tracker](https://github.com/SmolDesk/SmolDesk/issues) nutzen
-2. Die [Diskussionen](https://github.com/SmolDesk/SmolDesk/discussions) durchsuchen
+1. Das [GitHub Issue Tracker](https://github.com/EcoSphereNetwork/SmolDesk/issues) nutzen
+2. Die [Diskussionen](https://github.com/EcoSphereNetwork/SmolDesk/discussions) durchsuchen
 3. Die [Community](https://discord.gg/smoldesk) im Discord kontaktieren
 
 **Bevor Sie einen Bug-Report erstellen:**
