@@ -4,7 +4,7 @@ Release:        1%{?dist}
 Summary:        WebRTC-based Remote Desktop for Linux
 
 License:        MIT
-URL:            https://github.com/SmolDesk/SmolDesk
+URL:            https://github.com/EcoSphereNetwork/SmolDesk
 Source0:        %{name}-%{version}.tar.gz
 
 BuildRequires:  nodejs >= 16

@@ -68,9 +68,9 @@ In dieser Dokumentation werden folgende Konventionen verwendet:
 
 Wenn Sie Fragen haben, die in dieser Dokumentation nicht beantwortet werden:
 
-- Besuchen Sie die [GitHub Discussions](https://github.com/SmolDesk/SmolDesk/discussions)
+- Besuchen Sie die [GitHub Discussions](https://github.com/EcoSphereNetwork/SmolDesk/discussions)
 - Treten Sie unserem [Discord-Server](https://discord.gg/smoldesk) bei
-- Öffnen Sie ein [Support-Ticket](https://github.com/SmolDesk/SmolDesk/issues/new?template=support_request.md)
+- Öffnen Sie ein [Support-Ticket](https://github.com/EcoSphereNetwork/SmolDesk/issues/new?template=support_request.md)
 
 ## Entwicklungsstatus
 
