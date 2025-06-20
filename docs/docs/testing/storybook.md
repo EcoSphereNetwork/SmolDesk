@@ -62,3 +62,11 @@ A GitHub Actions workflow builds the static Storybook and publishes it via
 GitHub Pages whenever changes land on `main`. After a PR is merged you can open
 `https://<user>.github.io/<repo>/` to preview all components. During CI a zipped
 `storybook-static` folder is uploaded as an artifact for manual inspection.
+
+### Fehlerbehandlung GitHub Pages
+
+Sollte der unter `https://ecospherenetwork.github.io/SmolDesk/` gehostete Storybook-Build einen 404-Fehler liefern, überprüfe zuerst, ob der `gh-pages`-Branch korrekt erzeugt wurde und ob die `publish_dir` im Workflow auf `storybook-static` zeigt. Prüfe außerdem den `homepage`-Eintrag in der `package.json`.
+
+### Fallback-Vorschau über CI-Artefakt
+
+Falls GitHub Pages nicht erreichbar ist, stellt die CI den Inhalt von `storybook-static/` als Download-Artefakt bereit. Der Workflow kommentiert im Pull Request einen Hinweis mit dem Link zur Action, damit Reviewer die Vorschau manuell laden können.

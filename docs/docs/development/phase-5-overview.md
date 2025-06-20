@@ -19,3 +19,5 @@ See [storybook-status.md](../components/storybook-status.md) for details.
 Phase 5.4 introduces automatic deployment of the static Storybook via GitHub
 Pages so component previews are available at
 `https://<user>.github.io/<repo>/` after each merge to `main`.
+
+Phase 5.4.1 adds a CI fallback: sollte die GitHub Pages Instanz nach dem Merge nicht erreichbar sein und nur einen 404 liefern, wird der Storybook-Build als Artefakt hochgeladen. Ein Workflow kommentiert den Link direkt im Pull Request.
