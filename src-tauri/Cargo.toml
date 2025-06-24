@@ -1,0 +1,86 @@
+[package]
+name = "smoldesk"
+version = "1.0.0"
+description = "WebRTC-basiertes Remote-Desktop-Tool für Linux mit niedrigen Latenzen und nativer Unterstützung für X11 und Wayland"
+authors = ["SmolDesk Team <dev@ecospherenetwork.org>"]
+license = "MIT"
+repository = "https://github.com/EcoSphereNetwork/SmolDesk.git"
+homepage = "https://github.com/EcoSphereNetwork/SmolDesk"
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "1.5", features = [] }
+
+[dependencies]
+tauri = { version = "1.5", features = [
+    "fs-remove-file", "window-set-focus", "fs-read-dir", "fs-remove-dir", 
+    "window-close", "window-maximize", "window-start-dragging", "window-show", 
+    "window-minimize", "dialog-open", "fs-read-file", "dialog-save", 
+    "window-unmaximize", "fs-exists", "fs-copy-file", "clipboard-all", 
+    "fs-write-file", "fs-rename-file", "window-unminimize", "window-set-title", 
+    "fs-create-dir", "window-hide", "window-set-size", "window-set-position",
+    "global-shortcut-all", "http-all", "notification-all", "os-all", 
+    "path-all", "protocol-asset", "shell-open", "system-tray"
+] }
+
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.0", features = ["full"] }
+uuid = { version = "1.6", features = ["v4", "serde"] }
+base64 = "0.21"
+chrono = { version = "0.4", features = ["serde"] }
+sha2 = "0.10"
+hmac = "0.12"
+jsonwebtoken = "9.2"
+rand = "0.8"
+regex = "1.10"
+urlencoding = "2.1"
+
+# Async and concurrency
+futures = "0.3"
+async-trait = "0.1"
+
+# Error handling
+thiserror = "1.0"
+anyhow = "1.0"
+
+# Logging
+log = "0.4"
+env_logger = "0.10"
+
+# System integration
+nix = "0.27"
+
+# Image processing (for screen capture)
+image = "0.24"
+
+# Configuration management
+config = "0.13"
+toml = "0.8"
+
+# Platform-specific dependencies - korrekt als optionale Features
+x11 = { version = "2.21", optional = true }
+wayland-client = { version = "0.31", optional = true }
+wayland-protocols = { version = "0.31", optional = true }
+
+[features]
+default = ["custom-protocol", "x11-support", "wayland-support"]
+custom-protocol = ["tauri/custom-protocol"]
+
+# Platform-specific features - jetzt korrekt definiert
+x11-support = ["dep:x11"]
+wayland-support = ["dep:wayland-client", "dep:wayland-protocols"]
+
+[profile.dev]
+incremental = true
+
+[profile.release]
+panic = "abort"
+codegen-units = 1
+lto = true
+strip = true
+
+[profile.release-with-debug]
+inherits = "release"
+debug = true
+strip = false

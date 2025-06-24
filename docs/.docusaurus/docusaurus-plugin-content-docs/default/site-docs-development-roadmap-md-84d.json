@@ -1,0 +1,24 @@
+{
+  "id": "development/roadmap",
+  "title": "roadmap",
+  "description": "",
+  "source": "@site/docs/development/roadmap.md",
+  "sourceDirName": "development",
+  "slug": "/development/roadmap",
+  "permalink": "/docs/development/roadmap",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/development/roadmap.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "guide",
+    "permalink": "/docs/development/guide"
+  },
+  "next": {
+    "title": "reference",
+    "permalink": "/docs/api/reference"
+  }
+}

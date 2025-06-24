@@ -1,0 +1,15 @@
+name: Storybook PR Preview
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm ci && npm run build:storybook
+      - uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: storybook-static

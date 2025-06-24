@@ -1,0 +1,44 @@
+{
+  "project": "SmolDesk",
+  "agents": [
+    "Codex",
+    "OpenHands",
+    "TestRunner",
+    "merge-agent",
+    "doc-agent",
+    "test-agent"
+  ],
+  "entrypoints": [
+    "AGENTS.md",
+    "docs/docs/development/plan.md"
+  ],
+  "scripts": {
+    "analyze": "bash scripts/analyze-and-report.sh",
+    "init": "bash scripts/init-for-codex.sh",
+    "test": "npm run test"
+  },
+  "phases": {
+    "2": "Komponenten validieren & vervollständigen",
+    "3": "Teststrategie & CI-Integration vorbereiten",
+    "phase3": "complete",
+    "4": "IPC und E2E Tests",
+    "phase4": "complete",
+    "phase5": "Storybook Snapshot & Preview"
+  },
+  "repo": "github.com/EcoSphereNetwork/SmolDesk",
+  "storybookDeployment": {
+    "output": "storybook-static",
+    "method": "gh-pages",
+    "trigger": "main"
+  },
+  "pullRequestPolicy": {
+    "autoMerge": true,
+    "conflictResolution": "favor-new-code",
+    "squashMergeDefault": true
+  },
+  "defaultBranch": "main",
+  "mergeStrategy": "squash",
+  "issueOnConflict": true,
+  "agentMode": "autonomous",
+  "cli": "gh"
+}

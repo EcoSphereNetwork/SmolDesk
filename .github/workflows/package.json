@@ -1,0 +1,59 @@
+{
+  "name": "smoldesk-ci-utilities",
+  "version": "1.0.0",
+  "description": "CI/CD utilities and automation scripts for SmolDesk project",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "github:validate": "node scripts/validate-github-actions.js",
+    "release:notes": "node scripts/generate-release-notes.js",
+    "version:bump": "node scripts/bump-version.js",
+    "changelog:update": "node scripts/update-changelog.js",
+    "artifacts:prepare": "node scripts/prepare-artifacts.js",
+    "notify:discord": "node scripts/notify-discord.js",
+    "notify:slack": "node scripts/notify-slack.js",
+    "matrix:generate": "node scripts/generate-test-matrix.js",
+    "deps:security": "node scripts/security-audit.js",
+    "coverage:upload": "node scripts/upload-coverage.js",
+    "docker:multi-arch": "node scripts/build-multi-arch.js"
+  },
+  "keywords": [
+    "ci-cd",
+    "github-actions",
+    "automation",
+    "release",
+    "deployment"
+  ],
+  "author": "SmolDesk Team",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^6.0.0",
+    "@actions/exec": "^1.1.1",
+    "@actions/tool-cache": "^2.0.1",
+    "@octokit/rest": "^20.0.0",
+    "semver": "^7.5.0",
+    "conventional-commits-parser": "^4.0.0",
+    "conventional-changelog": "^4.0.0",
+    "node-fetch": "^3.3.0",
+    "fs-extra": "^11.1.1",
+    "yaml": "^2.3.0",
+    "chalk": "^5.3.0",
+    "ora": "^7.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.0",
+    "@types/fs-extra": "^11.0.0",
+    "@types/semver": "^7.5.0",
+    "typescript": "^5.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/smoldesk.git",
+    "directory": ".github/workflows"
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "name": "smoldesk-mobile",
+  "version": "1.0.0",
+  "description": "Mobile viewer application for SmolDesk remote desktop",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "android:dev": "tauri android dev",
+    "android:build": "tauri android build",
+    "android:build:release": "tauri android build --release",
+    "ios:dev": "tauri ios dev",
+    "ios:build": "tauri ios build", 
+    "ios:build:release": "tauri ios build --release",
+    "capacitor:sync": "capacitor sync",
+    "capacitor:run:android": "capacitor run android",
+    "capacitor:run:ios": "capacitor run ios",
+    "capacitor:build": "capacitor build",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext js,jsx,ts,tsx",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "mobile",
+    "tauri",
+    "android",
+    "ios",
+    "capacitor",
+    "remote-desktop",
+    "viewer"
+  ],
+  "author": "SmolDesk Team",
+  "license": "MIT",
+  "dependencies": {
+    "@tauri-apps/api": "^1.5.1",
+    "@tauri-apps/plugin-shell": "^1.0.0",
+    "@capacitor/core": "^5.5.0",
+    "@capacitor/android": "^5.5.0",
+    "@capacitor/ios": "^5.5.0",
+    "@capacitor/splash-screen": "^5.0.0",
+    "@capacitor/status-bar": "^5.0.0",
+    "@capacitor/keyboard": "^5.0.0",
+    "@capacitor/device": "^5.0.0",
+    "@capacitor/network": "^5.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.0.0",
+    "lucide-react": "^0.263.1",
+    "clsx": "^2.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^5.5.0",
+    "@tauri-apps/cli": "^1.5.6",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vitejs/plugin-react": "^4.0.3",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/smoldesk.git",
+    "directory": "mobile"
+  },
+  "capacitor": {
+    "appId": "com.smoldesk.mobile",
+    "appName": "SmolDesk",
+    "webDir": "dist",
+    "server": {
+      "androidScheme": "https"
+    },
+    "plugins": {
+      "SplashScreen": {
+        "launchShowDuration": 2000,
+        "backgroundColor": "#1f2937",
+        "androidScaleType": "CENTER_CROP",
+        "showSpinner": true,
+        "spinnerColor": "#3b82f6"
+      },
+      "StatusBar": {
+        "style": "dark"
+      }
+    }
+  }
+}
