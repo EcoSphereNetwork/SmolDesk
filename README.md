@@ -39,7 +39,7 @@
 SmolDesk ist ein modernes Remote-Desktop-Tool, das speziell für Linux entwickelt wurde und beide wichtigen Display-Server (X11 und Wayland) unterstützt. Durch die Verwendung von WebRTC ermöglicht SmolDesk Peer-to-Peer-Verbindungen mit niedriger Latenz, optimiert durch Hardware-Beschleunigung für eine flüssige Benutzererfahrung.
 
 ### Warum SmolDesk?
-- 🚀 **Niedrige Latenz**: Optimiert für Reaktionsschnelligkeit (<200ms) für ein natürliches Benutzererlebnis
+- 🚀 **Niedrige Latenz**: Optimiert für Reaktionsschnelligkeit (<100ms) für ein natürliches Benutzererlebnis
 - 🔄 **WebRTC-Integration**: Peer-to-Peer-Verbindungen mit STUN/TURN-Fallback für NAT-Traversal
 - 📊 **Optimierte Leistung**: Unterstützung für Hardware-Beschleunigung (VAAPI/NVENC)
 - 🛡️ **Sicherheit**: OAuth2-Integration und verschlüsselte Verbindungen
