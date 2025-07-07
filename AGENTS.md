@@ -146,3 +146,8 @@ Links to key progress documents are kept here for reference:
 - [Playwright Guide](docs/docs/testing/playwright.md)
 - [Phase 5 Overview](docs/docs/development/phase-5-overview.md)
 
+
+## Mobile Status
+- [x] Signaling-Verbindung implementiert
+- [x] WebRTC PeerConnection mit ICE & SDP
+- [x] Videoanzeige mit RTCView
