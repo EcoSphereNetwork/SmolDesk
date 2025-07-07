@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        applicationId "org.ecosphere.smoldesk"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "0.1.0"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(System.getenv('MYAPP_RELEASE_STORE_FILE'))
+            storePassword System.getenv('MYAPP_RELEASE_STORE_PASSWORD')
+            keyAlias System.getenv('MYAPP_RELEASE_KEY_ALIAS')
+            keyPassword System.getenv('MYAPP_RELEASE_KEY_PASSWORD')
+        }
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+        }
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    bundle {
+        storeArchive true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}

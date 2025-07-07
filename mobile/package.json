@@ -6,8 +6,8 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest",
-    "lint": "eslint . --ext js,jsx,ts,tsx"
+    "test": "jest --coverage",
+    "lint": "eslint . --ext .ts,.tsx"
   },
   "dependencies": {
     "@react-native-clipboard/clipboard": "^1.11.2",
