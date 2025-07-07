@@ -16,7 +16,10 @@
     "@react-navigation/native-stack": "^6.9.12",
     "react-native-screens": "^3.29.0",
     "react-native-safe-area-context": "^4.7.1",
-    "react-native-webrtc": "^1.108.0"
+    "react-native-webrtc": "^124.0.5",
+    "react-native-gesture-handler": "^2.27.1",
+    "react-native-reanimated": "^3.6.1",
+    "@react-native-clipboard/clipboard": "^1.11.2"
   },
   "devDependencies": {
     "@babel/core": "^7.22.5",
@@ -27,7 +30,7 @@
     "typescript": "^5.2.2",
     "eslint": "^8.57.0",
     "jest": "^29.7.0",
-    "metro-react-native-babel-preset": "^0.78.6",
+    "metro-react-native-babel-preset": "^0.76.9",
     "react-test-renderer": "18.2.0"
   },
   "engines": {

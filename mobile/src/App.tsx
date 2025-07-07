@@ -36,7 +36,13 @@ export default function App() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {stream ? (
           <Stack.Screen name="viewer">
-            {() => <ViewerScreen stream={stream!} onDisconnect={handleDisconnect} />}
+            {() => (
+              <ViewerScreen
+                stream={stream!}
+                service={webrtc!}
+                onDisconnect={handleDisconnect}
+              />
+            )}
           </Stack.Screen>
         ) : (
           <Stack.Screen name="connect">

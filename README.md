@@ -54,6 +54,12 @@ SmolDesk ist ein modernes Remote-Desktop-Tool, das speziell für Linux entwickel
 - 📋 **Clipboard-Synchronisation**: Nahtlose Übertragung von Zwischenablage-Inhalten
 - 🔄 **Dateitransfer**: Einfacher und sicherer Austausch von Dateien zwischen Host und Client
 
+### Mobile Touchsteuerung
+
+- Pinch-to-Zoom und Drag zum Verschieben des Remote-Bilds
+- Touch-Gesten werden zu Maus- und Scroll-Ereignissen gemappt
+- Eingaben über die native Bildschirmtastatur inklusive Sondertasten
+
 ### Technische Highlights
 - 🚀 **Rust-Backend**: Leistungsstarkes und sicheres Rust-Backend mit Tauri-Integration
 - ⚛️ **React-Frontend**: Modernes, reaktives UI mit TypeScript und Tailwind CSS
