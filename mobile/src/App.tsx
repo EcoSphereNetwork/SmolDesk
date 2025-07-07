@@ -15,6 +15,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [webrtc, setWebrtc] = useState<WebRTCService | null>(null);
+  const [signaling, setSignaling] = useState<SignalingService | null>(null);
   const [stream, setStream] = useState<MediaStream | null>(null);
   const [token, setToken] = useState<string | null>(null);
 
@@ -34,24 +35,28 @@ export default function App() {
 
   const handleConnect = (server: string, room: string) => {
     const key = CryptoJS.PBKDF2(token || '', ENCRYPTION_KEY_SALT, { keySize: 32/4 }).toString();
-    const signaling = new SignalingService({ url: server, token: token || undefined, hmacKey: HMAC_ENABLED ? HMAC_KEY : undefined });
-    const service = new WebRTCService({ signaling, encryptionKey: key });
+    const sig = new SignalingService({ url: server, token: token || undefined, hmacKey: HMAC_ENABLED ? HMAC_KEY : undefined });
+    const service = new WebRTCService({ signaling: sig, encryptionKey: key });
     service.on('stream', setStream);
-    signaling.on('close', () => {
+    sig.on('close', () => {
       setStream(null);
       setWebrtc(null);
+      setSignaling(null);
     });
-    signaling.on('unauthorized', () => {
+    sig.on('unauthorized', () => {
       setToken(null);
     });
     service.join(room);
     setWebrtc(service);
+    setSignaling(sig);
   };
 
   const handleDisconnect = () => {
     webrtc?.disconnect();
+    signaling?.disconnect();
     setStream(null);
     setWebrtc(null);
+    setSignaling(null);
   };
 
   return (
@@ -63,6 +68,7 @@ export default function App() {
               <ViewerScreen
                 stream={stream!}
                 service={webrtc!}
+                signaling={signaling!}
                 onDisconnect={handleDisconnect}
               />
             )}

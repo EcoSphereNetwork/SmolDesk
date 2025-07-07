@@ -19,6 +19,14 @@ export declare interface SignalingService {
   on(event: 'error', listener: (err: any) => void): this;
   on(event: 'authorized', listener: () => void): this;
   on(event: 'unauthorized', listener: () => void): this;
+  on(event: 'monitors', listener: (list: MonitorInfo[]) => void): this;
+}
+
+export interface MonitorInfo {
+  id: number;
+  width: number;
+  height: number;
+  name?: string;
 }
 
 export class SignalingService extends EventEmitter {
@@ -71,6 +79,8 @@ export class SignalingService extends EventEmitter {
           this.emit('authorized');
         } else if (msg.type === 'unauthorized') {
           this.emit('unauthorized');
+        } else if (msg.type === 'monitors') {
+          this.emit('monitors', msg.monitors as MonitorInfo[]);
         } else {
           this.emit('message', msg);
         }
@@ -108,6 +118,10 @@ export class SignalingService extends EventEmitter {
 
   leaveRoom() {
     this.send({ type: 'leave-room' });
+  }
+
+  selectMonitor(id: number) {
+    this.send({ type: 'select-monitor', monitorId: id });
   }
 }
 

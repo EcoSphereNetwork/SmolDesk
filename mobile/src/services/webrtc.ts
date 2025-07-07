@@ -60,20 +60,27 @@ export class WebRTCService extends EventEmitter {
         this.dataChannel = e.channel;
         this.dataChannel.onmessage = (ev) => {
           let text = ev.data as string;
-          if (this.encryptionKey) {
-            const [ivB64, cipherB64] = text.split(':');
-            const decrypted = AES.decrypt({
-              ciphertext: CryptoJS.enc.Base64.parse(cipherB64)
-            } as any, CryptoJS.enc.Utf8.parse(this.encryptionKey), {
-              iv: CryptoJS.enc.Base64.parse(ivB64),
-            });
-            text = decrypted.toString(encUtf8);
-          }
+          let payload: any = null;
           try {
-            const payload = JSON.parse(text);
+            payload = JSON.parse(text);
+          } catch {
+            if (this.encryptionKey) {
+              try {
+                const [ivB64, cipherB64] = text.split(':');
+                const decrypted = AES.decrypt({
+                  ciphertext: CryptoJS.enc.Base64.parse(cipherB64),
+                } as any, CryptoJS.enc.Utf8.parse(this.encryptionKey), {
+                  iv: CryptoJS.enc.Base64.parse(ivB64),
+                });
+                text = decrypted.toString(encUtf8);
+                payload = JSON.parse(text);
+              } catch {
+                return;
+              }
+            }
+          }
+          if (payload) {
             this.emit('data', payload);
-          } catch (e) {
-            // ignore
           }
         };
       }
@@ -148,6 +155,12 @@ export class WebRTCService extends EventEmitter {
         const encrypted = AES.encrypt(text, CryptoJS.enc.Utf8.parse(this.encryptionKey), { iv });
         text = iv.toString(CryptoJS.enc.Base64) + ':' + encrypted.ciphertext.toString(CryptoJS.enc.Base64);
       }
+      this.dataChannel.send(text);
+    }
+  }
+
+  sendRaw(text: string) {
+    if (this.dataChannel && this.dataChannel.readyState === 'open') {
       this.dataChannel.send(text);
     }
   }

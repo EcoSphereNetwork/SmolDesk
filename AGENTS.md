@@ -158,3 +158,6 @@ Links to key progress documents are kept here for reference:
 - [x] OAuth2 PKCE Login
 - [x] Tokenweitergabe an Signaling
 - [x] Datenkanal-Verschlüsselung
+- [x] Datei senden
+- [x] Datei empfangen
+- [x] Multi-Monitor Auswahl

@@ -6,8 +6,8 @@
 - [x] Viewer UI
 - [x] Eingabesteuerung
 - [x] Clipboard-Sync
-- [ ] Dateiübertragung
-- [ ] Multi-Monitor
+- [x] Dateiübertragung
+- [x] Multi-Monitor
 - [x] Sicherheitsfeatures
 
 ## Technical Notes
