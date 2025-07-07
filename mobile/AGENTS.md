@@ -2,8 +2,8 @@
 
 ## Feature Status
 - [ ] Projektinitialisierung
-- [ ] Signaling & WebRTC
-- [ ] Viewer UI
+- [x] Signaling & WebRTC
+- [x] Viewer UI
 - [ ] Eingabesteuerung
 - [ ] Clipboard-Sync
 - [ ] Dateiübertragung
