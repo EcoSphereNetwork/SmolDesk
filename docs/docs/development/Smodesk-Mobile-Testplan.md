@@ -8,3 +8,5 @@
 6. **Token-Validierung** beim Signaling
 7. **Datenkanalverschlüsselung** testen (verschlüsselt vs. unverschlüsselt)
 8. **UI-Tests** optional mit Detox
+9. **Datei senden/empfangen** (verschlüsselt & unverschlüsselt)
+10. **Monitorwechsel** mit mehreren angeschlossenen Bildschirmen

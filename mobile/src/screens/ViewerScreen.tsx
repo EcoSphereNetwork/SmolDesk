@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { View, StyleSheet, Button, useWindowDimensions } from 'react-native';
 import {
   PanGestureHandler,
@@ -14,14 +14,18 @@ import Animated, {
 } from 'react-native-reanimated';
 import { RTCView, MediaStream } from 'react-native-webrtc';
 import WebRTCService from '../services/webrtc';
+import SignalingService, { MonitorInfo } from '../services/signaling';
+import FileTransferService from '../services/files';
+import MonitorSelector from '../components/MonitorSelector';
 import TouchToMouse from '../input/touchToMouse';
 
 interface Props {
   stream: MediaStream;
   service: WebRTCService;
+  signaling: SignalingService;
   onDisconnect: () => void;
 }
-export default function ViewerScreen({ stream, service, onDisconnect }: Props) {
+export default function ViewerScreen({ stream, service, signaling, onDisconnect }: Props) {
   const { width, height } = useWindowDimensions();
   const mouse = new TouchToMouse(service);
 
@@ -29,6 +33,18 @@ export default function ViewerScreen({ stream, service, onDisconnect }: Props) {
   const translateX = useSharedValue(0);
   const translateY = useSharedValue(0);
   const [pointerMode, setPointerMode] = useState(false);
+  const [monitors, setMonitors] = useState<MonitorInfo[]>([]);
+  const [selectorVisible, setSelectorVisible] = useState(false);
+  const fileService = useRef<FileTransferService>();
+
+  useEffect(() => {
+    fileService.current = new FileTransferService(service);
+    const handleMonitors = (list: MonitorInfo[]) => setMonitors(list);
+    signaling.on('monitors', handleMonitors);
+    return () => {
+      signaling.off('monitors', handleMonitors);
+    };
+  }, [service, signaling]);
 
   const pinchHandler = useAnimatedGestureHandler({
     onStart: (_, ctx: any) => {
@@ -90,8 +106,19 @@ export default function ViewerScreen({ stream, service, onDisconnect }: Props) {
       </TapGestureHandler>
       <View style={styles.toolbar}>
         <Button title="Toggle Mode" onPress={() => setPointerMode(!pointerMode)} />
+        <Button title="Datei senden" onPress={() => fileService.current?.pickAndSend()} />
+        <Button title="Monitor wechseln" onPress={() => setSelectorVisible(true)} />
         <Button title="Verbindung trennen" onPress={onDisconnect} />
       </View>
+      <MonitorSelector
+        visible={selectorVisible}
+        monitors={monitors}
+        onSelect={(id) => {
+          signaling.selectMonitor(id);
+          setSelectorVisible(false);
+        }}
+        onClose={() => setSelectorVisible(false)}
+      />
     </View>
   );
 }
