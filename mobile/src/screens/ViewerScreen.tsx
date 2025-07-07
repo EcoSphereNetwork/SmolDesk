@@ -1,5 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { View, StyleSheet, Button, useWindowDimensions } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
+import { useTheme } from 'react-native-paper';
 import {
   PanGestureHandler,
   PinchGestureHandler,
@@ -28,6 +31,7 @@ interface Props {
 export default function ViewerScreen({ stream, service, signaling, onDisconnect }: Props) {
   const { width, height } = useWindowDimensions();
   const mouse = new TouchToMouse(service);
+  const { colors } = useTheme();
 
   const scale = useSharedValue(1);
   const translateX = useSharedValue(0);
@@ -62,7 +66,8 @@ export default function ViewerScreen({ stream, service, signaling, onDisconnect 
     },
     onActive: (e, ctx: any) => {
       if (pointerMode && scale.value <= 1) {
-        runOnJS(mouse.move)(e.translationX, e.translationY);
+        const dist = Math.sqrt(e.translationX * e.translationX + e.translationY * e.translationY);
+        if (dist > 5) runOnJS(mouse.move)(e.translationX, e.translationY);
         return;
       }
       translateX.value = ctx.x + e.translationX;
@@ -90,7 +95,7 @@ export default function ViewerScreen({ stream, service, signaling, onDisconnect 
   }));
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: colors.background }] }>
       <TapGestureHandler onGestureEvent={doubleTap} numberOfTaps={2}>
         <PinchGestureHandler onGestureEvent={pinchHandler}>
           <PanGestureHandler onGestureEvent={panHandler} minPointers={1}>
@@ -104,12 +109,16 @@ export default function ViewerScreen({ stream, service, signaling, onDisconnect 
           </PanGestureHandler>
         </PinchGestureHandler>
       </TapGestureHandler>
-      <View style={styles.toolbar}>
-        <Button title="Toggle Mode" onPress={() => setPointerMode(!pointerMode)} />
+      <SafeAreaView edges={['bottom']} style={styles.toolbar}>
+        <Button
+          title={pointerMode ? 'Zeiger' : 'Scroll'}
+          color={pointerMode ? colors.primary : undefined}
+          onPress={() => setPointerMode(!pointerMode)}
+        />
         <Button title="Datei senden" onPress={() => fileService.current?.pickAndSend()} />
         <Button title="Monitor wechseln" onPress={() => setSelectorVisible(true)} />
         <Button title="Verbindung trennen" onPress={onDisconnect} />
-      </View>
+      </SafeAreaView>
       <MonitorSelector
         visible={selectorVisible}
         monitors={monitors}
@@ -124,13 +133,14 @@ export default function ViewerScreen({ stream, service, signaling, onDisconnect 
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#000' },
+  container: { flex: 1 },
   video: { flex: 1 },
   toolbar: {
     position: 'absolute',
-    bottom: 20,
+    bottom: RFValue(20),
     left: 0,
     right: 0,
     alignItems: 'center',
+    gap: 8,
   },
 });

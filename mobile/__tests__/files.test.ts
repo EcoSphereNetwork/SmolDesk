@@ -16,6 +16,8 @@ jest.mock('react-native-fs', () => {
   };
 });
 
+jest.mock('react-native-toast-message');
+
 test('sends header and chunks', async () => {
   class MockRTC extends EventEmitter {
     sent: any[] = [];

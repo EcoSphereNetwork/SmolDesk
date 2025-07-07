@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, View, Button, StyleSheet } from 'react-native';
+import Toast from 'react-native-toast-message';
 import { MonitorInfo } from '../services/signaling';
 
 interface Props {
@@ -17,7 +18,10 @@ export default function MonitorSelector({ visible, monitors, onSelect, onClose }
           <Button
             key={m.id}
             title={m.name || `${m.width}x${m.height}`}
-            onPress={() => onSelect(m.id)}
+            onPress={() => {
+              Toast.show({ type: 'info', text1: `Monitor ${m.id}` });
+              onSelect(m.id);
+            }}
           />
         ))}
         <Button title="Abbrechen" onPress={onClose} />
