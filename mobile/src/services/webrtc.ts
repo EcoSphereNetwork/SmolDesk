@@ -21,6 +21,7 @@ export class WebRTCService extends EventEmitter {
   private signaling: SignalingService;
   private iceServers: RTCIceServer[];
   private pc: RTCPeerConnection | null = null;
+  private dataChannel: RTCDataChannel | null = null;
 
   constructor(options: WebRTCServiceOptions) {
     super();
@@ -38,6 +39,15 @@ export class WebRTCService extends EventEmitter {
   private createPeer() {
     if (this.pc) return;
     this.pc = new RTCPeerConnection({ iceServers: this.iceServers });
+
+    // Create a data channel for input events.
+    this.dataChannel = this.pc.createDataChannel('input');
+
+    this.pc.ondatachannel = (e) => {
+      if (e.channel.label === 'input') {
+        this.dataChannel = e.channel;
+      }
+    };
 
     this.pc.onicecandidate = (e) => {
       if (e.candidate) {
@@ -97,6 +107,12 @@ export class WebRTCService extends EventEmitter {
     }
   }
 
+  sendData(payload: any) {
+    if (this.dataChannel && this.dataChannel.readyState === 'open') {
+      this.dataChannel.send(JSON.stringify(payload));
+    }
+  }
+
   disconnect() {
     this.signaling.leaveRoom();
     this.signaling.disconnect();
@@ -104,6 +120,7 @@ export class WebRTCService extends EventEmitter {
       this.pc.close();
       this.pc = null;
     }
+    this.dataChannel = null;
   }
 }
 

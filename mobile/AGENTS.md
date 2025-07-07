@@ -4,8 +4,8 @@
 - [ ] Projektinitialisierung
 - [x] Signaling & WebRTC
 - [x] Viewer UI
-- [ ] Eingabesteuerung
-- [ ] Clipboard-Sync
+- [x] Eingabesteuerung
+- [x] Clipboard-Sync
 - [ ] Dateiübertragung
 - [ ] Multi-Monitor
 - [ ] Sicherheitsfeatures

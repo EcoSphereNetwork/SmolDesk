@@ -151,3 +151,7 @@ Links to key progress documents are kept here for reference:
 - [x] Signaling-Verbindung implementiert
 - [x] WebRTC PeerConnection mit ICE & SDP
 - [x] Videoanzeige mit RTCView
+- [x] Zoom & Scroll
+- [x] Touch → Maus
+- [x] Tastatur-Eingabe
+- [x] Clipboard Text-Sync
