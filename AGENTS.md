@@ -165,3 +165,9 @@ Links to key progress documents are kept here for reference:
 - [x] Feedback & UI-Polish
 - [x] Mobile Responsiveness
 - [x] Background Behavior
+
+## Mobile Build Status
+- [x] Testprotokoll-Struktur angelegt
+- [x] Automatisierte Tests vorbereitet
+- [x] Android-Build konfiguriert (nicht ausgeführt)
+- [x] Play Store-Vorbereitung abgeschlossen (keine .aab)

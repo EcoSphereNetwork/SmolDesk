@@ -22,3 +22,7 @@
 ## Testing & Deployment
 - Local testing via `npm run android` or `npm run ios`
 - Jest used for unit tests
+- Testprotokoll-Struktur angelegt
+- Automatisierte Tests vorbereitet
+- Android-Build konfiguriert (nicht ausgeführt)
+- Play Store-Vorbereitung abgeschlossen (keine .aab)
