@@ -1,3 +1,5 @@
+⚠️ Diese Datei wurde archiviert. Die aktuelle Version befindet sich unter `docs/release/playstore.md`
+
 # SmolDesk Mobile – Play Store Informationen
 
 ## Kurzbeschreibung
