@@ -171,3 +171,7 @@ Links to key progress documents are kept here for reference:
 - [x] Automatisierte Tests vorbereitet
 - [x] Android-Build konfiguriert (nicht ausgeführt)
 - [x] Play Store-Vorbereitung abgeschlossen (keine .aab)
+- [x] iOS-Konfigurationsstruktur erstellt
+- [x] Info.plist vorbereitet
+- [x] AppStore-Text & Datenschutzerklärung erstellt
+- [x] TestFlight-Anleitung ergänzt
