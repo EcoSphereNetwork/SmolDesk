@@ -22,3 +22,6 @@ npm run ios
 ```
 
 The app uses the existing SmolDesk signaling server to establish a WebRTC connection.
+
+## Configuration
+The signaling server URL can be adjusted in `src/config.ts` or by editing the input field on the connect screen at runtime.
