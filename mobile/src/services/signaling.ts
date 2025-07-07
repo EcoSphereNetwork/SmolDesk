@@ -3,6 +3,8 @@ import { EventEmitter } from 'events';
 export interface SignalingOptions {
   url: string;
   reconnectInterval?: number;
+  token?: string;
+  hmacKey?: string;
 }
 
 export type SignalingMessage = {
@@ -15,6 +17,8 @@ export declare interface SignalingService {
   on(event: 'close', listener: () => void): this;
   on(event: 'message', listener: (msg: SignalingMessage) => void): this;
   on(event: 'error', listener: (err: any) => void): this;
+  on(event: 'authorized', listener: () => void): this;
+  on(event: 'unauthorized', listener: () => void): this;
 }
 
 export class SignalingService extends EventEmitter {
@@ -22,14 +26,19 @@ export class SignalingService extends EventEmitter {
   private reconnectInterval: number;
   private socket: WebSocket | null = null;
   private reconnectTimer: NodeJS.Timeout | null = null;
+  private token: string | null = null;
+  private hmacKey: string | null = null;
 
   constructor(options: SignalingOptions) {
     super();
     this.url = options.url;
     this.reconnectInterval = options.reconnectInterval ?? 5000;
+    this.token = options.token ?? null;
+    this.hmacKey = options.hmacKey ?? null;
   }
 
-  connect() {
+  connect(token?: string) {
+    if (token) this.token = token;
     if (this.socket && this.socket.readyState === WebSocket.OPEN) {
       return;
     }
@@ -37,6 +46,9 @@ export class SignalingService extends EventEmitter {
 
     this.socket.onopen = () => {
       this.emit('open');
+      if (this.token) {
+        this.send({ type: 'auth', token: this.token });
+      }
     };
 
     this.socket.onclose = () => {
@@ -55,7 +67,13 @@ export class SignalingService extends EventEmitter {
     this.socket.onmessage = (ev) => {
       try {
         const msg: SignalingMessage = JSON.parse(ev.data);
-        this.emit('message', msg);
+        if (msg.type === 'authorized') {
+          this.emit('authorized');
+        } else if (msg.type === 'unauthorized') {
+          this.emit('unauthorized');
+        } else {
+          this.emit('message', msg);
+        }
       } catch (e) {
         this.emit('error', e);
       }
@@ -75,6 +93,11 @@ export class SignalingService extends EventEmitter {
 
   send(msg: SignalingMessage) {
     if (this.socket && this.socket.readyState === WebSocket.OPEN) {
+      if (this.hmacKey && msg.type === 'join-room') {
+        const h = require('crypto-js/hmac-sha256');
+        const enc = require('crypto-js/enc-hex');
+        msg.hmac = h(msg.roomId, this.hmacKey).toString(enc);
+      }
       this.socket.send(JSON.stringify(msg));
     }
   }
