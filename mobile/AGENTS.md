@@ -9,6 +9,10 @@
 - [x] Dateiübertragung
 - [x] Multi-Monitor
 - [x] Sicherheitsfeatures
+- [x] Darkmode
+- [x] Feedback & UI-Polish
+- [x] Mobile Responsiveness
+- [x] Background Behavior
 
 ## Technical Notes
 - React Native app targeting Android first

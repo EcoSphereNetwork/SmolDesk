@@ -161,3 +161,7 @@ Links to key progress documents are kept here for reference:
 - [x] Datei senden
 - [x] Datei empfangen
 - [x] Multi-Monitor Auswahl
+- [x] Darkmode
+- [x] Feedback & UI-Polish
+- [x] Mobile Responsiveness
+- [x] Background Behavior

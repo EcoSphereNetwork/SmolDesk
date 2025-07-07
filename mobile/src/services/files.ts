@@ -1,5 +1,6 @@
 import DocumentPicker from 'react-native-document-picker';
 import RNFS from 'react-native-fs';
+import Toast from 'react-native-toast-message';
 import WebRTCService from './webrtc';
 
 export interface FileHeader {
@@ -25,6 +26,7 @@ export default class FileTransferService {
   async sendFile(uri: string, name: string, mime: string, size: number) {
     const id = Date.now().toString();
     const header: FileHeader = { type: 'file_header', id, name, mime, size };
+    Toast.show({ type: 'info', text1: 'Dateiübertragung gestartet' });
     this.rtc.sendRaw(JSON.stringify(header));
     const data = await RNFS.readFile(uri, 'base64');
     const chunkSize = 64 * 1024;
@@ -33,6 +35,7 @@ export default class FileTransferService {
       this.rtc.sendData({ type: 'file_chunk', id, data: chunk });
     }
     this.rtc.sendData({ type: 'file_end', id });
+    Toast.show({ type: 'success', text1: 'Datei gesendet' });
   }
 
   private async handleData(payload: any) {
@@ -50,6 +53,7 @@ export default class FileTransferService {
         const base64 = t.chunks.join('');
         const path = `${RNFS.DownloadDirectoryPath}/${t.header.name}`;
         await RNFS.writeFile(path, base64, 'base64');
+        Toast.show({ type: 'success', text1: 'Datei empfangen' });
         delete this.transfers[payload.id];
         break;
       }
