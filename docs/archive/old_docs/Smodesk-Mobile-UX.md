@@ -1,3 +1,5 @@
+> ⚠️ Diese Datei wurde archiviert. Der aktuelle Inhalt befindet sich unter `docs/usage/viewer.md`
+
 # UX Leitfaden für SmolDesk Mobile
 
 - Touch-Gesten für Maus- und Scroll-Steuerung
