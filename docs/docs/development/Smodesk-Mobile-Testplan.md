@@ -4,4 +4,7 @@
 2. **Manuelle Tests** der Verbindung zu einem Linux-Host
 3. **Gesten-Tests**: Pinch-Zoom, Drag und Rechtsklick per Two-Finger-Tap
 4. **Clipboard-Synchronisation** zwischen Host und Phone
-5. **UI-Tests** optional mit Detox
+5. **Login/Logout-Tests**: OAuth2-Flow inklusive Refresh Token
+6. **Token-Validierung** beim Signaling
+7. **Datenkanalverschlüsselung** testen (verschlüsselt vs. unverschlüsselt)
+8. **UI-Tests** optional mit Detox

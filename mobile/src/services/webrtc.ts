@@ -6,15 +6,23 @@ import {
   MediaStream,
 } from 'react-native-webrtc';
 import SignalingService, { SignalingMessage } from './signaling';
+import AES from 'crypto-js/aes';
+import HmacSHA256 from 'crypto-js/hmac-sha256';
+import CryptoJS from 'crypto-js';
+import encUtf8 from 'crypto-js/enc-utf8';
+import encHex from 'crypto-js/enc-hex';
+import { HMAC_KEY, HMAC_ENABLED } from '../config';
 
 export interface WebRTCServiceOptions {
   signaling: SignalingService;
   iceServers?: RTCIceServer[];
+  encryptionKey?: string;
 }
 
 export declare interface WebRTCService {
   on(event: 'stream', listener: (stream: MediaStream) => void): this;
   on(event: 'connectionState', listener: (state: RTCPeerConnectionState) => void): this;
+  on(event: 'data', listener: (payload: any) => void): this;
 }
 
 export class WebRTCService extends EventEmitter {
@@ -22,18 +30,22 @@ export class WebRTCService extends EventEmitter {
   private iceServers: RTCIceServer[];
   private pc: RTCPeerConnection | null = null;
   private dataChannel: RTCDataChannel | null = null;
+  private encryptionKey: string | null = null;
 
   constructor(options: WebRTCServiceOptions) {
     super();
     this.signaling = options.signaling;
     this.iceServers = options.iceServers ?? [{ urls: 'stun:stun.l.google.com:19302' }];
+    this.encryptionKey = options.encryptionKey ?? null;
 
     this.signaling.on('message', this.handleSignal.bind(this));
   }
 
   async join(roomId: string) {
+    this.signaling.once('authorized', () => {
+      this.signaling.joinRoom(roomId);
+    });
     this.signaling.connect();
-    this.signaling.joinRoom(roomId);
   }
 
   private createPeer() {
@@ -46,6 +58,24 @@ export class WebRTCService extends EventEmitter {
     this.pc.ondatachannel = (e) => {
       if (e.channel.label === 'input') {
         this.dataChannel = e.channel;
+        this.dataChannel.onmessage = (ev) => {
+          let text = ev.data as string;
+          if (this.encryptionKey) {
+            const [ivB64, cipherB64] = text.split(':');
+            const decrypted = AES.decrypt({
+              ciphertext: CryptoJS.enc.Base64.parse(cipherB64)
+            } as any, CryptoJS.enc.Utf8.parse(this.encryptionKey), {
+              iv: CryptoJS.enc.Base64.parse(ivB64),
+            });
+            text = decrypted.toString(encUtf8);
+          }
+          try {
+            const payload = JSON.parse(text);
+            this.emit('data', payload);
+          } catch (e) {
+            // ignore
+          }
+        };
       }
     };
 
@@ -109,7 +139,16 @@ export class WebRTCService extends EventEmitter {
 
   sendData(payload: any) {
     if (this.dataChannel && this.dataChannel.readyState === 'open') {
-      this.dataChannel.send(JSON.stringify(payload));
+      if (HMAC_ENABLED) {
+        payload.hmac = HmacSHA256(JSON.stringify(payload), HMAC_KEY).toString(encHex);
+      }
+      let text = JSON.stringify(payload);
+      if (this.encryptionKey) {
+        const iv = CryptoJS.lib.WordArray.random(16);
+        const encrypted = AES.encrypt(text, CryptoJS.enc.Utf8.parse(this.encryptionKey), { iv });
+        text = iv.toString(CryptoJS.enc.Base64) + ':' + encrypted.ciphertext.toString(CryptoJS.enc.Base64);
+      }
+      this.dataChannel.send(text);
     }
   }
 
