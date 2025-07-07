@@ -8,7 +8,7 @@
 - [x] Clipboard-Sync
 - [ ] Dateiübertragung
 - [ ] Multi-Monitor
-- [ ] Sicherheitsfeatures
+- [x] Sicherheitsfeatures
 
 ## Technical Notes
 - React Native app targeting Android first

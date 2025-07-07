@@ -155,3 +155,6 @@ Links to key progress documents are kept here for reference:
 - [x] Touch → Maus
 - [x] Tastatur-Eingabe
 - [x] Clipboard Text-Sync
+- [x] OAuth2 PKCE Login
+- [x] Tokenweitergabe an Signaling
+- [x] Datenkanal-Verschlüsselung

@@ -6,16 +6,25 @@ import SignalingService from '../src/services/signaling';
 global.WebSocket = WebSocket as any;
 
 describe('SignalingService', () => {
-  test('connects and handles messages', (done) => {
+  test('sends auth token and receives messages', (done) => {
     const server = new Server({ port: 12345 }, () => {
-      const service = new SignalingService({ url: 'ws://localhost:12345' });
-      service.on('open', () => {
-        server.clients.forEach((ws) => ws.send(JSON.stringify({ type: 'welcome' })));
+      server.on('connection', (ws) => {
+        ws.on('message', (data) => {
+          const msg = JSON.parse(String(data));
+          expect(msg).toEqual({ type: 'auth', token: 'test' });
+          ws.send(JSON.stringify({ type: 'authorized' }));
+          ws.send(JSON.stringify({ type: 'welcome' }));
+        });
       });
+      const service = new SignalingService({ url: 'ws://localhost:12345', token: 'test', reconnectInterval: 0 });
+      service.on('authorized', () => {
+        // authorized event before welcome
+      });
+      service.on('error', () => {});
       service.on('message', (msg) => {
         expect(msg.type).toBe('welcome');
-        server.close();
-        done();
+        service.disconnect();
+        server.close(() => done());
       });
       service.connect();
     });
