@@ -26,3 +26,7 @@
 - Automatisierte Tests vorbereitet
 - Android-Build konfiguriert (nicht ausgeführt)
 - Play Store-Vorbereitung abgeschlossen (keine .aab)
+- iOS-Konfigurationsstruktur erstellt
+- Info.plist vorbereitet
+- AppStore-Text & Datenschutzerklärung erstellt
+- TestFlight-Anleitung ergänzt
