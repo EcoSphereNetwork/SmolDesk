@@ -1,3 +1,6 @@
+⚠️ Diese Datei wurde archiviert. Die aktuelle Version befindet sich unter `docs/development/testplan.md`
+
+
 # Testplan für SmolDesk Mobile
 
 1. **Unit Tests** mit Jest für Hilfsfunktionen und Services
