@@ -1,4 +1,4 @@
-Entwicklungsplan für die SmolDesk Mobile App
+> ⚠️ Diese Datei wurde archiviert. Die aktuelle Version befindet sich unter `docs/development/setup-android.md`
 
 Ziel: Entwicklung einer plattformübergreifenden React Native App (Android zuerst, danach iOS) für SmolDesk, die alle Funktionen der Desktop-Version unterstützt. SmolDesk ist eine WebRTC-basierte Remote-Desktop-Lösung für Linux mit Fokus auf niedriger Latenz und Sicherheit. Die Mobile-App richtet sich an Endnutzer und soll mobile-first optimiert sein (intuitive Touch-Bedienung, responsives UI etc.). Im Folgenden ein detaillierter Schritt-für-Schritt-Plan:
 

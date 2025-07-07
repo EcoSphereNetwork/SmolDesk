@@ -1,4 +1,4 @@
-# SmolDesk Sicherheitsrichtlinien
+> ⚠️ Diese Datei wurde archiviert. Die aktuelle Version befindet sich unter `docs/development/security.md`
 
 ## Sicherheitsarchitektur
 

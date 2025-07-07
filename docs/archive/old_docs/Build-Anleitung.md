@@ -1,3 +1,4 @@
+> ⚠️ Diese Datei wurde archiviert. Die aktuelle Version befindet sich unter `docs/development/setup-android.md`
 # 🚀 SmolDesk Build-Anleitung
 
 ## ⚠️ **WICHTIG: Vor dem ersten Build**
