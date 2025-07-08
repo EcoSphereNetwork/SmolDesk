@@ -1,3 +1,7 @@
+---
+title: Testing Strategy
+description: 
+---
 # Testing Strategy
 
 The project provides unit, integration and end to end tests. Vitest is used for the frontend and mocks Tauri as well as browser APIs. All Tauri calls in tests are replaced with stubs in `tests/__mocks__` and loaded via the global setup file `tests/setup.ts`.
