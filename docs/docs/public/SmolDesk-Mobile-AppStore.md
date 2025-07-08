@@ -1,3 +1,7 @@
+---
+title: SmolDesk Mobile – App Store Informationen
+description: 
+---
 # SmolDesk Mobile – App Store Informationen
 
 ## Kurzbeschreibung
