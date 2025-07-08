@@ -1,3 +1,8 @@
+---
+title: UI Components
+description: 
+---
+
 # UI Components
 
 This section documents the main React components used in SmolDesk.
