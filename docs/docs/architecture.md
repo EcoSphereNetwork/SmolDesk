@@ -1,3 +1,7 @@
+---
+title: Architecture Overview
+description: 
+---
 # Architecture Overview
 
 SmolDesk consists of a Rust backend built with Tauri and a React frontend written in TypeScript. A separate Node.js signaling server coordinates WebRTC peers.
