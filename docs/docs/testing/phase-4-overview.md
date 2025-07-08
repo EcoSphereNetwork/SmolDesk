@@ -1,3 +1,7 @@
+---
+title: Phase 4 Overview
+description: 
+---
 # Phase 4 Overview
 
 This phase introduces a testable IPC architecture and sets up Playwright for end-to-end tests.
