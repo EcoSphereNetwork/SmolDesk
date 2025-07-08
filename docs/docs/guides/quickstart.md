@@ -1,4 +1,7 @@
-_**ESN_Repo-Template**_
+---
+title: Quick Start Guide
+description: _**ESN_Repo-Template**_
+---
 # Quick Start Guide
 
 This guide will help you get started with the project template.
