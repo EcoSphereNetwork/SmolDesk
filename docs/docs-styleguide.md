@@ -97,3 +97,17 @@ Vor jedem Commit und im CI überprüfen Skripte die Dokumentation.
 Bei Auffälligkeiten erzeugt das Python-Skript einen Bericht unter
 `docs/validation/report.md`. Markdownlint agiert nur als Warnung und blockiert
 den Build nicht.
+## 🚀 Deployment der Dokumentation
+
+### Voraussetzungen
+- Node.js und npm installiert
+- Schreibzugriff auf das GitHub Repository
+
+### Workflow
+1. `npm run deploy-docs` im Projektstamm ausführen
+2. Das Skript baut die Doku und pusht den Inhalt auf den Branch `gh-pages`
+
+### Hinweise
+- Der Branch `gh-pages` wird automatisch von GitHub Pages veröffentlicht
+- Bei Build-Fehlern hilft ein erneutes `npm install` im `docs/`-Verzeichnis
+
