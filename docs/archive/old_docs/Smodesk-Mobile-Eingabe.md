@@ -1,3 +1,7 @@
+---
+title: SmolDesk Mobile Eingabesteuerung
+description: ''
+---
 > ⚠️ Diese Datei wurde archiviert. Der aktuelle Inhalt befindet sich unter `docs/usage/viewer.md`
 
 # SmolDesk Mobile Eingabesteuerung

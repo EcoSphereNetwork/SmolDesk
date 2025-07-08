@@ -1,6 +1,6 @@
 ---
 title: Project Insights
-description: ""
+description: ''
 ---
 # Project Insights
 

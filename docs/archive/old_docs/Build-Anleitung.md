@@ -1,3 +1,7 @@
+---
+title: "\U0001F680 SmolDesk Build-Anleitung"
+description: ''
+---
 > ⚠️ Diese Datei wurde archiviert. Die aktuelle Version befindet sich unter `docs/development/setup-android.md`
 # 🚀 SmolDesk Build-Anleitung
 

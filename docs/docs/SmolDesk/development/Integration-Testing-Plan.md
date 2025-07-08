@@ -1,3 +1,7 @@
+---
+title: SmolDesk Integration Testing Plan
+description: ''
+---
 # SmolDesk Integration Testing Plan
 
 ## Overview

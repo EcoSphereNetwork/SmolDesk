@@ -1,3 +1,7 @@
+---
+title: Agent Life Cycle
+description: ''
+---
 # Agent Life Cycle
 
 1. **Start** – analyze repository and plan actions.

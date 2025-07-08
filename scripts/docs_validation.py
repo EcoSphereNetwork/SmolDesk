@@ -7,7 +7,6 @@ docs_dir = Path('docs')
 report = []
 titles = {}
 duplicates = []
-report_file = Path('docs/validation/report.md')
 
 def ensure_frontmatter(file_path: Path):
     text = file_path.read_text(encoding='utf-8')
@@ -89,14 +88,14 @@ def main():
         ensure_frontmatter(md)
         check_links(md)
     check_sidebars()
-    report_file.parent.mkdir(parents=True, exist_ok=True)
-    with report_file.open('w', encoding='utf-8') as f:
-        f.write('| Source | Target | Error |\n')
-        f.write('| --- | --- | --- |\n')
-        for r in report:
-            f.write(f"| {r['source']} | {r['target']} | {r['error']} |\n")
-        for a, b in duplicates:
-            f.write(f"| {a} | {b} | duplicate title |\n")
+    if report or duplicates:
+        with open('docs-validation-report.md', 'w', encoding='utf-8') as f:
+            f.write('| Source | Target | Error |\n')
+            f.write('| --- | --- | --- |\n')
+            for r in report:
+                f.write(f"| {r['source']} | {r['target']} | {r['error']} |\n")
+            for a,b in duplicates:
+                f.write(f"| {a} | {b} | duplicate title |\n")
 
 if __name__ == '__main__':
     main()

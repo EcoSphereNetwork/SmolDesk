@@ -1,3 +1,7 @@
+---
+title: SmolDesk Dokumentation
+description: ''
+---
 # SmolDesk Dokumentation
 
 <div align="center">

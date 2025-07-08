@@ -1,3 +1,7 @@
+---
+title: GitHub API Access
+description: ''
+---
 # GitHub API Access
 
 Agents can interact with GitHub via the `gh` CLI or by calling the REST and GraphQL APIs directly.

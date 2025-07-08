@@ -1,6 +1,6 @@
 ---
 title: Internal API
-description: ""
+description: ''
 ---
 # Internal API
 

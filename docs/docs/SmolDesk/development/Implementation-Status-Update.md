@@ -1,3 +1,7 @@
+---
+title: SmolDesk Implementation Status Update
+description: ''
+---
 # SmolDesk Implementation Status Update
 
 ## Current Status

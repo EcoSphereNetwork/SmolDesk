@@ -1,6 +1,6 @@
 ---
 title: IPC Interface
-description: ""
+description: ''
 ---
 # IPC Interface
 

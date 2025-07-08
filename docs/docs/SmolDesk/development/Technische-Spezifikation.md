@@ -1,3 +1,7 @@
+---
+title: '**1. Zielsetzung**'
+description: ''
+---
 **Technische Spezifikation für ein RPi-Connect-ähnliches Tool**  
 *Version 1.0 – Für ein eigenes Linux-OS*
 

@@ -1,3 +1,7 @@
+---
+title: Documentation Migration Plan
+description: ''
+---
 # Documentation Migration Plan
 
 This document outlines the planned migration of existing SmolDesk documentation to a simplified

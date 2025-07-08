@@ -1,3 +1,7 @@
+---
+title: SmolDesk Mobile Release Checkliste
+description: ''
+---
 ⚠️ Diese Datei wurde archiviert. Die aktuelle Version befindet sich unter `docs/release/release-process.md`
 
 # SmolDesk Mobile Release Checkliste

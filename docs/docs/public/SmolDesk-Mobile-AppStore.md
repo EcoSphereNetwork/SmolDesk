@@ -1,6 +1,6 @@
 ---
-title: SmolDesk Mobile – App Store Informationen
-description: ""
+title: "SmolDesk Mobile \u2013 App Store Informationen"
+description: ''
 ---
 # SmolDesk Mobile – App Store Informationen
 

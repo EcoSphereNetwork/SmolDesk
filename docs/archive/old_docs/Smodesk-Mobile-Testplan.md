@@ -1,3 +1,7 @@
+---
+title: "Testplan f\xFCr SmolDesk Mobile"
+description: ''
+---
 ⚠️ Diese Datei wurde archiviert. Die aktuelle Version befindet sich unter `docs/development/testplan.md`
 
 

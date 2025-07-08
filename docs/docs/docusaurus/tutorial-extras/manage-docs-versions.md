@@ -1,5 +1,7 @@
 ---
 sidebar_position: 1
+title: Manage Docs Versions
+description: ''
 ---
 
 # Manage Docs Versions

@@ -1,5 +1,7 @@
 ---
 sidebar_position: 3
+title: Create a Blog Post
+description: ''
 ---
 
 # Create a Blog Post

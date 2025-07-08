@@ -1,3 +1,7 @@
+---
+title: 'Entwickler-Prompt: SmolDesk - Weiterentwicklung des WebRTC-basierten Remote-Desktop-Tools'
+description: ''
+---
 # Entwickler-Prompt: SmolDesk - Weiterentwicklung des WebRTC-basierten Remote-Desktop-Tools
 
 ## Projektübersicht

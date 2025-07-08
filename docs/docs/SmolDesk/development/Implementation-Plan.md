@@ -1,3 +1,7 @@
+---
+title: SmolDesk Implementation Plan
+description: ''
+---
 # SmolDesk Implementation Plan
 
 ## Phase 1: Core WebRTC Infrastructure & Basic Functionality

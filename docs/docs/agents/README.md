@@ -1,3 +1,7 @@
+---
+title: Agent Based Development
+description: ''
+---
 # Agent Based Development
 
 SmolDesk uses automated agents like **Codex** to maintain the project. Agents perform analysis, run tests and create pull requests.

@@ -1,3 +1,7 @@
+---
+title: SmolDesk-Mobile Documentation Guide
+description: ''
+---
 # SmolDesk-Mobile Documentation Guide
 
 ## Development Status

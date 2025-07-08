@@ -1,6 +1,6 @@
 ---
 title: Development Plan
-description: ""
+description: ''
 ---
 # Development Plan
 

@@ -1,5 +1,7 @@
 ---
 sidebar_position: 5
+title: Deploy your site
+description: ''
 ---
 
 # Deploy your site

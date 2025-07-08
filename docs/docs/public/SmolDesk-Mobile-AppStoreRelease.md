@@ -1,6 +1,6 @@
 ---
 title: SmolDesk Mobile App Store Release Checkliste
-description: ""
+description: ''
 ---
 # SmolDesk Mobile App Store Release Checkliste
 

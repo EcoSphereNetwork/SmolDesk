@@ -1,3 +1,7 @@
+---
+title: "Leistungsoptimierungsplan f\xFCr SmolDesk mit modularer Struktur"
+description: ''
+---
 # Leistungsoptimierungsplan für SmolDesk mit modularer Struktur
 
 Basierend auf meiner Analyse und den entwickelten Komponenten werde ich nun einen konkreten Aktionsplan für die nächsten Entwicklungsschritte erstellen, der die neue modulare Struktur des Input-Forwarding-Systems berücksichtigt.

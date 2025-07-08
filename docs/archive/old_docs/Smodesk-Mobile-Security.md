@@ -1,3 +1,7 @@
+---
+title: OAuth2-Flow
+description: ''
+---
 > ⚠️ Diese Datei wurde archiviert. Die aktuelle Version befindet sich unter `docs/development/security.md`
 
 Dieser Abschnitt dokumentiert die Sicherheitsarchitektur der Mobile-App ab Phase 4.

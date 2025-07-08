@@ -1,6 +1,6 @@
 ---
 title: SmolDesk Mobile Signaling
-description: ""
+description: ''
 ---
 # SmolDesk Mobile Signaling
 

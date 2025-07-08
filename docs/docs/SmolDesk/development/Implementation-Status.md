@@ -1,3 +1,7 @@
+---
+title: SmolDesk Development Plan
+description: ''
+---
 # SmolDesk Development Plan
 
 ## Project Overview

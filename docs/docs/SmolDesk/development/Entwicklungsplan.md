@@ -1,3 +1,7 @@
+---
+title: '**Phase 1: Grundlegende WebRTC-Implementierung (Wochen 1-4)**'
+description: ''
+---
 **Entwicklungsplan für ein WebRTC-basiertes Remote-Desktop-Tool**  
 *Version 1.0 – Basierend auf den Anforderungen und Spezifikationen*
 

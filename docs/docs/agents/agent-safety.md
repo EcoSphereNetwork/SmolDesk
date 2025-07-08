@@ -1,3 +1,7 @@
+---
+title: Agent Safety
+description: ''
+---
 # Agent Safety
 
 - Document failures and create issues automatically.

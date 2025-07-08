@@ -1,3 +1,7 @@
+---
+title: "UX Leitfaden f\xFCr SmolDesk Mobile"
+description: ''
+---
 > ⚠️ Diese Datei wurde archiviert. Der aktuelle Inhalt befindet sich unter `docs/usage/viewer.md`
 
 # UX Leitfaden für SmolDesk Mobile

@@ -1,3 +1,7 @@
+---
+title: SmolDesk Integration und Optimierung
+description: ''
+---
 # SmolDesk Integration und Optimierung
 
 ## Übersicht

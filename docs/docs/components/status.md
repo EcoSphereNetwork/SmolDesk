@@ -1,6 +1,6 @@
 ---
 title: Komponentenstatus
-description: ""
+description: ''
 ---
 
 # Komponentenstatus

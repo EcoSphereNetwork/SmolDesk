@@ -1,3 +1,7 @@
+---
+title: "\U0001F680 **Automatische Installation:**"
+description: ''
+---
 > ⚠️ Diese Datei wurde archiviert. Die aktuelle Version befindet sich unter `docs/development/dev-tools.md`
 
 ## 🚀 **Automatische Installation:**

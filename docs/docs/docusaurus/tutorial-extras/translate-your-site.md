@@ -1,5 +1,7 @@
 ---
 sidebar_position: 2
+title: Translate your site
+description: ''
 ---
 
 # Translate your site

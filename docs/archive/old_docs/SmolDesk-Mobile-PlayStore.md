@@ -1,3 +1,7 @@
+---
+title: "SmolDesk Mobile \u2013 Play Store Informationen"
+description: ''
+---
 ⚠️ Diese Datei wurde archiviert. Die aktuelle Version befindet sich unter `docs/release/playstore.md`
 
 # SmolDesk Mobile – Play Store Informationen

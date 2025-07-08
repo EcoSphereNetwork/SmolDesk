@@ -1,5 +1,7 @@
 ---
 sidebar_position: 2
+title: Create a Document
+description: ''
 ---
 
 # Create a Document

@@ -1,6 +1,6 @@
 ---
 title: SmolDesk Mobile Architektur
-description: ""
+description: ''
 ---
 # SmolDesk Mobile Architektur
 

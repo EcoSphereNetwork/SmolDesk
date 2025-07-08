@@ -1,3 +1,7 @@
+---
+title: Agent Types
+description: ''
+---
 # Agent Types
 
 - **Codex**: coordinates repository tasks and merges pull requests.

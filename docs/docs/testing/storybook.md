@@ -1,6 +1,6 @@
 ---
 title: Storybook Guide
-description: ""
+description: ''
 ---
 # Storybook Guide
 
