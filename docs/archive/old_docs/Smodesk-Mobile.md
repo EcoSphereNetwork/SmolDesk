@@ -38,7 +38,7 @@ Video-Stream empfangen: Füge einen Listener hinzu, der auf peerConnection.ontra
 Audio-Stream (optional): Falls SmolDesk Audio-Streaming implementiert oder plant, konfiguriere auch einen Audio-Track. Erlaube der App, den Audio-Track des Remote-PCs wiederzugeben (unter Beachtung der Lautstärkeeinstellungen des Phones). Prüfe, ob für Audio ein Nutzerbefehl nötig ist (manche Plattformen verlangen Interaktion, bevor Audio autoplay funktioniert).
 
 
-Nach diesem Schritt sollte die App in der Lage sein, sich mit einem Host zu verbinden und dessen Bildschirm in Echtzeit anzuzeigen. Die Latenz sollte dabei möglichst gering sein (SmolDesk strebt <200 ms an); teste dies in einem lokalen Netzwerk und optimiere ggf. P2P-Einstellungen.
+Nach diesem Schritt sollte die App in der Lage sein, sich mit einem Host zu verbinden und dessen Bildschirm in Echtzeit anzuzeigen. Die Latenz sollte dabei möglichst gering sein (SmolDesk strebt \<200 ms an); teste dies in einem lokalen Netzwerk und optimiere ggf. P2P-Einstellungen.
 
 Schritt 3: Remote-Bildschirm anzeigen & mobile UI optimieren
 
@@ -108,7 +108,7 @@ In diesem Schritt wird die App hinsichtlich Performance, Usability und Plattform
 
 Aufgaben in Schritt 7:
 
-Performance-Tuning: Überprüfe die Performance der Videowiedergabe und Eingabeverarbeitung auf verschiedenen Geräten. Optimiere die Render- und Decode-Leistung: stelle sicher, dass die Decodierung des Video-Streams möglichst in nativer Hardware erfolgt (was i.d.R. durch WebRTC gegeben ist). Achte auf die CPU-/Speicherauslastung – SmolDesk zielte auf <15% CPU bei 1080p auf modernen Systemen; auf Mobilgeräten sollten ähnliche effiziente Werte angestrebt werden. Wenn nötig, reduziere Standard-Framerate oder -Auflösung für Mobil-Clients oder implementiere adaptive Qualitätsanpassung abhängig von Netzwerk/Geräteperformance (diese Funktionalität ist teils im Backend schon vorhanden).
+Performance-Tuning: Überprüfe die Performance der Videowiedergabe und Eingabeverarbeitung auf verschiedenen Geräten. Optimiere die Render- und Decode-Leistung: stelle sicher, dass die Decodierung des Video-Streams möglichst in nativer Hardware erfolgt (was i.d.R. durch WebRTC gegeben ist). Achte auf die CPU-/Speicherauslastung – SmolDesk zielte auf \<15% CPU bei 1080p auf modernen Systemen; auf Mobilgeräten sollten ähnliche effiziente Werte angestrebt werden. Wenn nötig, reduziere Standard-Framerate oder -Auflösung für Mobil-Clients oder implementiere adaptive Qualitätsanpassung abhängig von Netzwerk/Geräteperformance (diese Funktionalität ist teils im Backend schon vorhanden).
 
 Mobil-spezifische UI/UX: Führe einen UX-Audit durch: Ist alles gut mit dem Finger bedienbar? Sind Schaltflächen groß genug und an sinnvollen Positionen (z.B. wichtige Controls eher am Bildschirmrand gut erreichbar mit dem Daumen)? Stelle sicher, dass im Hochformat die UI nicht zu gedrängt ist – evtl. bevorzugt man ohnehin Querformat während der Session, aber die App sollte beide Lagen unterstützen. Implementiere Haptisches Feedback für bestimmte Aktionen (z.B. kurze Vibration bei langem Druck = Rechtsklick, um dem Nutzer physisches Feedback zu geben). Nutze Plattform-Konventionen, z.B. auf Android einen Zurück-Button Handler (Verbindung trennen/bestätigen, statt App einfach zu beenden).
 
