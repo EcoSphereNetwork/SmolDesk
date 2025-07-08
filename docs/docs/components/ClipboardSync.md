@@ -1,3 +1,7 @@
+---
+title: ClipboardSync
+description: 
+---
 # ClipboardSync
 
 [Zur Statusübersicht](./status.md)
