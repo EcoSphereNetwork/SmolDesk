@@ -1,7 +1,0 @@
-⚠️ Diese Datei wurde archiviert. Die aktuelle Version befindet sich unter `docs/release/playstore.md`
-
-{
-  "shortDescription": "Fernzugriff auf deinen Linux-Desktop per WebRTC",
-  "fullDescription": "SmolDesk Mobile verbindet dein Telefon direkt mit deinem Linux-PC. Sichere Peer-to-Peer-Verbindung, Multi-Monitor und Dateiübertragung inklusive.",
-  "whatsNew": "Erste Beta-Version"
-}
