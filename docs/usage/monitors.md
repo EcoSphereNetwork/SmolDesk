@@ -9,4 +9,3 @@ description: Zwischen verschiedenen Bildschirmen wechseln.
 - Jeder Bildschirm kann eigene Auflösung und Bildrate besitzen.
 - Der Host-Tab zeigt alle erkannten Monitore, im Viewer lässt sich über ein Dialog umschalten.
 
-![Beispiel](../static/img/docusaurus.png)

@@ -125,3 +125,10 @@ Push hat.
 
 - Der Branch `gh-pages` wird automatisch von GitHub Pages veröffentlicht
 - Bei Build-Fehlern hilft ein erneutes `npm install` im `docs/`-Verzeichnis
+
+## 🚫 Ausgeschlossene Inhalte
+
+Folgende Bereiche gehören nicht zur SmolDesk-Dokumentation und dürfen nicht über Navigation oder Links referenziert werden:
+- Agenten-Systeme (`docs/agents/`)
+- Docusaurus-Tutorial-Inhalte (`docs/docusaurus/`, `docs/blog/`)
+- Beispielseiten (`src/pages/markdown-page.md`, etc.)
