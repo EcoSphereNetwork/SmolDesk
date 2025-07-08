@@ -1,5 +1,5 @@
 import type {ReactNode} from 'react';
-import clsx from 'clsx';
+import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 
@@ -9,91 +9,67 @@ import styles from './styles.module.css';
  */
 type FeatureItem = {
   title: string;
-  icon: ReactNode; // Svg component or emoji
+  to: string;
+  icon: string; // svg path
   description: ReactNode;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Remote-Desktop-Zugriff',
-    icon: (
-      <img
-        src={require('@site/static/img/undraw_docusaurus_mountain.svg').default}
-        className={styles.featureSvg}
-        alt="Remote Desktop"
-      />
-    ),
-    description: <>Greife von überall auf deinen Linux-PC zu und erhalte das Bild nahezu in Echtzeit.</>,
+    title: '🖥️ Remote Desktop',
+    to: '/features/remote',
+    icon: require('@site/docs/icons/remote.svg').default,
+    description: <>Greife von überall auf deinen Linux-PC zu.</>,
   },
   {
-    title: 'Sichere Peer-to-Peer Verbindung',
-    icon: (
-      <img
-        src={require('@site/static/img/undraw_docusaurus_tree.svg').default}
-        className={styles.featureSvg}
-        alt="Sichere Verbindung"
-      />
-    ),
-    description: <>SmolDesk verbindet die Geräte direkt miteinander. Signaling läuft verschlüsselt.</>,
+    title: '🔒 Sicherheit',
+    to: '/features/security',
+    icon: require('@site/docs/icons/security.svg').default,
+    description: <>Ende-zu-Ende-Verschlüsselung für alle Daten.</>,
   },
   {
-    title: 'Mobile-optimierte Oberfläche',
-    icon: (
-      <img
-        src={require('@site/static/img/undraw_docusaurus_react.svg').default}
-        className={styles.featureSvg}
-        alt="Mobile Oberfläche"
-      />
-    ),
-    description: <>An kleine Bildschirme angepasst und mit Gestensteuerung sowie Darkmode ausgestattet.</>,
+    title: '📋 ClipboardSync',
+    to: '/components/ClipboardSync',
+    icon: require('@site/docs/icons/clipboard.svg').default,
+    description: <>Teile Text und Bilder bequem zwischen Geräten.</>,
   },
   {
-    title: 'Plattformübergreifend',
-    icon: (
-      <img
-        src={require('@site/static/img/undraw_docusaurus_tree.svg').default}
-        className={styles.featureSvg}
-        alt="Plattformübergreifend"
-      />
-    ),
-    description: <>Nutze SmolDesk unter Linux und Android. Eine iOS-Version ist in Planung.</>,
+    title: '📂 Dateiübertragung',
+    to: '/components/FileTransfer',
+    icon: require('@site/docs/icons/file-transfer.svg').default,
+    description: <>Sende Dateien per Drag & Drop.</>,
   },
   {
-    title: 'Modular erweiterbar',
-    icon: (
-      <img
-        src={require('@site/static/img/undraw_docusaurus_mountain.svg').default}
-        className={styles.featureSvg}
-        alt="Modular"
-      />
-    ),
-    description: <>Funktionen lassen sich über optionale Module jederzeit ergänzen.</>,
+    title: '🖥️🖥️ Multi-Monitor',
+    to: '/features/monitors',
+    icon: require('@site/docs/icons/monitors.svg').default,
+    description: <>Wähle im Viewer den gewünschten Bildschirm.</>,
+  },
+  {
+    title: '📱 Mobile App',
+    to: '/development/setup-android',
+    icon: require('@site/docs/icons/mobile.svg').default,
+    description: <>Volle Kontrolle auch unterwegs.</>,
   },
 ];
 
-function Feature({title, icon, description}: FeatureItem) {
+function Feature({title, to, icon, description}: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        {icon}
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
-      </div>
-    </div>
+    <Link className={styles.card} to={to}>
+      <img src={icon} className={styles.icon} alt="" />
+      <Heading as="h3" className={styles.title}>{title}</Heading>
+      <p>{description}</p>
+    </Link>
   );
 }
 
 export default function HomepageFeatures(): ReactNode {
   return (
     <section className={styles.features}>
-      <div className="container">
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
-        </div>
+      <div className={styles.grid}>
+        {FeatureList.map((props, idx) => (
+          <Feature key={idx} {...props} />
+        ))}
       </div>
     </section>
   );

@@ -139,3 +139,11 @@ Folgende Bereiche gehören nicht zur SmolDesk-Dokumentation und dürfen nicht ü
 - Zeigt 3–6 projektrelevante SmolDesk-Funktionen auf der Startseite
 - Klarer, verständlicher Text (Zielgruppe: interessierte Nutzer:innen)
 - Icons oder Emojis zur visuellen Unterstützung
+
+## 🎨 Designrichtlinien GitHub Pages
+
+- Startseite nutzt interaktive Feature-Karten mit Icons/SVGs
+- Logo im Header sichtbar, verlinkt auf /
+- Sidebar strukturiert nach Modulen
+- Header & Footer enthalten Navigation, GitHub-Link, Lizenz
+- Icons aus icons/ verwenden
