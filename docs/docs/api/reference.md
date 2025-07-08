@@ -1,4 +1,8 @@
-_**ESN_Repo-Template**_
+---
+title: API Reference
+description: _**ESN_Repo-Template**_
+---
+
 # API Reference
 
 This section provides detailed API documentation for the project.
