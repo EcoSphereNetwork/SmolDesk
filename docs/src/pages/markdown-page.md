@@ -1,5 +1,6 @@
 ---
 title: Markdown page example
+description: ''
 ---
 
 # Markdown page example
