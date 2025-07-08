@@ -7,8 +7,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'SmolDesk',
   tagline: 'Remote Desktop for Linux',
-  favicon: 'img/favicon.ico',
-
+  favicon: 'img/32x32.png',
+  
   // Set the production url of your site here
   url: 'https://ecospherenetwork.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
@@ -53,13 +53,16 @@ i18n: {
   themes: ['@docusaurus/theme-live-codeblock'],
 
   themeConfig: {
+    colorMode: {
+      defaultMode: 'light',
+    },
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
       title: 'SmolDesk',
       logo: {
         alt: 'SmolDesk Logo',
-        src: 'img/logo.svg',
+        src: 'img/smoldesk-logo.png',
         href: '/',
       },
       items: [
