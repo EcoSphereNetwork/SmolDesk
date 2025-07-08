@@ -3,6 +3,8 @@ title: SmolDesk Dokumentations-Styleguide
 description: Richtlinien für Sprache und Format
 ---
 
+<!-- markdownlint-disable MD025 -->
+
 # SmolDesk Dokumentations-Styleguide
 
 Dieser Styleguide definiert verbindliche Regeln für die gesamte SmolDesk-Dokumentation. Er soll ein konsistentes Erscheinungsbild gewährleisten und allen Autor:innen als Nachschlagewerk dienen.
@@ -51,20 +53,24 @@ Richtig:
 
 Falsch:
 
-```
+```md
 # Titel
+
 ## Untertitel
+
 ### Noch kleiner
 ```
 
 Richtig:
 
-```
+```md
 ---
 title: Beispiel
 description: Kurze Beschreibung
 ---
+
 # Beispiel
+
 ## Untertitel
 ```
 
@@ -78,11 +84,12 @@ Richtig:
 
 ### Gutes Abschnitt-Beispiel
 
-```
+```md
 ---
 title: Setup
 description: Einrichtung der Entwicklungsumgebung
 ---
+
 # Setup
 
 1. `npm install`
@@ -97,17 +104,24 @@ Vor jedem Commit und im CI überprüfen Skripte die Dokumentation.
 Bei Auffälligkeiten erzeugt das Python-Skript einen Bericht unter
 `docs/validation/report.md`. Markdownlint agiert nur als Warnung und blockiert
 den Build nicht.
+
 ## 🚀 Deployment der Dokumentation
 
 ### Voraussetzungen
+
 - Node.js und npm installiert
 - Schreibzugriff auf das GitHub Repository
 
 ### Workflow
+
 1. `npm run deploy-docs` im Projektstamm ausführen
 2. Das Skript baut die Doku und pusht den Inhalt auf den Branch `gh-pages`
 
+Setze vor dem Ausführen entweder die Umgebungsvariable `USE_SSH=true` oder
+`GIT_USER=<Dein GitHub Benutzername>`, damit Docusaurus Berechtigungen für den
+Push hat.
+
 ### Hinweise
+
 - Der Branch `gh-pages` wird automatisch von GitHub Pages veröffentlicht
 - Bei Build-Fehlern hilft ein erneutes `npm install` im `docs/`-Verzeichnis
-
