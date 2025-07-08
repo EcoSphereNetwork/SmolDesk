@@ -3,6 +3,7 @@ import path from 'path';
 
 const COMPONENTS_DIR = path.join('src', 'components');
 const DOCS_DIR = path.join('docs', 'components');
+const API_DIR = path.join('docs', 'api');
 
 async function getTsFiles() {
   const files = await fs.readdir(COMPONENTS_DIR);
@@ -30,6 +31,36 @@ function extractProps(text) {
 function extractHooks(text) {
   const hooks = ['useState','useEffect','useRef','useCallback','useMemo'];
   return hooks.filter(h => text.includes(h));
+}
+
+async function extractTauriCommands() {
+  const mainFile = path.join('src-tauri', 'src', 'main.rs');
+  const text = await fs.readFile(mainFile, 'utf8');
+  const regex = /#\[tauri::command\]\s*fn\s+(\w+)\s*\(([^)]*)\)\s*(->\s*[^\s{]+)?/g;
+  const commands = [];
+  let m;
+  while ((m = regex.exec(text)) !== null) {
+    commands.push({
+      name: m[1],
+      params: m[2].replace(/\s+/g, ' ').trim(),
+      returns: m[3] ? m[3].replace('->', '').trim() : ''
+    });
+  }
+  return commands;
+}
+
+async function generateApiDocs() {
+  await fs.mkdir(API_DIR, { recursive: true });
+  const cmds = await extractTauriCommands();
+  let md = `---\ntitle: IPC Interface\ndescription: Auto generated list of Tauri commands\n---\n\n`;
+  md += '## Commands\n\n| Name | Parameters | Returns |\n| --- | --- | --- |\n';
+  for (const c of cmds) {
+    md += `| \`${c.name}\` | \`${c.params}\` | \`${c.returns}\` |\n`;
+  }
+  await fs.writeFile(path.join(API_DIR, 'ipc-interface.md'), md, 'utf8');
+
+  const indexMd = `---\ntitle: API Übersicht\ndescription: Generated API reference\n---\n\n- [IPC Interface](ipc-interface.md)\n`;
+  await fs.writeFile(path.join(API_DIR, 'index.md'), indexMd, 'utf8');
 }
 
 const featureLinks = {
@@ -111,6 +142,9 @@ async function main() {
     indexMd += `- [${entry.name}](${entry.name}.md) - ${entry.desc}\n`;
   }
   await fs.writeFile(path.join(DOCS_DIR, 'index.md'), indexMd, 'utf8');
+
+  // Generate API documentation
+  await generateApiDocs();
 }
 
 main().catch(err => {
