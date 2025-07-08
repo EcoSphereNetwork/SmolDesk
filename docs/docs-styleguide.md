@@ -147,3 +147,9 @@ Folgende Bereiche gehören nicht zur SmolDesk-Dokumentation und dürfen nicht ü
 - Sidebar strukturiert nach Modulen
 - Header & Footer enthalten Navigation, GitHub-Link, Lizenz
 - Icons aus icons/ verwenden
+
+## 📅 Deployment-Protokoll
+
+- **Datum:** 2025-07-08
+- **Live-Version:** <https://ecospherenetwork.github.io/SmolDesk/>
+- **Hinweise:** Deployment-Skript erfordert ein konfiguriertes Git-Remote. Im CI erfolgt der Push auf `gh-pages` automatisch.
