@@ -67,6 +67,7 @@
     "security:scan": "python3 security/pentest/automated_security_scan.py",
     "docs:build": "typedoc --out docs/api src",
     "docs:serve": "serve docs",
+    "deploy-docs": "npm --prefix docs run deploy",
     "release": "npm run build:all && npm run package:sign && npm run package:test"
   },
   "dependencies": {

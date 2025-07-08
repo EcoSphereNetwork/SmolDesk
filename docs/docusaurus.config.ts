@@ -5,20 +5,20 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'EcoSphereNetwork',
-  tagline: 'Repository Template',
+  title: 'SmolDesk',
+  tagline: 'Remote Desktop for Linux',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://ecospherenetwork.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/SmolDesk/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'EcoSphereNetwork', // Usually your GitHub org/user name.
-  projectName: 'ESN_Repo-Template', // Usually your repo name.
+  organizationName: 'EcoSphereNetwork',
+  projectName: 'SmolDesk',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -28,20 +28,7 @@ const config: Config = {
   // may want to replace "en" with "zh-Hans".
 i18n: {
   defaultLocale: 'en',
-  locales: ['de', 'en', 'zh', 'hi', 'es', 'ar', 'fr', 'bn', 'ru', 'pt', 'ur'],
-  localeConfigs: {
-    de: { label: 'Deutsch' },
-    en: { label: 'English' },
-    zh: { label: '中文' },
-    hi: { label: 'हिन्दी' },
-    es: { label: 'Español' },
-    ar: { label: 'العربية' },
-    fr: { label: 'Français' },
-    bn: { label: 'বাংলা' },
-    ru: { label: 'Русский' },
-    pt: { label: 'Português' },
-    ur: { label: 'اردو' }
-  },
+  locales: ['en'],
 },
 
   presets: [
@@ -49,27 +36,13 @@ i18n: {
       'classic',
       {
         docs: {
+          path: '.',
+          routeBasePath: '/',
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/EcoSphereNetwork/SmolDesk/edit/main/docs/',
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -81,32 +54,21 @@ i18n: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'ESN',
+      title: 'SmolDesk',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'SmolDesk Logo',
         src: 'img/logo.svg',
       },
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'wikiSidebar',
+          sidebarId: 'docsSidebar',
           position: 'left',
-          label: 'Wiki',
+          label: 'Documentation',
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Tutorial',
-        },
-        {to: '/blog', label: 'Blog', position: 'left'},
-        {
-          href: 'https://github.com/EcoSphereNetwork/ESN_Repo-Template',
+          href: 'https://github.com/EcoSphereNetwork/SmolDesk',
           label: 'GitHub',
-          position: 'right',
-        },
-        {
-          type: 'localeDropdown',
           position: 'right',
         },
       ],
@@ -115,55 +77,16 @@ i18n: {
       style: 'dark',
       links: [
         {
-          title: 'Template Wiki',
+          title: 'Project',
           items: [
-            {
-              label: 'Quickstart',
-              to: '/docs/guides/quickstart',
-            },
-          ],
-        },
-        {
-          title: 'Docusaurus Docs',
-          items: [
-            {
-              label: 'Tutorial',
-              to: '/docs/docusaurus/intro',
-            },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
             {
               label: 'GitHub',
-              href: 'https://github.com/EcoSphereNetwork',
+              href: 'https://github.com/EcoSphereNetwork/SmolDesk',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `© ${new Date().getFullYear()} SmolDesk Team`,
     },
     prism: {
       theme: prismThemes.github,
