@@ -1,3 +1,7 @@
+---
+title: Development Plan
+description: 
+---
 # Development Plan
 
 This iterative plan guides future Codex runs when enhancing SmolDesk.
