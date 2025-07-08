@@ -8,7 +8,7 @@
 
 ## Über diese Dokumentation
 
-Willkommen zur offiziellen Dokumentation von SmolDesk. Hier finden Sie alle Informationen zur Installation, Konfiguration, Nutzung und Entwicklung von SmolDesk. Diese Dokumentation ist in mehrere Abschnitte unterteilt, um verschiedene Aspekte des Projekts abzudecken und sowohl Endbenutzer als auch Entwickler zu unterstützen.
+Willkommen zur offiziellen Dokumentation von SmolDesk. Hier findest du alle Informationen zur Installation, Konfiguration, Nutzung und Entwicklung von SmolDesk. Diese Dokumentation ist in mehrere Abschnitte unterteilt, um verschiedene Aspekte des Projekts abzudecken und sowohl Endbenutzer:innen als auch Entwickler:innen zu unterstützen.
 
 ## Dokumentationsstruktur
 
@@ -48,7 +48,7 @@ Ressourcen für Entwickler, die zum Projekt beitragen möchten:
 
 ## Mitwirken an der Dokumentation
 
-Wir freuen uns über Beiträge zur Verbesserung dieser Dokumentation. Wenn Sie Fehler finden, Klarstellungen benötigen oder Ergänzungen vorschlagen möchten, können Sie:
+Wir freuen uns über Beiträge zur Verbesserung dieser Dokumentation. Wenn du Fehler findest, Klarstellungen benötigst oder Ergänzungen vorschlagen möchtest, kannst du:
 
 1. Ein Issue auf GitHub erstellen
 2. Einen Pull Request mit den vorgeschlagenen Änderungen einreichen
@@ -66,15 +66,15 @@ In dieser Dokumentation werden folgende Konventionen verwendet:
 
 ## Support erhalten
 
-Wenn Sie Fragen haben, die in dieser Dokumentation nicht beantwortet werden:
+Wenn du Fragen hast, die in dieser Dokumentation nicht beantwortet werden:
 
-- Besuchen Sie die [GitHub Discussions](https://github.com/EcoSphereNetwork/SmolDesk/discussions)
-- Treten Sie unserem [Discord-Server](https://discord.gg/smoldesk) bei
-- Öffnen Sie ein [Support-Ticket](https://github.com/EcoSphereNetwork/SmolDesk/issues/new?template=support_request.md)
+- Besuche die [GitHub Discussions](https://github.com/EcoSphereNetwork/SmolDesk/discussions)
+- Tritt unserem [Discord-Server](https://discord.gg/smoldesk) bei
+- Öffne ein [Support-Ticket](https://github.com/EcoSphereNetwork/SmolDesk/issues/new?template=support_request.md)
 
 ## Entwicklungsstatus
 
-SmolDesk befindet sich derzeit in aktiver Entwicklung. Einige Teile dieser Dokumentation beschreiben möglicherweise Funktionen, die noch nicht vollständig implementiert sind oder sich in der Testphase befinden. Bitte beachten Sie die Versionshinweise und den Entwicklungsstatus in den jeweiligen Abschnitten.
+SmolDesk befindet sich derzeit in aktiver Entwicklung. Einige Teile dieser Dokumentation beschreiben möglicherweise Funktionen, die noch nicht vollständig implementiert sind oder sich in der Testphase befinden. Bitte beachte die Versionshinweise und den Entwicklungsstatus in den jeweiligen Abschnitten.
 
 ---
 

@@ -28,4 +28,4 @@ Manages peer connections using WebRTC. It handles creating rooms, joining rooms 
 
 ### Teststatus
 
-Siehe `tests/unit/ConnectionManager.test.tsx` für grundlegende Render- und Ereignistests.
+Weitere Details findest du in `tests/unit/ConnectionManager.test.tsx`, der grundlegende Render- und Ereignistests enthält.
