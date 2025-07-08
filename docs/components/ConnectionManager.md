@@ -27,4 +27,4 @@ src/components/ConnectionManager.tsx
 
 ## Source
 
-[src/components/ConnectionManager.tsx](/src/components/ConnectionManager.tsx)
+[src/components/ConnectionManager.tsx](https://github.com/EcoSphereNetwork/SmolDesk/blob/main/src/components/ConnectionManager.tsx)

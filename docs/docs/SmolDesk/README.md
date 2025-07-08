@@ -1,6 +1,7 @@
 ---
 title: SmolDesk Dokumentation
 description: ''
+slug: /SmolDesk/overview
 ---
 # SmolDesk Dokumentation
 
@@ -24,7 +25,7 @@ Umfassende Anleitungen und Tutorials für Endbenutzer von SmolDesk:
 - Troubleshooting und häufige Fragen
 - Best Practices für optimale Leistung
 
-### [Technische Dokumentation](./technical/README.md)
+### [Technische Dokumentation](/docs/architecture)
 Detaillierte technische Informationen zur Architektur und Implementierung:
 - Systemarchitektur
 - Komponentenbeschreibungen
@@ -32,7 +33,7 @@ Detaillierte technische Informationen zur Architektur und Implementierung:
 - Sicherheitskonzept
 - Netzwerkanforderungen
 
-### [API-Referenz](./api/README.md)
+### [API-Referenz](/api)
 Vollständige Dokumentation der programmatischen Schnittstellen:
 - WebRTC-API
 - Tauri-Kommandos
@@ -40,7 +41,7 @@ Vollständige Dokumentation der programmatischen Schnittstellen:
 - Datenstrukturen
 - Fehlerbehandlung
 
-### [Entwicklung](./development/README.md)
+### [Entwicklung](/development/dev-tools)
 Ressourcen für Entwickler, die zum Projekt beitragen möchten:
 
 #### Planungsdokumente

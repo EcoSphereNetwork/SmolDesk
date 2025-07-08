@@ -24,4 +24,4 @@ description: src-tauri/src/clipboard/mod.rs - Zwischenablage-Synchronisation Sys
 
 ## Source
 
-[src-tauri/src/clipboard/mod.rs](/src-tauri/src/clipboard/mod.rs)
+[src-tauri/src/clipboard/mod.rs](https://github.com/EcoSphereNetwork/SmolDesk/blob/main/src-tauri/src/clipboard/mod.rs)

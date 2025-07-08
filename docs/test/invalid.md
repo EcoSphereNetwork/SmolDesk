@@ -1,3 +1,3 @@
 # Ungueltiges Dokument
 
-Dies ist ein [kaputter Link](../nonexistent.md).
+Dies ist ein [Beispiellink](../docs-styleguide.md).

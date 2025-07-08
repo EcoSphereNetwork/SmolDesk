@@ -18,6 +18,6 @@ The e2e tests wait for the `main-window` selector and scroll elements into view 
 The GitHub Actions workflow runs the Playwright suite with mocked IPC calls. Rust tests remain disabled until a dedicated container is available. Coverage reports are uploaded for the Node job.
 
 ## Remaining Issues
-Snapshots may still diverge on some systems due to inconsistent font rendering. The Rust build fails during `cargo test` and is tracked in [Phase 4: Reactivate cargo test](../../../.github/issues/phase-4-reactivate-cargo-test.md).
+Snapshots may still diverge on some systems due to inconsistent font rendering. The Rust build fails during `cargo test` and is tracked in [Phase 4: Reactivate cargo test](https://github.com/EcoSphereNetwork/SmolDesk/issues/4).
 
 Phase 4 is now complete and the project is ready to continue with component level validations in Storybook.
