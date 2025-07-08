@@ -1,3 +1,7 @@
+---
+title: Phase 4 Report
+description: 
+---
 # Phase 4 Report
 
 Phase 4 introduced a mockable IPC layer and an initial suite of Playwright end-to-end tests. WebRTC and Tauri window APIs are replaced with mocks when `VITE_USE_MOCK=true` allowing reliable offline and error simulations.
