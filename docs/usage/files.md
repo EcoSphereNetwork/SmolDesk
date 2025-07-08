@@ -15,4 +15,3 @@ description: Tausche Dateien zwischen Client und Host.
 - Die Datei wird in 64 KB Blöcken über WebRTC gesendet.
 - Empfangene Dateien liegen im Download-Ordner und lassen sich teilen.
 
-![Beispiel](../static/img/docusaurus.png)

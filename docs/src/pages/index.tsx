@@ -23,11 +23,6 @@ function HomepageHeader() {
             to="/docs/guides/quickstart">
             ESN-Repo-Template Quickstart
           </Link>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/docusaurus/intro">
-            Docusaurus Tutorial - 5min ⏱️
-          </Link>
         </div>
       </div>
     </header>
