@@ -1,3 +1,7 @@
+---
+title: IPC Interface
+description: 
+---
 # IPC Interface
 
 The frontend communicates with the backend using the `IConnectionAPI` interface.
