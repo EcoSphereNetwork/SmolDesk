@@ -1,3 +1,7 @@
+---
+title: SmolDesk Mobile Signaling
+description: 
+---
 # SmolDesk Mobile Signaling
 
 Dieses Dokument beschreibt die Nachrichtenformate und den Ablauf der WebSocket-Kommunikation zwischen der Mobile-App und dem SmolDesk Signaling-Server.
