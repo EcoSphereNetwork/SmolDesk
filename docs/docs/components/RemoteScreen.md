@@ -1,3 +1,7 @@
+---
+title: RemoteScreen
+description: 
+---
 # RemoteScreen
 
 [Zur Statusübersicht](./status.md)
