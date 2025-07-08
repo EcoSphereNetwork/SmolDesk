@@ -1,4 +1,8 @@
-_**ESN_Repo-Template**_
+
+---
+title: Repository Reorganization Guide
+description: '_**ESN_Repo-Template**_'
+---
 # Repository Reorganization Guide
 
 This guide explains how to use the repository reorganization script to align existing repositories with the template structure.
