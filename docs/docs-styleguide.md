@@ -132,3 +132,10 @@ Folgende Bereiche gehören nicht zur SmolDesk-Dokumentation und dürfen nicht ü
 - Agenten-Systeme (`docs/agents/`)
 - Docusaurus-Tutorial-Inhalte (`docs/docusaurus/`, `docs/blog/`)
 - Beispielseiten (`src/pages/markdown-page.md`, etc.)
+
+## 🧩 Startseiten-Komponente (HomepageFeatures)
+
+- Datei: docs/src/components/HomepageFeatures/index.tsx
+- Zeigt 3–6 projektrelevante SmolDesk-Funktionen auf der Startseite
+- Klarer, verständlicher Text (Zielgruppe: interessierte Nutzer:innen)
+- Icons oder Emojis zur visuellen Unterstützung
