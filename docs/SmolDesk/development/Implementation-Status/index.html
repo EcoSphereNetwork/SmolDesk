@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="de" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-docs/SmolDesk/development/Implementation-Status" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.7.0">
+<title data-rh="true">SmolDesk Development Plan | SmolDesk</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://ecospherenetwork.github.io/SmolDesk/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://ecospherenetwork.github.io/SmolDesk/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://ecospherenetwork.github.io/SmolDesk/docs/SmolDesk/development/Implementation-Status"><meta data-rh="true" property="og:locale" content="de"><meta data-rh="true" property="og:locale:alternate" content="en"><meta data-rh="true" name="docusaurus_locale" content="de"><meta data-rh="true" name="docsearch:language" content="de"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="SmolDesk Development Plan | SmolDesk"><link data-rh="true" rel="icon" href="/SmolDesk/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://ecospherenetwork.github.io/SmolDesk/docs/SmolDesk/development/Implementation-Status"><link data-rh="true" rel="alternate" href="https://ecospherenetwork.github.io/SmolDesk/docs/SmolDesk/development/Implementation-Status" hreflang="de"><link data-rh="true" rel="alternate" href="https://ecospherenetwork.github.io/SmolDesk/en/docs/SmolDesk/development/Implementation-Status" hreflang="en"><link data-rh="true" rel="alternate" href="https://ecospherenetwork.github.io/SmolDesk/docs/SmolDesk/development/Implementation-Status" hreflang="x-default"><link rel="stylesheet" href="/SmolDesk/assets/css/styles.62e3d046.css">
+<script src="/SmolDesk/assets/js/runtime~main.6fcd936f.js" defer="defer"></script>
+<script src="/SmolDesk/assets/js/main.5b13644e.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/SmolDesk/img/logo.svg"><div role="region" aria-label="Zum Hauptinhalt springen"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Zum Hauptinhalt springen</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/SmolDesk/"><div class="navbar__logo"><img src="/SmolDesk/img/logo.svg" alt="SmolDesk Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/SmolDesk/img/logo.svg" alt="SmolDesk Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">ESN</b></a><a class="navbar__item navbar__link" href="/SmolDesk/docs/architecture">Documentation</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/EcoSphereNetwork/SmolDesk" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" class="iconLanguage_nlXk"><path fill="currentColor" d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"></path></svg>Deutsch</a><ul class="dropdown__menu"><li><a href="/SmolDesk/docs/SmolDesk/development/Implementation-Status" target="_self" rel="noopener noreferrer" class="dropdown__link dropdown__link--active" lang="de">Deutsch</a></li><li><a href="/SmolDesk/en/docs/SmolDesk/development/Implementation-Status" target="_self" rel="noopener noreferrer" class="dropdown__link" lang="en">English</a></li></ul></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Umschalten zwischen dunkler und heller Ansicht (momentan heller Modus)" aria-label="Umschalten zwischen dunkler und heller Ansicht (momentan heller Modus)" aria-live="polite" aria-pressed="false"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Zurück nach oben scrollen" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><main class="docMainContainer_TBSr docMainContainerEnhanced_lQrH"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">Auf dieser Seite</button></div><div class="theme-doc-markdown markdown"><header><h1>SmolDesk Development Plan</h1></header>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="project-overview">Project Overview<a href="#project-overview" class="hash-link" aria-label="Direkter Link zur Project Overview" title="Direkter Link zur Project Overview">​</a></h2>
+<p>SmolDesk is a WebRTC-based remote desktop application for Linux, designed to provide low-latency screen sharing and remote control capabilities. The application supports both X11 and Wayland display servers and utilizes hardware acceleration for optimal performance.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="current-implementation-status">Current Implementation Status<a href="#current-implementation-status" class="hash-link" aria-label="Direkter Link zur Current Implementation Status" title="Direkter Link zur Current Implementation Status">​</a></h2>
+<p>We have established the foundational architecture for SmolDesk with the following components:</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="backend-rusttauri">Backend (Rust/Tauri)<a href="#backend-rusttauri" class="hash-link" aria-label="Direkter Link zur Backend (Rust/Tauri)" title="Direkter Link zur Backend (Rust/Tauri)">​</a></h3>
+<ul>
+<li>Basic screen capture functionality for X11 and Wayland</li>
+<li>Input forwarding mechanism for keyboard and mouse events</li>
+<li>System detection for display servers and monitor configuration</li>
+<li>Integration with Tauri for frontend communication</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="frontend-reacttypescript">Frontend (React/TypeScript)<a href="#frontend-reacttypescript" class="hash-link" aria-label="Direkter Link zur Frontend (React/TypeScript)" title="Direkter Link zur Frontend (React/TypeScript)">​</a></h3>
+<ul>
+<li>Connection management using WebRTC</li>
+<li>Remote screen display with scaling and fullscreen capabilities</li>
+<li>Input event handling and forwarding</li>
+<li>User interface for configuration and status monitoring</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="core-features">Core Features<a href="#core-features" class="hash-link" aria-label="Direkter Link zur Core Features" title="Direkter Link zur Core Features">​</a></h3>
+<ul>
+<li>WebRTC signaling server for peer discovery and connection establishment</li>
+<li>P2P connection with STUN/TURN server fallback</li>
+<li>Video encoding with multiple codec support (H264, VP8, VP9, AV1)</li>
+<li>Hardware acceleration options (VAAPI, NVENC, QuickSync)</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="implementation-phases">Implementation Phases<a href="#implementation-phases" class="hash-link" aria-label="Direkter Link zur Implementation Phases" title="Direkter Link zur Implementation Phases">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="phase-1-core-functionality-current">Phase 1: Core Functionality (Current)<a href="#phase-1-core-functionality-current" class="hash-link" aria-label="Direkter Link zur Phase 1: Core Functionality (Current)" title="Direkter Link zur Phase 1: Core Functionality (Current)">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="completed">Completed:<a href="#completed" class="hash-link" aria-label="Direkter Link zur Completed:" title="Direkter Link zur Completed:">​</a></h4>
+<ul>
+<li>Project structure setup</li>
+<li>WebRTC signaling server implementation</li>
+<li>Basic WebRTC client implementation</li>
+<li>Screen capture module for X11 and Wayland</li>
+<li>Input forwarding for keyboard and mouse</li>
+<li>User interface components for connection management and remote screen viewing</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="in-progress">In Progress:<a href="#in-progress" class="hash-link" aria-label="Direkter Link zur In Progress:" title="Direkter Link zur In Progress:">​</a></h4>
+<ul>
+<li>Testing WebRTC connection establishment</li>
+<li>Optimizing screen capture performance</li>
+<li>Implementing error handling and reconnection logic</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="next-steps">Next Steps:<a href="#next-steps" class="hash-link" aria-label="Direkter Link zur Next Steps:" title="Direkter Link zur Next Steps:">​</a></h4>
+<ol>
+<li>
+<p><strong>Integrate WebRTC with Screen Capture</strong></p>
+<ul>
+<li>Connect the screen capture stream to WebRTC data channels</li>
+<li>Implement frame encoding and transport</li>
+<li>Test end-to-end functionality</li>
+</ul>
+</li>
+<li>
+<p><strong>Improve Input Forwarding</strong></p>
+<ul>
+<li>Add support for special keys and key combinations</li>
+<li>Implement relative position calculation for multi-monitor setups</li>
+<li>Add gesture support for trackpads</li>
+</ul>
+</li>
+<li>
+<p><strong>Add Connection Security</strong></p>
+<ul>
+<li>Implement authentication mechanism</li>
+<li>Add encryption for data channels</li>
+<li>Create access control system</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="phase-2-enhanced-features-and-security">Phase 2: Enhanced Features and Security<a href="#phase-2-enhanced-features-and-security" class="hash-link" aria-label="Direkter Link zur Phase 2: Enhanced Features and Security" title="Direkter Link zur Phase 2: Enhanced Features and Security">​</a></h3>
+<ol>
+<li>
+<p><strong>Multi-Monitor Support</strong></p>
+<ul>
+<li>Dynamic monitor detection and selection</li>
+<li>Support for switching between monitors during a session</li>
+<li>Individual monitor streaming options</li>
+</ul>
+</li>
+<li>
+<p><strong>Clipboard Synchronization</strong></p>
+<ul>
+<li>Bidirectional clipboard transfer</li>
+<li>Support for text, images, and formatted content</li>
+<li>Clipboard history and management</li>
+</ul>
+</li>
+<li>
+<p><strong>File Transfer</strong></p>
+<ul>
+<li>Secure file transfer between host and viewer</li>
+<li>Progress monitoring and resume capability</li>
+<li>Directory transfer support</li>
+</ul>
+</li>
+<li>
+<p><strong>Advanced Security Features</strong></p>
+<ul>
+<li>OAuth2 implementation with PKCE</li>
+<li>HMAC-SHA256 for message signing</li>
+<li>Session permission management</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="phase-3-performance-optimization-and-polish">Phase 3: Performance Optimization and Polish<a href="#phase-3-performance-optimization-and-polish" class="hash-link" aria-label="Direkter Link zur Phase 3: Performance Optimization and Polish" title="Direkter Link zur Phase 3: Performance Optimization and Polish">​</a></h3>
+<ol>
+<li>
+<p><strong>Hardware Acceleration Enhancement</strong></p>
+<ul>
+<li>Optimize VAAPI integration for Intel GPUs</li>
+<li>Improve NVENC support for NVIDIA GPUs</li>
+<li>Add QuickSync support for compatible Intel processors</li>
+</ul>
+</li>
+<li>
+<p><strong>Latency Optimization</strong></p>
+<ul>
+<li>Achieve target latency of &lt;200ms</li>
+<li>Implement adaptive quality based on network conditions</li>
+<li>Optimize frame capture and processing pipeline</li>
+</ul>
+</li>
+<li>
+<p><strong>Advanced Functionality</strong></p>
+<ul>
+<li>Audio streaming support</li>
+<li>Session recording capability</li>
+<li>Remote system information monitoring</li>
+<li>Custom compression algorithms for specific content types</li>
+</ul>
+</li>
+<li>
+<p><strong>User Experience Improvements</strong></p>
+<ul>
+<li>Customizable keyboard shortcuts</li>
+<li>Connection quality indicator</li>
+<li>Bandwidth usage statistics</li>
+<li>Dark/light theme support</li>
+</ul>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="testing-strategy">Testing Strategy<a href="#testing-strategy" class="hash-link" aria-label="Direkter Link zur Testing Strategy" title="Direkter Link zur Testing Strategy">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="unit-tests">Unit Tests<a href="#unit-tests" class="hash-link" aria-label="Direkter Link zur Unit Tests" title="Direkter Link zur Unit Tests">​</a></h3>
+<ul>
+<li>Create tests for each module (screen capture, input forwarding, WebRTC)</li>
+<li>Implement mock objects for external dependencies</li>
+<li>Automate test execution in CI/CD pipeline</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="integration-tests">Integration Tests<a href="#integration-tests" class="hash-link" aria-label="Direkter Link zur Integration Tests" title="Direkter Link zur Integration Tests">​</a></h3>
+<ul>
+<li>Test end-to-end functionality across different environments</li>
+<li>Verify compatibility with various Linux distributions</li>
+<li>Test with different network conditions (NAT, firewall, proxy)</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="performance-tests">Performance Tests<a href="#performance-tests" class="hash-link" aria-label="Direkter Link zur Performance Tests" title="Direkter Link zur Performance Tests">​</a></h3>
+<ul>
+<li>Measure latency under various network conditions</li>
+<li>Benchmark CPU and GPU utilization</li>
+<li>Test with high-resolution displays and multiple monitors</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="compatibility-tests">Compatibility Tests<a href="#compatibility-tests" class="hash-link" aria-label="Direkter Link zur Compatibility Tests" title="Direkter Link zur Compatibility Tests">​</a></h3>
+<ul>
+<li>Verify X11 and Wayland support across distributions</li>
+<li>Test with different browser versions for the viewer</li>
+<li>Validate hardware acceleration with various GPU models</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="deployment-and-distribution">Deployment and Distribution<a href="#deployment-and-distribution" class="hash-link" aria-label="Direkter Link zur Deployment and Distribution" title="Direkter Link zur Deployment and Distribution">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="packaging">Packaging<a href="#packaging" class="hash-link" aria-label="Direkter Link zur Packaging" title="Direkter Link zur Packaging">​</a></h3>
+<ul>
+<li>Create Debian/Ubuntu packages</li>
+<li>Build RPM packages for Fedora/RHEL</li>
+<li>Provide AppImage for distribution-independent installation</li>
+<li>Add Flatpak support for sandboxed execution</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="documentation">Documentation<a href="#documentation" class="hash-link" aria-label="Direkter Link zur Documentation" title="Direkter Link zur Documentation">​</a></h3>
+<ul>
+<li>Create user guides with installation instructions</li>
+<li>Provide administrator documentation for server setup</li>
+<li>Add developer documentation for API reference</li>
+<li>Include troubleshooting guides for common issues</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="cicd-pipeline">CI/CD Pipeline<a href="#cicd-pipeline" class="hash-link" aria-label="Direkter Link zur CI/CD Pipeline" title="Direkter Link zur CI/CD Pipeline">​</a></h3>
+<ul>
+<li>Automate build process for multiple platforms</li>
+<li>Implement automatic testing on code changes</li>
+<li>Create release automation for versioned builds</li>
+<li>Set up automated deployment for signaling server</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="immediate-action-items">Immediate Action Items<a href="#immediate-action-items" class="hash-link" aria-label="Direkter Link zur Immediate Action Items" title="Direkter Link zur Immediate Action Items">​</a></h2>
+<ol>
+<li>Complete WebRTC-Screen Capture integration</li>
+<li>Implement end-to-end testing for basic functionality</li>
+<li>Add security features for WebRTC connections</li>
+<li>Create installation documentation for development</li>
+<li>Set up CI/CD pipeline for automated testing</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="long-term-roadmap">Long-term Roadmap<a href="#long-term-roadmap" class="hash-link" aria-label="Direkter Link zur Long-term Roadmap" title="Direkter Link zur Long-term Roadmap">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="q2-2025">Q2 2025<a href="#q2-2025" class="hash-link" aria-label="Direkter Link zur Q2 2025" title="Direkter Link zur Q2 2025">​</a></h3>
+<ul>
+<li>Complete Phase 1 implementation</li>
+<li>Begin Phase 2 implementation with multi-monitor support</li>
+<li>Start security enhancements with authentication</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="q3-2025">Q3 2025<a href="#q3-2025" class="hash-link" aria-label="Direkter Link zur Q3 2025" title="Direkter Link zur Q3 2025">​</a></h3>
+<ul>
+<li>Complete Phase 2 implementation</li>
+<li>Begin Phase 3 with hardware acceleration optimizations</li>
+<li>Start user experience improvements</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="q4-2025">Q4 2025<a href="#q4-2025" class="hash-link" aria-label="Direkter Link zur Q4 2025" title="Direkter Link zur Q4 2025">​</a></h3>
+<ul>
+<li>Complete Phase 3 implementation</li>
+<li>Focus on performance optimization and latency reduction</li>
+<li>Prepare for first stable release</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="q1-2026">Q1 2026<a href="#q1-2026" class="hash-link" aria-label="Direkter Link zur Q1 2026" title="Direkter Link zur Q1 2026">​</a></h3>
+<ul>
+<li>First stable release (v1.0)</li>
+<li>Create comprehensive documentation</li>
+<li>Implement feedback and bug fix mechanism</li>
+<li>Begin planning for advanced features in v2.0</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="conclusion">Conclusion<a href="#conclusion" class="hash-link" aria-label="Direkter Link zur Conclusion" title="Direkter Link zur Conclusion">​</a></h2>
+<p>SmolDesk aims to provide a high-performance, secure remote desktop solution specifically designed for Linux environments. By focusing on low latency, security, and compatibility with both X11 and Wayland, SmolDesk will offer a compelling alternative to existing remote desktop solutions while leveraging the benefits of WebRTC for P2P connections.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/EcoSphereNetwork/SmolDesk/edit/main/docs/docs/SmolDesk/development/Implementation-Status.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Diese Seite bearbeiten</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Dokumentation Seiten"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#project-overview" class="table-of-contents__link toc-highlight">Project Overview</a></li><li><a href="#current-implementation-status" class="table-of-contents__link toc-highlight">Current Implementation Status</a><ul><li><a href="#backend-rusttauri" class="table-of-contents__link toc-highlight">Backend (Rust/Tauri)</a></li><li><a href="#frontend-reacttypescript" class="table-of-contents__link toc-highlight">Frontend (React/TypeScript)</a></li><li><a href="#core-features" class="table-of-contents__link toc-highlight">Core Features</a></li></ul></li><li><a href="#implementation-phases" class="table-of-contents__link toc-highlight">Implementation Phases</a><ul><li><a href="#phase-1-core-functionality-current" class="table-of-contents__link toc-highlight">Phase 1: Core Functionality (Current)</a></li><li><a href="#phase-2-enhanced-features-and-security" class="table-of-contents__link toc-highlight">Phase 2: Enhanced Features and Security</a></li><li><a href="#phase-3-performance-optimization-and-polish" class="table-of-contents__link toc-highlight">Phase 3: Performance Optimization and Polish</a></li></ul></li><li><a href="#testing-strategy" class="table-of-contents__link toc-highlight">Testing Strategy</a><ul><li><a href="#unit-tests" class="table-of-contents__link toc-highlight">Unit Tests</a></li><li><a href="#integration-tests" class="table-of-contents__link toc-highlight">Integration Tests</a></li><li><a href="#performance-tests" class="table-of-contents__link toc-highlight">Performance Tests</a></li><li><a href="#compatibility-tests" class="table-of-contents__link toc-highlight">Compatibility Tests</a></li></ul></li><li><a href="#deployment-and-distribution" class="table-of-contents__link toc-highlight">Deployment and Distribution</a><ul><li><a href="#packaging" class="table-of-contents__link toc-highlight">Packaging</a></li><li><a href="#documentation" class="table-of-contents__link toc-highlight">Documentation</a></li><li><a href="#cicd-pipeline" class="table-of-contents__link toc-highlight">CI/CD Pipeline</a></li></ul></li><li><a href="#immediate-action-items" class="table-of-contents__link toc-highlight">Immediate Action Items</a></li><li><a href="#long-term-roadmap" class="table-of-contents__link toc-highlight">Long-term Roadmap</a><ul><li><a href="#q2-2025" class="table-of-contents__link toc-highlight">Q2 2025</a></li><li><a href="#q3-2025" class="table-of-contents__link toc-highlight">Q3 2025</a></li><li><a href="#q4-2025" class="table-of-contents__link toc-highlight">Q4 2025</a></li><li><a href="#q1-2026" class="table-of-contents__link toc-highlight">Q1 2026</a></li></ul></li><li><a href="#conclusion" class="table-of-contents__link toc-highlight">Conclusion</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Project</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/EcoSphereNetwork/SmolDesk" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">© 2025 SmolDesk Team</div></div></div></footer></div>
+</body>
+</html>
