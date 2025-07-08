@@ -24,4 +24,4 @@ src/components/ClipboardSync.tsx - Frontend-Komponente für Zwischenablage-Synch
 
 ## Source
 
-[src/components/ClipboardSync.tsx](/src/components/ClipboardSync.tsx)
+[src/components/ClipboardSync.tsx](https://github.com/EcoSphereNetwork/SmolDesk/blob/main/src/components/ClipboardSync.tsx)

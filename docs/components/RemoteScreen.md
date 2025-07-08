@@ -25,4 +25,4 @@ src/components/RemoteScreen.tsx
 
 ## Source
 
-[src/components/RemoteScreen.tsx](/src/components/RemoteScreen.tsx)
+[src/components/RemoteScreen.tsx](https://github.com/EcoSphereNetwork/SmolDesk/blob/main/src/components/RemoteScreen.tsx)

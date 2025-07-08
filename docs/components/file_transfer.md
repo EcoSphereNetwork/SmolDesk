@@ -15,4 +15,4 @@ description: src-tauri/src/file_transfer/mod.rs - Dateiübertragungssystem für 
 
 ## Source
 
-[src-tauri/src/file_transfer/mod.rs](/src-tauri/src/file_transfer/mod.rs)
+[src-tauri/src/file_transfer/mod.rs](https://github.com/EcoSphereNetwork/SmolDesk/blob/main/src-tauri/src/file_transfer/mod.rs)

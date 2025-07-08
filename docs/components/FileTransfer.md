@@ -24,4 +24,4 @@ src/components/FileTransfer.tsx - File Transfer UI Component
 
 ## Source
 
-[src/components/FileTransfer.tsx](/src/components/FileTransfer.tsx)
+[src/components/FileTransfer.tsx](https://github.com/EcoSphereNetwork/SmolDesk/blob/main/src/components/FileTransfer.tsx)
