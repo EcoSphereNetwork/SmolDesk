@@ -1,3 +1,7 @@
+---
+title: SmolDesk Mobile Architektur
+description: 
+---
 # SmolDesk Mobile Architektur
 
 Die Mobile-App verwendet React Native und verbindet sich über WebRTC mit dem SmolDesk Signaling-Server. Die App bildet den Remote-Bildschirm als Videostream ab und sendet Eingaben über Datenkanäle.
