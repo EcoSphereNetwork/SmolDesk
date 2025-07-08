@@ -1,3 +1,7 @@
+---
+title: ConnectionManager
+description: 
+---
 # ConnectionManager
 
 [Zur Statusübersicht](./status.md)
