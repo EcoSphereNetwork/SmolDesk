@@ -151,5 +151,12 @@ Folgende Bereiche gehören nicht zur SmolDesk-Dokumentation und dürfen nicht ü
 ## 📅 Deployment-Protokoll
 
 - **Datum:** 2025-07-08
-- **Live-Version:** <https://ecospherenetwork.github.io/SmolDesk/>
+- **Live-Version:** [https://ecospherenetwork.github.io/SmolDesk/](https://ecospherenetwork.github.io/SmolDesk/)
 - **Hinweise:** Deployment-Skript erfordert ein konfiguriertes Git-Remote. Im CI erfolgt der Push auf `gh-pages` automatisch.
+
+## 🧪 Interaktive Dokumentation
+
+- Live-Demos liegen unter `docs/docs/demo` und nutzen `@theme/LiveCodeBlock`.
+- API-Beispiele greifen auf `swagger-ui-react` und `openapi.yaml` zu.
+- Halte Beispielcode kurz und frei von echten Zugangsdaten.
+- Aktualisiere die OpenAPI-Datei bei API-Änderungen.
