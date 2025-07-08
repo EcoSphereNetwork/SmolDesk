@@ -1,3 +1,7 @@
+---
+title: SmolDesk Mobile App Store Release Checkliste
+description: 
+---
 # SmolDesk Mobile App Store Release Checkliste
 
 ## Vorbereitung
