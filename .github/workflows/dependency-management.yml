@@ -1,0 +1,122 @@
+name: Reusable Dependency Management
+
+on:
+  workflow_call:
+    inputs:
+      package-manager:
+        description: 'Package manager to use (poetry, pip, conda)'
+        required: false
+        type: string
+        default: 'poetry'
+      update-schedule:
+        description: 'Schedule for dependency updates'
+        required: false
+        type: string
+        default: '0 0 * * 1'  # Every Monday at midnight
+      dependency-type:
+        description: 'Type of dependencies to update'
+        required: false
+        type: string
+        default: 'all'  # all, production, development
+      auto-merge:
+        description: 'Automatically merge dependency updates'
+        required: false
+        type: boolean
+        default: false
+      assignees:
+        description: 'Comma-separated list of users to assign to update PRs'
+        required: false
+        type: string
+        default: ''
+      labels:
+        description: 'Comma-separated list of labels for update PRs'
+        required: false
+        type: string
+        default: 'dependencies'
+    secrets:
+      RENOVATE_TOKEN:
+        required: false
+        description: 'Token for Renovate bot'
+
+jobs:
+  update-dependencies:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: ${{ inputs.package-manager }}
+
+      - name: Install package manager
+        run: |
+          if [ "${{ inputs.package-manager }}" = "poetry" ]; then
+            curl -sSL https://install.python-poetry.org | python3 -
+          elif [ "${{ inputs.package-manager }}" = "conda" ]; then
+            wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+            bash miniconda.sh -b -p $HOME/miniconda
+            source "$HOME/miniconda/etc/profile.d/conda.sh"
+            conda activate base
+          fi
+
+      - name: Update dependencies
+        id: update
+        run: |
+          if [ "${{ inputs.package-manager }}" = "poetry" ]; then
+            poetry update
+            if [ -n "$(git status --porcelain poetry.lock)" ]; then
+              echo "updates_available=true" >> $GITHUB_OUTPUT
+              echo "updated_files=poetry.lock" >> $GITHUB_OUTPUT
+            fi
+          elif [ "${{ inputs.package-manager }}" = "pip" ]; then
+            pip list --outdated --format=json | jq -r '.[] | .name' > outdated.txt
+            if [ -s outdated.txt ]; then
+              pip install -U -r outdated.txt
+              pip freeze > requirements.txt
+              echo "updates_available=true" >> $GITHUB_OUTPUT
+              echo "updated_files=requirements.txt" >> $GITHUB_OUTPUT
+            fi
+          elif [ "${{ inputs.package-manager }}" = "conda" ]; then
+            conda update --all -y
+            conda env export > environment.yml
+            if [ -n "$(git status --porcelain environment.yml)" ]; then
+              echo "updates_available=true" >> $GITHUB_OUTPUT
+              echo "updated_files=environment.yml" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: Create Pull Request
+        if: steps.update.outputs.updates_available == 'true'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore(deps): update dependencies'
+          title: 'chore(deps): update dependencies'
+          body: |
+            Automated dependency updates.
+            
+            Updated files:
+            - ${{ steps.update.outputs.updated_files }}
+            
+            Please review the changes and merge if all tests pass.
+          branch: deps/update
+          delete-branch: true
+          labels: ${{ inputs.labels }}
+          assignees: ${{ inputs.assignees }}
+
+      - name: Enable auto-merge
+        if: steps.update.outputs.updates_available == 'true' && inputs.auto-merge
+        run: |
+          PR_NUMBER=$(gh pr list --head deps/update --json number -q '.[0].number')
+          if [ ! -z "$PR_NUMBER" ]; then
+            gh pr merge $PR_NUMBER --auto --merge
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,78 @@
+{
+  "name": "smoldesk-monitoring",
+  "version": "1.0.0",
+  "description": "Monitoring, telemetry and analytics tools for SmolDesk infrastructure",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "build": "node scripts/build.js",
+    "metrics:collect": "node scripts/collect-metrics.js",
+    "logs:parse": "node scripts/parse-logs.js",
+    "alerts:setup": "node scripts/setup-alerts.js",
+    "dashboard:deploy": "node scripts/deploy-dashboard.js",
+    "health:check": "node scripts/health-check.js",
+    "performance:analyze": "node scripts/analyze-performance.js",
+    "usage:report": "node scripts/generate-usage-report.js",
+    "export:prometheus": "node scripts/export-prometheus.js",
+    "grafana:sync": "node scripts/sync-grafana.js"
+  },
+  "keywords": [
+    "monitoring",
+    "telemetry", 
+    "analytics",
+    "prometheus",
+    "grafana",
+    "metrics",
+    "observability"
+  ],
+  "author": "SmolDesk Team",
+  "license": "MIT",
+  "dependencies": {
+    "prometheus-client": "^15.0.0",
+    "winston": "^3.11.0",
+    "winston-daily-rotate-file": "^4.7.1",
+    "elastic-apm-node": "^4.0.0",
+    "jaeger-client": "^3.19.0",
+    "opentelemetry-api": "^1.7.0",
+    "express": "^4.18.0",
+    "axios": "^1.6.0",
+    "node-cron": "^3.0.0",
+    "influxdb-client": "^1.33.0",
+    "redis": "^4.6.0",
+    "mongoose": "^8.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0",
+    "eslint": "^8.50.0",
+    "@types/node": "^20.8.0",
+    "@types/express": "^4.17.0",
+    "typescript": "^5.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/smoldesk.git",
+    "directory": "monitoring"
+  },
+  "config": {
+    "prometheus": {
+      "port": 9090,
+      "scrapeInterval": "15s"
+    },
+    "grafana": {
+      "port": 3000,
+      "datasourceUrl": "http://localhost:9090"
+    },
+    "influxdb": {
+      "url": "http://localhost:8086",
+      "token": "",
+      "org": "smoldesk",
+      "bucket": "metrics"
+    }
+  }
+}

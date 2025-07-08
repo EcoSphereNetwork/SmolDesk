@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+# Pre-removal script
+echo "Stopping SmolDesk services..."
+
+# Stop user systemd service if running
+if systemctl --user is-active smoldesk-signaling >/dev/null 2>&1; then
+    systemctl --user stop smoldesk-signaling
+    systemctl --user disable smoldesk-signaling
+fi

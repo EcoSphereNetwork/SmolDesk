@@ -1,0 +1,20 @@
+{
+  "id": "guides/quickstart",
+  "title": "quickstart",
+  "description": "**ESNRepo-Template_",
+  "source": "@site/docs/guides/quickstart.md",
+  "sourceDirName": "guides",
+  "slug": "/guides/quickstart",
+  "permalink": "/docs/guides/quickstart",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/guides/quickstart.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "wikiSidebar",
+  "next": {
+    "title": "reorganize",
+    "permalink": "/docs/guides/reorganize"
+  }
+}
