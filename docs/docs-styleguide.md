@@ -74,7 +74,7 @@ Falsch:
 [Dokumentation](https://example.com/docs/feature)
 
 Richtig:
-[Dokumentation](../features/feature.md)
+[Dokumentation](../features/remote.md)
 
 ### Gutes Abschnitt-Beispiel
 

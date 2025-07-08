@@ -71,5 +71,5 @@ This guide will help you get started with the project template.
 
 ## Next Steps
 
-- Read the [Development Guide](../development/guide.md)
+- Read the [Development Guide](../development/plan.md)
 - Check out the [API Reference](../api/reference.md)

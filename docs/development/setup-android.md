@@ -30,4 +30,4 @@ Diese Anleitung beschreibt die grundlegenden Schritte, um SmolDesk Mobile unter 
    ./gradlew assembleRelease
    ```
 
-Weitere Hinweise zum Einsatz der App findest du in der [SmolDesk Mobile Dokumentation](../development/Smodesk-Mobile.md).
+Weitere Hinweise zum Einsatz der App findest du in der [SmolDesk Mobile Dokumentation](../archive/old_docs/Smodesk-Mobile.md).

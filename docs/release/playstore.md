@@ -16,7 +16,7 @@ SmolDesk Mobile verbindet dein Telefon direkt mit deinem Linux-PC. Sichere Peer-
 ### What's New
 Erste Beta-Version
 
-Weitere Hinweise zur Datenschutzerklärung finden sich unter [../public/privacy-policy.html](../public/privacy-policy.html).
+Weitere Hinweise zur Datenschutzerklärung finden sich unter [../docs/public/privacy-policy.html](../docs/public/privacy-policy.html).
 
 ## Release-Build erstellen
 
