@@ -1,3 +1,7 @@
+---
+title: Internal API
+description: 
+---
 # Internal API
 
 The backend exposes several Tauri commands which the frontend uses. Commands reside in `src-tauri/src/main.rs`.
