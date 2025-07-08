@@ -18,37 +18,37 @@ const FeatureList: FeatureItem[] = [
   {
     title: '🖥️ Remote Desktop',
     to: '/features/remote',
-    icon: require('@site/docs/icons/remote.svg').default,
+    icon: require('@site/icons/remote.svg').default,
     description: <>Greife von überall auf deinen Linux-PC zu.</>,
   },
   {
     title: '🔒 Sicherheit',
     to: '/features/security',
-    icon: require('@site/docs/icons/security.svg').default,
+    icon: require('@site/icons/security.svg').default,
     description: <>Ende-zu-Ende-Verschlüsselung für alle Daten.</>,
   },
   {
     title: '📋 ClipboardSync',
     to: '/components/ClipboardSync',
-    icon: require('@site/docs/icons/clipboard.svg').default,
+    icon: require('@site/icons/clipboard.svg').default,
     description: <>Teile Text und Bilder bequem zwischen Geräten.</>,
   },
   {
     title: '📂 Dateiübertragung',
     to: '/components/FileTransfer',
-    icon: require('@site/docs/icons/file-transfer.svg').default,
+    icon: require('@site/icons/file-transfer.svg').default,
     description: <>Sende Dateien per Drag & Drop.</>,
   },
   {
     title: '🖥️🖥️ Multi-Monitor',
     to: '/features/monitors',
-    icon: require('@site/docs/icons/monitors.svg').default,
+    icon: require('@site/icons/monitors.svg').default,
     description: <>Wähle im Viewer den gewünschten Bildschirm.</>,
   },
   {
     title: '📱 Mobile App',
     to: '/development/setup-android',
-    icon: require('@site/docs/icons/mobile.svg').default,
+    icon: require('@site/icons/mobile.svg').default,
     description: <>Volle Kontrolle auch unterwegs.</>,
   },
 ];
