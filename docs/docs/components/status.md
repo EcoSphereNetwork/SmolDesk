@@ -1,3 +1,8 @@
+---
+title: Komponentenstatus
+description: 
+---
+
 # Komponentenstatus
 
 | Komponente        | Vervollständigungsgrad       | Letzter Commit | Hinweise/Bugs |
