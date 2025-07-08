@@ -18,4 +18,4 @@ SmolDesk gleicht die Zwischenablage automatisch ab.
 - Aktuell wird nur Text unterstützt.
 - Die App sendet `clipboard`-Nachrichten und schreibt den Inhalt lokal.
 
-![Bild]()
+![Beispiel](../static/img/docusaurus.png)

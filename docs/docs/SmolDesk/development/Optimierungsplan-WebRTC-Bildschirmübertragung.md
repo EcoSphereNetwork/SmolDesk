@@ -99,10 +99,10 @@ Wir implementieren eine optimierte Architektur mit folgenden Komponenten:
 
 ## 4. Messung und Erfolgsmetriken
 
-- **Ziel-Latenz**: <200ms End-to-End
-- **CPU-Auslastung**: <15% auf modernen Systemen
+- **Ziel-Latenz**: &lt;200ms End-to-End
+- **CPU-Auslastung**: &lt;15% auf modernen Systemen
 - **Adaptivität**: Funktionsfähig von 256Kbps bis 10Mbps Bandbreite
-- **Wiederherstellungszeit**: <2s nach Netzwerkunterbrechungen
+- **Wiederherstellungszeit**: &lt;2s nach Netzwerkunterbrechungen
 
 ## 5. Nächste Schritte
 

@@ -103,7 +103,7 @@ description: ''
 
 ### 3.3 Performance Optimization (Weeks 23-24)
 - Profile and optimize critical paths
-- Reduce CPU utilization to target (<15%)
+- Reduce CPU utilization to target (&lt;15%)
 - Improve startup time and connection establishment
 - Optimize for weak network conditions
 

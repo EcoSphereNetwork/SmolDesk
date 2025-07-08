@@ -14,4 +14,4 @@ description: ''
 - Gesten mit 5px Deadzone für genauere Steuerung
 - Responsive Layouts mit Safe Areas und skalierender Schrift
 
-![Light vs Dark](../images/mobile-theme.png)
+![Light vs Dark](../../static/img/docusaurus.png)

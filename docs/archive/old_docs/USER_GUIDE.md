@@ -213,7 +213,7 @@ sudo apt install wl-clipboard
 
 ### Leistungsoptimierung
 
-#### Für niedrige Latenz (<100ms)
+#### Für niedrige Latenz (&lt;100ms)
 ```
 FPS: 60
 Quality: 70%

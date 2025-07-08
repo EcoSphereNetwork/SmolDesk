@@ -108,7 +108,7 @@ Du übernimmst die Weiterentwicklung von SmolDesk, einem WebRTC-basierten Remote
 - **Backend**: Rust mit Tauri-Integration
 - **Frontend**: React 18+ mit TypeScript, Vite und Tailwind CSS
 - **WebRTC**: Implementierung nach WebRTC-Standards
-- **Latenz**: Ziel von <200ms für Bildschirmübertragung
+- **Latenz**: Ziel von &lt;200ms für Bildschirmübertragung
 - **Sicherheit**: OAuth2 mit PKCE, HMAC-SHA256 für Nachrichten
 - **Kompatibilität**: X11 und Wayland, gängige Browser (Chrome, Firefox, Edge, Safari)
 - **Hardware-Beschleunigung**: VAAPI, NVENC und QuickSync
@@ -155,7 +155,7 @@ Du übernimmst die Weiterentwicklung von SmolDesk, einem WebRTC-basierten Remote
 ## Wichtige Hinweise für die Entwicklung
 
 - SmolDesk soll als nativer Ersatz für proprietäre Remote-Desktop-Lösungen dienen
-- Fokus auf niedrige Latenz (<200ms) und hohe Bildqualität
+- Fokus auf niedrige Latenz (&lt;200ms) und hohe Bildqualität
 - Einfachheit und intuitive Bedienung haben Priorität
 - Sichere Verbindungen auch über öffentliche Netzwerke müssen gewährleistet sein
 - Die Software muss ohne Administratorrechte auf Client-Seite funktionieren

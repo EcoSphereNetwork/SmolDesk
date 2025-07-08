@@ -93,7 +93,7 @@ We have established the foundational architecture for SmolDesk with the followin
    - Add QuickSync support for compatible Intel processors
 
 2. **Latency Optimization**
-   - Achieve target latency of <200ms
+   - Achieve target latency of &lt;200ms
    - Implement adaptive quality based on network conditions
    - Optimize frame capture and processing pipeline
 

@@ -5,7 +5,7 @@ description: ''
 # SmolDesk Dokumentation
 
 <div align="center">
-  <img src="./static/img/logo.png" alt="SmolDesk Logo" width="200">
+  <img src="./static/img/logo.png" alt="SmolDesk Logo" width="200" />
   <h1>SmolDesk Dokumentation</h1>
   <p>Umfassende Dokumentation für das WebRTC-basierte Remote-Desktop-Tool für Linux</p>
 </div>

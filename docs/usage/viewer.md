@@ -11,7 +11,7 @@ description: Verbinde dich mit einem Host und bediene den Bildschirm aus der Fer
 2. Gib den Raum-Code ein und klicke auf **Connect**.
 3. Bei geschützten Räumen wird ein Passwort abgefragt.
 
-![Bild]()
+![Beispiel](../static/img/docusaurus.png)
 
 ## Maus und Tastatur
 

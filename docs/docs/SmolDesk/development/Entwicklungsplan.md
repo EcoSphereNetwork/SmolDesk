@@ -58,7 +58,7 @@ description: ''
   ```
 - **Benchmarks**:  
   - 4K@60FPS mit NVIDIA NVENC  
-  - CPU-Last <15% bei 1080p  
+  - CPU-Last &lt;15% bei 1080p  
 
 #### **Woche 10: NAT-Traversal**  
 - **TURN-Server**:  
