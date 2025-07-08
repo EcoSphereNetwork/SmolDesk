@@ -1,6 +1,6 @@
 ---
 title: Storybook Coverage
-description: 
+description: ""
 ---
 # Storybook Coverage
 

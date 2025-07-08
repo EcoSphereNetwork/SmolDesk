@@ -1,0 +1,12 @@
+
+> docs@0.0.0 build
+> docusaurus build
+
+[INFO] Website will be built for all these locales: 
+- de
+- en
+[INFO] [de] Creating an optimized production build...
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+[webpackbar] ✔ Server: Compiled with some errors in 16.82s
+[webpackbar] ✔ Client: Compiled with some errors in 35.25s
