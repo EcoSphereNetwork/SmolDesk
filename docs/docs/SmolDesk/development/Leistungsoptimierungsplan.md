@@ -16,65 +16,65 @@ Ich habe drei Hauptproblembereiche identifiziert und entsprechende Lösungen imp
 
 #### Woche 1: WebRTC-Integration optimieren
 
-1. **Tag 1-2:** Implementieren Sie die optimierte FFmpeg-Konfiguration in `screen_capture.rs`:
-   - Ersetzen Sie die aktuelle Base64-Kodierung durch binäre Datenübertragung
-   - Integrieren Sie die Hardware-Beschleunigungsparameter für verschiedene GPUs
+1. **Tag 1-2:** Implementiere die optimierte FFmpeg-Konfiguration in `screen_capture.rs`:
+   - Ersetze die aktuelle Base64-Kodierung durch binäre Datenübertragung
+   - Integriere die Hardware-Beschleunigungsparameter für verschiedene GPUs
 
-2. **Tag 3-4:** Implementieren Sie den kontinuierlichen Video-Stream anstelle von Einzelbildern:
-   - Passen Sie die Frontend-Komponente an, um den kontinuierlichen Stream zu empfangen
-   - Implementieren Sie WebCodecs für effiziente Dekodierung im Browser
+2. **Tag 3-4:** Implementiere den kontinuierlichen Video-Stream anstelle von Einzelbildern:
+   - Passe die Frontend-Komponente an, um den kontinuierlichen Stream zu empfangen
+   - Implementiere WebCodecs für effiziente Dekodierung im Browser
 
-3. **Tag 5:** Testen und Benchmarking der Bildschirmübertragung:
-   - Messen Sie die Latenz vor und nach den Änderungen
-   - Überprüfen Sie die CPU-Auslastung bei verschiedenen Auflösungen und Framerates
+3. **Tag 5:** Teste und benchmarke die Bildschirmübertragung:
+   - Miss die Latenz vor und nach den Änderungen
+   - Überprüfe die CPU-Auslastung bei verschiedenen Auflösungen und Framerates
 
 #### Woche 2: Modulares Input-Forwarding-System implementieren
 
 1. **Tag 1-2:** Setup der modularen Struktur und Basisimplementierung:
-   - Erstellen Sie die Verzeichnisstruktur für das modulare Input-Forwarding-System
-   - Implementieren Sie die Basismodule (`mod.rs`, `types.rs`, `error.rs`, `forwarder_trait.rs`)
-   - Aktualisieren Sie die `main.rs`, um mit der neuen Struktur zu arbeiten
+   - Erstelle die Verzeichnisstruktur für das modulare Input-Forwarding-System
+   - Implementiere die Basismodule (`mod.rs`, `types.rs`, `error.rs`, `forwarder_trait.rs`)
+   - Aktualisiere die `main.rs`, um mit der neuen Struktur zu arbeiten
 
-2. **Tag 3-4:** Implementieren Sie die plattformspezifischen Module:
-   - Entwickeln Sie das X11-spezifische Modul (`x11.rs`) mit erweiterter Unterstützung
-   - Implementieren Sie das Wayland-spezifische Modul (`wayland.rs`)
-   - Erstellen Sie die Factory-Funktionen (`factory.rs`) und Hilfsfunktionen (`utils.rs`)
+2. **Tag 3-4:** Implementiere die plattformspezifischen Module:
+   - Entwickle das X11-spezifische Modul (`x11.rs`) mit erweiterter Unterstützung
+   - Implementiere das Wayland-spezifische Modul (`wayland.rs`)
+   - Erstelle die Factory-Funktionen (`factory.rs`) und Hilfsfunktionen (`utils.rs`)
 
-3. **Tag 5:** Implementieren Sie fortgeschrittene Input-Features:
-   - Fügen Sie Unterstützung für Touch-Gesten zu beiden Plattform-Implementierungen hinzu
-   - Implementieren Sie Spezialschlüssel und Multi-Monitor-Unterstützung
-   - Integrieren Sie die priorisierte Ereigniswarteschlange
+3. **Tag 5:** Implementiere fortgeschrittene Input-Features:
+   - Füge Unterstützung für Touch-Gesten zu beiden Plattform-Implementierungen hinzu
+   - Implementiere Spezialschlüssel und Multi-Monitor-Unterstützung
+   - Integriere die priorisierte Ereigniswarteschlange
 
 #### Woche 3: Sicherheitsimplementierung und Leistungsoptimierung
 
-1. **Tag 1-2:** Integrieren Sie den Verbindungssicherheitsmanager:
-   - Fügen Sie die OAuth2-PKCE-Authentifizierung hinzu
-   - Implementieren Sie die signierte Nachrichtenübertragung
+1. **Tag 1-2:** Integriere den Verbindungssicherheitsmanager:
+   - Füge die OAuth2-PKCE-Authentifizierung hinzu
+   - Implementiere die signierte Nachrichtenübertragung
 
-2. **Tag 3-4:** Implementieren Sie die adaptiven Leistungsoptimierungen:
-   - Fügen Sie den CPU-Last-Monitor und die adaptive Kodierung hinzu
-   - Implementieren Sie den Frame-Skipping-Algorithmus für hohe Lastbedingungen
+2. **Tag 3-4:** Implementiere die adaptiven Leistungsoptimierungen:
+   - Füge den CPU-Last-Monitor und die adaptive Kodierung hinzu
+   - Implementiere den Frame-Skipping-Algorithmus für hohe Lastbedingungen
 
-3. **Tag 5:** Testen Sie die Interaktion zwischen den Modulen:
-   - Überprüfen Sie die korrekte Zusammenarbeit des modularen Input-Systems mit der Bildschirmübertragung
-   - Testen Sie die Leistung und Sicherheit der integrierten Komponenten
+3. **Tag 5:** Teste die Interaktion zwischen den Modulen:
+   - Überprüfe die korrekte Zusammenarbeit des modularen Input-Systems mit der Bildschirmübertragung
+   - Teste die Leistung und Sicherheit der integrierten Komponenten
 
 #### Woche 4: Integration, Feinabstimmung und Dokumentation
 
-1. **Tag 1-2:** Integrieren Sie alle Komponenten und erweitern Sie die Tests:
-   - Stellen Sie sicher, dass alle Module ordnungsgemäß interagieren
-   - Schreiben Sie Unit-Tests für die einzelnen Module des Input-Forwarding-Systems
-   - Lösen Sie Konflikte oder Integrationsprobleme
+1. **Tag 1-2:** Integriere alle Komponenten und erweitere die Tests:
+   - Stelle sicher, dass alle Module ordnungsgemäß interagieren
+   - Schreibe Unit-Tests für die einzelnen Module des Input-Forwarding-Systems
+   - Löse Konflikte oder Integrationsprobleme
 
 2. **Tag 3-4:** Umfassende End-to-End-Tests mit der neuen Architektur:
-   - Testen Sie auf verschiedenen Linux-Distributionen
-   - Überprüfen Sie die Kompatibilität mit verschiedenen Browsern
-   - Sicherstellen, dass die modulare Struktur keine Leistungseinbußen verursacht
+   - Teste auf verschiedenen Linux-Distributionen
+   - Überprüfe die Kompatibilität mit verschiedenen Browsern
+   - Stelle sicher, dass die modulare Struktur keine Leistungseinbußen verursacht
 
 3. **Tag 5:** Abschließende Optimierungen und erweiterte Dokumentation:
-   - Optimieren Sie basierend auf den Testergebnissen
-   - Erstellen Sie eine umfassende Dokumentation für die modulare Architektur
-   - Dokumentieren Sie die API und schreiben Sie Beispielcode für Erweiterungen
+   - Optimiere basierend auf den Testergebnissen
+   - Erstelle eine umfassende Dokumentation für die modulare Architektur
+   - Dokumentiere die API und schreibe Beispielcode für Erweiterungen
 
 ### Erwartete Ergebnisse
 
