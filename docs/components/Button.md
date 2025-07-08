@@ -1,6 +1,6 @@
 ---
 title: Button
-description: 
+description: ""
 ---
 
 ## Function

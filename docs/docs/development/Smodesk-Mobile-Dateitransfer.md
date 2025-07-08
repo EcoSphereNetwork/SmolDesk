@@ -1,6 +1,6 @@
 ---
 title: SmolDesk Mobile Dateitransfer
-description: 
+description: ""
 ---
 # SmolDesk Mobile Dateitransfer
 

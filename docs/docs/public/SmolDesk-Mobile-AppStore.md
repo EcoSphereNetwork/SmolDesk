@@ -1,6 +1,6 @@
 ---
 title: SmolDesk Mobile – App Store Informationen
-description: 
+description: ""
 ---
 # SmolDesk Mobile – App Store Informationen
 

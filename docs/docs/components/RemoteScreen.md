@@ -1,6 +1,6 @@
 ---
 title: RemoteScreen
-description: 
+description: ""
 ---
 # RemoteScreen
 

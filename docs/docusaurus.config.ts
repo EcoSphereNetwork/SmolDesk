@@ -41,6 +41,7 @@ i18n: {
           sidebarPath: './sidebars.ts',
           editUrl:
             'https://github.com/EcoSphereNetwork/SmolDesk/edit/main/docs/',
+          exclude: ['**/node_modules/**'],
         },
         blog: false,
         theme: {

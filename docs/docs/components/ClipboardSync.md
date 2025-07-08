@@ -1,6 +1,6 @@
 ---
 title: ClipboardSync
-description: 
+description: ""
 ---
 # ClipboardSync
 

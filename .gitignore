@@ -87,3 +87,4 @@ docs/validation/
 # Tauri Assets/Packages
 src-tauri/node_modules/
 src-tauri/target/
+docs/.docusaurus/
