@@ -81,6 +81,9 @@ storybook-snapshots/
 storybook-static/*
 !storybook-static/.nojekyll
 
+# Documentation validation reports
+docs/validation/
+
 # Tauri Assets/Packages
 src-tauri/node_modules/
 src-tauri/target/

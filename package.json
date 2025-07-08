@@ -108,6 +108,7 @@
     "jest-axe": "^10.0.0",
     "jsdom": "^24.0.0",
     "lint-staged": "^15.2.2",
+    "markdownlint-cli": "^0.39.0",
     "playwright": "^1.53.0",
     "postcss": "^8.4.35",
     "prettier": "^3.2.5",
@@ -129,15 +130,17 @@
       "eslint --fix",
       "prettier --write"
     ],
-    "*.{css,md,json}": [
+    "*.{css,json}": [
+      "prettier --write"
+    ],
+    "docs/**/*.md": [
+      "prettier --write",
+      "markdownlint",
+      "python3 scripts/docs_validation.py"
+    ],
+    "*.md": [
       "prettier --write"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "npm run typecheck && npm run test:run"
-    }
   },
   "browserslist": {
     "production": [
