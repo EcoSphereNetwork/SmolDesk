@@ -59,20 +59,24 @@ i18n: {
       logo: {
         alt: 'SmolDesk Logo',
         src: 'img/logo.svg',
+        href: '/',
       },
       items: [
+        {to: '/', label: 'Home', position: 'left'},
         {
           type: 'docSidebar',
           sidebarId: 'docsSidebar',
           position: 'left',
-          label: 'Documentation',
+          label: 'Dokumentation',
         },
+        {to: '/api/index', label: 'API', position: 'left'},
+        {to: '/release/changelog', label: 'Releases', position: 'left'},
         {
           href: 'https://github.com/EcoSphereNetwork/SmolDesk',
           label: 'GitHub',
           position: 'right',
         },
-												{
+        {
           type: 'localeDropdown',
           position: 'right',
         },
@@ -82,12 +86,25 @@ i18n: {
       style: 'dark',
       links: [
         {
-          title: 'Project',
+          title: 'Links',
           items: [
-            {
-              label: 'GitHub',
-              href: 'https://github.com/EcoSphereNetwork/SmolDesk',
-            },
+            {label: 'Docs', to: '/'},
+            {label: 'API', to: '/api/index'},
+            {label: 'GitHub', href: 'https://github.com/EcoSphereNetwork/SmolDesk'},
+          ],
+        },
+        {
+          title: 'Infos',
+          items: [
+            {label: 'Lizenz', href: 'https://github.com/EcoSphereNetwork/SmolDesk/blob/main/LICENSE'},
+            {label: 'Datenschutz', to: '/docs/public/privacy-policy.html'},
+          ],
+        },
+        {
+          title: 'Mitmachen',
+          items: [
+            {label: 'GitHub Issues', href: 'https://github.com/EcoSphereNetwork/SmolDesk/issues'},
+            {label: 'Discord', href: 'https://discord.gg/smoldesk'},
           ],
         },
       ],
