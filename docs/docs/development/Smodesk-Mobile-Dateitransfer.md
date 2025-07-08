@@ -1,3 +1,7 @@
+---
+title: SmolDesk Mobile Dateitransfer
+description: 
+---
 # SmolDesk Mobile Dateitransfer
 
 Dieses Dokument beschreibt den Aufbau der Dateiübertragung zwischen Mobilgerät und Remote-PC.
