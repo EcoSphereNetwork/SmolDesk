@@ -22,7 +22,7 @@ Dieser Testplan definiert Vorgehen und Umgebungen zur Prüfung von SmolDesk Mobi
 2. Gestenbedienung: Pinch-Zoom, Drag, Rechtsklick (Zwei-Finger-Tap)
 3. [Clipboard-Synchronisation](../usage/clipboard.md) zwischen Host und Mobilgerät
 4. Login- und Logout-Prozess über OAuth2 inklusive Token-Refresh
-5. Tokenweitergabe und -prüfung beim [Signaling](./mobile-signaling.md)
+5. Tokenweitergabe und -prüfung beim Signaling
 6. Verschlüsselte und unverschlüsselte Dateiübertragungen – siehe [Dateien senden und empfangen](../usage/files.md)
 7. Monitorwechsel bei mehreren Bildschirmen – siehe [Monitorsteuerung](../usage/monitors.md)
 8. Umschalten zwischen Dark- und Light-Mode

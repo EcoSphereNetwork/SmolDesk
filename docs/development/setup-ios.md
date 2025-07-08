@@ -29,4 +29,4 @@ Diese Anleitung zeigt die wichtigsten Schritte, um SmolDesk Mobile auf iOS zu en
 3. Release‑Build über Xcode erstellen:
    - In Xcode `Product > Archive` wählen und das Archiv hochladen
 
-Weitere Details zur Portierung findest du in der [SmolDesk Mobile Planung](../development/Smodesk-Mobile.md).
+Weitere Details zur Portierung findest du in der [SmolDesk Mobile Planung](../archive/old_docs/Smodesk-Mobile.md).
