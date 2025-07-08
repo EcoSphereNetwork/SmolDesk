@@ -18,43 +18,36 @@ const FeatureList: FeatureItem[] = [
   {
     title: '🖥️ Remote Desktop',
     to: '/features/remote',
-    icon: require('@site/static/img/smoldesk-logo.png').default,
     description: <>Greife von überall auf deinen Linux-PC zu.</>,
   },
   {
     title: '🔒 Sicherheit',
     to: '/features/security',
-    icon: require('@site/static/img/smoldesk-logo.png').default,
     description: <>Ende-zu-Ende-Verschlüsselung für alle Daten.</>,
   },
   {
     title: '📋 ClipboardSync',
     to: '/components/ClipboardSync',
-    icon: require('@site/static/img/smoldesk-logo.png').default,
     description: <>Teile Text und Bilder bequem zwischen Geräten.</>,
   },
   {
     title: '📂 Dateiübertragung',
     to: '/components/FileTransfer',
-    icon: require('@site/static/img/smoldesk-logo.png').default,
     description: <>Sende Dateien per Drag & Drop.</>,
   },
   {
     title: '🖥️🖥️ Multi-Monitor',
     to: '/features/monitors',
-    icon: require('@site/static/img/smoldesk-logo.png').default,
     description: <>Wähle im Viewer den gewünschten Bildschirm.</>,
   },
   {
     title: '📱 Mobile App',
     to: '/development/setup-android',
-    icon: require('@site/static/img/smoldesk-logo.png').default,
     description: <>Volle Kontrolle auch unterwegs.</>,
   },
   {
     title: '🧪 Playground',
     to: '/demo/live-demo',
-    icon: require('@site/static/img/smoldesk-logo.png').default,
     description: <>Teste Komponenten und APIs direkt im Browser.</>,
   },
 ];
