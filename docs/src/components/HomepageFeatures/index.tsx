@@ -51,6 +51,12 @@ const FeatureList: FeatureItem[] = [
     icon: require('@site/icons/mobile.svg').default,
     description: <>Volle Kontrolle auch unterwegs.</>,
   },
+  {
+    title: '🧪 Playground',
+    to: '/demo/live-demo',
+    icon: require('@site/icons/playground.svg').default,
+    description: <>Teste Komponenten und APIs direkt im Browser.</>,
+  },
 ];
 
 function Feature({title, to, icon, description}: FeatureItem) {
