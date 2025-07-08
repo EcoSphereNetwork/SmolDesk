@@ -1,3 +1,7 @@
+---
+title: Phase 2 Report
+description: 
+---
 # Phase 2 Report
 
 This document summarizes the completion status of the prioritized UI components during Phase 2.
