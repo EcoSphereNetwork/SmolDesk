@@ -1,3 +1,7 @@
+---
+title: Pull Request Agent
+description: Codex
+---
 # Pull Request Agent
 
 This agent scans open pull requests using the GitHub CLI and applies the rules defined in `.codex.json`.
